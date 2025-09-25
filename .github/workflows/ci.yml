@@ -9,6 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       # 1. Checkout code
       - uses: actions/checkout@v4
@@ -19,12 +20,10 @@ jobs:
           node-version: 20
           cache: 'pnpm'
 
-      # 3. Install pnpm globally and ensure PATH includes npm global bin
-      - name: Install pnpm
-        run: |
-          npm install -g pnpm
-          echo "$HOME/.npm-global/bin" >> $GITHUB_PATH
-          export PATH="$HOME/.npm-global/bin:$PATH"
+      # 3. Install pnpm using official Action
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 8   # or 'latest'
 
       # 4. Install dependencies
       - run: pnpm install --frozen-lockfile
