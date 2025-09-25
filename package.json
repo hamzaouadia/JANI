@@ -1,9 +1,11 @@
 {
   "name": "jani-ai-monorepo",
   "private": true,
-  "devDependencies": {},
   "workspaces": [
     "apps/*",
     "services/*"
-  ]
+  ],
+  "dependencies": {
+    "framer-motion": "^12.23.21"
+  }
 }
