@@ -9,22 +9,31 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      # 1. Checkout
-      - uses: actions/checkout@v4
 
-      # 2. Setup Node + pnpm
-      - uses: actions/setup-node@v4
+    steps:
+      # 1. Checkout the code
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2. Install pnpm
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 'latest'  # Specify the pnpm version you want
+
+      # 3. Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'pnpm'
-          package-manager: 'pnpm'
 
-      # 3. Install dependencies
+      # 4. Install dependencies
       - run: pnpm install --frozen-lockfile
 
-      # 4. Build all apps/services
+      # 5. Build all apps/services
       - run: pnpm -r run build
       # - run: pnpm -r run test
       # - run: pnpm -r run lint
       # - run: pnpm -r run typecheck
+      # - run: pnpm -r run format:check
