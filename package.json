@@ -1,0 +1,9 @@
+{
+  "name": "jani-monorepo",
+  "private": true,
+  "version": "0.0.1",
+  "workspaces": [
+    "apps/*",
+    "services/*"
+  ]
+}
