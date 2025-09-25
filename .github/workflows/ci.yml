@@ -9,21 +9,27 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
+      # 1. Checkout the code
       - name: Checkout
         uses: actions/checkout@v4
 
+      # 2. Setup Node.js
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'pnpm'
 
+      # 3. Install pnpm globally
       - name: Install pnpm
         run: npm install -g pnpm
 
+      # 4. Install dependencies (root of monorepo)
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
+      # 5. Build all services/apps in the monorepo
       - name: Build all apps/services
-        run: pnpm -r build
+        run: pnpm -r run build
