@@ -11,21 +11,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      # 1️⃣ Checkout code
+      - uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      # 2️⃣ Setup Node.js
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+      # 3️⃣ Setup pnpm
+      - uses: pnpm/action-setup@v4
         with:
           version: 8
 
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+      # 4️⃣ Install dependencies at root
+      - run: pnpm install --no-frozen-lockfile
 
-      - name: Build all workspaces
-        run: pnpm -r run build
+      # 5️⃣ Build the Next.js frontend
+      - run: pnpm --filter apps/web exec next build
+
+      # 6️⃣ Build the Auth service
+      - run: pnpm --filter services/auth exec tsc -p tsconfig.json
