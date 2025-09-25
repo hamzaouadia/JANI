@@ -2,34 +2,29 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      # 1. Checkout the code
-      - name: Checkout
-        uses: actions/checkout@v4
+      # 1. Checkout
+      - uses: actions/checkout@v4
 
-      # 2. Setup Node.js
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      # 2. Setup Node + pnpm
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'pnpm'
+          package-manager: 'pnpm'
 
-      # 3. Install pnpm globally
-      - name: Install pnpm
-        run: npm install -g pnpm
+      # 3. Install dependencies
+      - run: pnpm install --frozen-lockfile
 
-      # 4. Install dependencies (root of monorepo)
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      # 5. Build all services/apps in the monorepo
-      - name: Build all apps/services
-        run: pnpm -r run build
+      # 4. Build all apps/services
+      - run: pnpm -r run build
+      # - run: pnpm -r run test
+      # - run: pnpm -r run lint
+      # - run: pnpm -r run typecheck
