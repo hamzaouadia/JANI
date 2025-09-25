@@ -1,0 +1,9 @@
+{
+  "name": "jani-ai-monorepo",
+  "private": true,
+  "devDependencies": {},
+  "workspaces": [
+    "apps/*",
+    "services/*"
+  ]
+}
