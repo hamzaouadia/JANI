@@ -1,0 +1,29 @@
+# Node
+node_modules
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-store
+
+# Next.js
+.next
+out
+
+# Logs
+*.log
+logs
+*.pid
+*.seed
+*.pid.lock
+
+# Docker
+*.env
+.env.*
+docker-data/
+pgdata/
+redisdata/
+
+# Editor
+.vscode
+.idea
