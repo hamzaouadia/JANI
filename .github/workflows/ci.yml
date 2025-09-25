@@ -25,7 +25,7 @@ jobs:
           version: 8  # or 'latest'
 
       # 4. Install dependencies
-      - run: pnpm install
+      - run: pnpm install --frozen-lockfile
 
       # 5. Build all apps/services
       - run: pnpm -r run build
