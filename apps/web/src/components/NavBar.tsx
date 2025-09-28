@@ -27,7 +27,7 @@ const NavBar = () => {
                         className="px-3 rounded-full bg-[#77af9c] flex flex-row items-center justify-center h-full"
                     >
                         <div className="flex items-center p-4 text-white font-bold">
-                            <h1 className="text-xl whitespace-nowrap">JANI-AI</h1>
+                            <h1 className="text-xl whitespace-nowrap">JANI</h1>
                         </div>
                     </motion.div>
 

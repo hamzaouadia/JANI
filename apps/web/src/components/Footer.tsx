@@ -7,7 +7,7 @@ const Footer = () => {
                 <div className='p-4'>
                     <div className=''>
                         <p className=' text-[#1d2e28] lg:text-8xl text-6xl font-bold'>
-                            JANI-AI
+                            JANI
                         </p>
                     </div>
                 </div>

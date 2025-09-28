@@ -27,7 +27,7 @@ export default function Loader({ loading }: LoaderProps) {
               exit={{ y: -150 }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
             >
-              JANI-AI
+              JANI
             </motion.h1>
           </motion.div>
         </motion.div>

@@ -8,7 +8,8 @@ COPY . ./
 
 # Install dependencies
 
-RUN npm install -g npm@11.6.1
+RUN npm install
+
 # Expose port your app will run on
 EXPOSE 3000
 

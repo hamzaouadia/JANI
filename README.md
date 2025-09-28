@@ -35,134 +35,20 @@ Built with **Next.js**, **Node.js (TypeScript)**, **PostgreSQL**, **Redis**, **D
                               Workers (BullMQ / Celery)
                                   |
                               Redis (cache / queues)
-```
 
-## 📂 Project Structure
 
-```
+📂 Project Structure
 .
-├── .env
-├── .env.example
-├── .github/
-│   └── workflows/
-│       └── ci.yml
 ├── apps/
-│   └── web/
-│       ├── .next/
-│       ├── node_modules/
-│       ├── public/
-│       ├── src/
-│       ├── next.config.ts
-│       ├── package.json
-│       └── tsconfig.json
+│   └── web/            # Next.js frontend
+│
 ├── services/
-│   └── auth/
-│       ├── node_modules/
-│       ├── prisma/
-│       ├── src/
-│       ├── Dockerfile
-│       ├── package.json
-│       ├── tsconfig.json
-│       └── .env
-├── docker-compose.yml
-├── Makefile
-├── package.json
-├── pnpm-lock.yaml
-├── pnpm-workspace.yaml
-├── README.md
-```
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- [Node.js](https://nodejs.org/) >= 18.x
-- [pnpm](https://pnpm.io/) >= 8.x
-- [Docker](https://www.docker.com/)
-- [Python 3.10+](https://www.python.org/) (for AI service, if applicable)
-- [make](https://www.gnu.org/software/make/) (usually pre-installed on Linux/macOS)
-
-### Installation
-
-Clone the repository and install dependencies:
-
-```bash
-git clone https://github.com/your-org/jani.git
-cd jani
-pnpm install
-```
-
----
-
-## 🛠️ Service Management (Makefile)
-
-All service management is handled via the `Makefile`:
-
-- **Start all services:**  
-  ```bash
-  make up
-  ```
-- **Stop all services:**  
-  ```bash
-  make down
-  ```
-- **Build all services:**  
-  ```bash
-  make build
-  ```
-- **View logs:**  
-  ```bash
-  make logs
-  ```
-- **Clean Docker system:**  
-  ```bash
-  make clean
-  ```
-- **Exec into a service container:**  
-  ```bash
-  make exec
-  ```
-  *(You will be prompted for the service name, e.g. `auth` or `web`)*
-
-- **Restart all services:**  
-  ```bash
-  make restart
-  ```
-
----
-
-## ⚙️ Environment Variables
-
-Copy `.env.example` to `.env` and update values as needed:
-
-```bash
-cp .env.example .env
-```
-
----
-
-## 🧪 Testing
-
-Run all tests:
-
-```bash
-pnpm test
-```
-
----
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/my-feature`)
-3. Commit your changes (`git commit -am 'Add new feature'`)
-4. Push to the branch (`git push origin feature/my-feature`)
-5. Open a Pull Request
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License.
+│   ├── auth/           # Authentication service (Node + TS)
+│   ├── user/           # User profile service
+│   ├── ai/             # AI inference service
+│   └── embeddings/     # Vector embeddings service
+│
+├── docker-compose.yml  # Local development stack
+├── .github/            # GitHub Actions workflows
+├── .env.example        # Example environment variables
+└── README.md
