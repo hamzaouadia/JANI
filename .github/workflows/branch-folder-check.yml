@@ -10,18 +10,26 @@ jobs:
   enforce:
     runs-on: ubuntu-latest
     steps:
+      # 1️⃣ Checkout code with full history
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # ensures we can access origin/main
 
+      # 2️⃣ Enforce branch folder restriction
       - name: Ensure branch changes are only in allowed folder
         run: |
           BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
           case "$BRANCH" in
             auth) FOLDER="services/auth" ;;
-            web) FOLDER="apps/web" ;;
+            web)  FOLDER="apps/web" ;;
             user) FOLDER="services/user" ;;
-            ai) FOLDER="services/ai" ;;
-            *) exit 0 ;;
+            ai)   FOLDER="services/ai" ;;
+            *)    exit 0 ;;
           esac
+
+          # Fetch main to compare against
+          git fetch origin main
 
           # List files changed in this push
           CHANGES=$(git diff --name-only origin/main...HEAD)
@@ -32,4 +40,6 @@ jobs:
             echo "$OUTSIDE"
             exit 1
           fi
-            echo "All changes are within the allowed folder: $FOLDER"
+
+          echo "All changes are within the allowed folder: $FOLDER"
+        shell: bash
