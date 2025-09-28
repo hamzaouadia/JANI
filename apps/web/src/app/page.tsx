@@ -28,11 +28,11 @@ export default function Page() {
       <Loader loading={loading} />
       {!loading && (
         <>
+          <CustomCursor />
           <NavBar />
           <Home />
           <Footer />
           <Chatbot />
-          <CustomCursor />
         </>
       )}
     </div>

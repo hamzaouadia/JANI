@@ -34,11 +34,12 @@ const HeroSection = () => {
             </p>
 
             <p
-              className=" custom-font font-bold lg:text-start text-center px-4 py-2"
+              className="cursor-expand custom-font font-bold lg:text-start text-center px-4 py-2"
               style={fluidFont("4rem", "6vw", "8rem")}
             >
               Track Resources
             </p>
+
 
             <p
               className=" custom-font font-light px-4 py-2"
@@ -61,8 +62,8 @@ const HeroSection = () => {
             animate="show"
             exit="hidden"
             className="flex space-x-4 mt-4 px-4 text-lg font-semibold">
-            <Button text="Get Started" border="#77af9c" background="#77af9c" />
-            <Button text="Contact Sales" border="#77af9c" background="#77af9c" />
+            <Button text="Get Started" border="#77af9c" backgroundHover="#77af9c" />
+            <Button text="Contact Sales" border="#77af9c" backgroundHover="#77af9c" />
           </motion.div>
         </div>
       </div>

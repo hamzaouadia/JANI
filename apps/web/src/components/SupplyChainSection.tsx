@@ -79,7 +79,7 @@ export default function SupplyChainSection({
               initial="hidden"
               animate="show"
               exit="hidden"
-              className="relative rounded-2xl border-2 border-[#77af9c] lg:p-6 p-4 flex items-center justify-center min-h-[320px] h-full"
+              className="relative rounded-2xl border-2 bg-white border-[#77af9c] lg:p-6 p-4 flex items-center justify-center min-h-[320px] h-full"
             >
               <div className="text-center">
                 <p className="custom-font uppercase tracking-wide font-semibold"
@@ -119,7 +119,7 @@ export default function SupplyChainSection({
             {features.map(({ title, desc, Icon }) => (
               <div
                 key={title}
-                className="rounded-2xl border-2 border-[#77af9c] hover:bg-[#77af9c] transition group hover:text-white text-[#1d2e28] flex items-center p-5"
+                className="rounded-2xl border-2 bg-white border-[#77af9c] hover:bg-[#77af9c] transition group hover:text-white text-[#1d2e28] flex items-center p-5"
               >
                 <motion.div
                   variants={textItem}

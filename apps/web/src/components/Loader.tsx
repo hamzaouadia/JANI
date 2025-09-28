@@ -12,7 +12,7 @@ export default function Loader({ loading }: LoaderProps) {
       {loading && (
         <motion.div
           key="loader"
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#77af9c]"
+          className="fixed inset-0 z-[9990] flex items-center justify-center bg-[#77af9c]"
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}

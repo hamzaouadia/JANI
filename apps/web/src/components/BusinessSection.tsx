@@ -60,8 +60,8 @@ const BusinessSection = () => {
             animate="show"
             exit="hidden"
             className="flex space-x-4 mt-4 px-4 text-lg font-semibold text-white">
-            <Button text="Register" textColor="white" textHover="#77af9c" border="white" background="white" />
-              <Button text="Login" textColor="white" textHover="#77af9c" border="white" background="white" />
+            <Button text="Register" textColor="white" textHover="#77af9c" border="white" background="#82ceb5" backgroundHover="white" />
+              <Button text="Login" textColor="white" textHover="#77af9c" border="white" background="#82ceb5" backgroundHover="white" />
           </motion.div>
         </div>
       </div>
