@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Web App (apps/web)
 
-## Getting Started
+Next.js 15 application that powers the JANI marketing site and authenticated dashboard experience. It consumes the `services/auth` API for session handling and is designed to run either as part of the Docker Compose stack or independently during development.
 
-First, run the development server:
+## Prerequisites
+
+- Node.js 20.x
+- npm 10+
+- Docker (optional, for full-stack testing)
+- Root-level `.env` with `WEB_PORT`, `NEXT_PUBLIC_AUTH_URL`, and `JWT_SECRET`
+
+## Installation
+
+From the repo root:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install --workspace apps/web
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This will create `apps/web/node_modules` using the workspace-aware npm configuration. Re-run the command whenever `package.json` changes.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Development
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev --workspace apps/web
+```
 
-## Learn More
+The app listens on `http://localhost:3000` by default. When running alongside Docker Compose, ensure the port is not already bound by the containerised instance.
 
-To learn more about Next.js, take a look at the following resources:
+## Production Build
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build --workspace apps/web
+npm run start --workspace apps/web
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+`npm run start` serves the production bundle using Next.js' Node runtime. In Docker Compose this command is executed automatically.
 
-## Deploy on Vercel
+## Linting
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run lint --workspace apps/web
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The lint configuration mirrors the rules enforced in CI.
+
+## Environment Variables
+
+The web app expects the following values (usually provided via the root `.env` when using Docker Compose):
+
+| Variable                | Description                                          |
+| ----------------------- | ---------------------------------------------------- |
+| `WEB_PORT`              | Port exposed when running in Docker                  |
+| `NEXT_PUBLIC_AUTH_URL`  | Base URL of the Auth service used for client calls   |
+| `JWT_SECRET`            | Shared secret for validating tokens server-side      |
+
+For standalone development you can inject them via a `.env.local` file in `apps/web`.
+
+## Working with Docker Compose
+
+When you run `make` from the repository root, the web container is built and started automatically. Use this flow to validate cross-service behaviour, especially authentication and API gateway integration.
+
+## Related Docs
+
+- [Root README](../../README.md) – monorepo overview and shared tooling
