@@ -94,7 +94,7 @@ npm install --workspace apps/web
 npm install --workspace apps/mobile
 
 # Auth service (pnpm for lockfile fidelity)
-corepack enable pnpm@10
+corepack prepare pnpm@10 --activate
 pnpm install --dir services/auth --frozen-lockfile
 
 # Optional lightweight services

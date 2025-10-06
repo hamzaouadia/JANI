@@ -37,12 +37,12 @@ export async function middleware(req: NextRequest) {
       };
       const fakeRes: FakeResponse = {
         status: (code: number) => ({
-          json: (_data: unknown) => {
+          json: () => {
             if (code >= 400) reject(new Error(`Auth failed with status ${code}`));
             else resolve();
           },
         }),
-        json: (_data: unknown) => resolve(),
+        json: () => resolve(),
       };
 
       // Call the auth middleware with typed fakes
