@@ -18,13 +18,22 @@ down:
 	docker compose -f $(COMPOSE_FILE) down
 	@echo "✅ All services stopped!"
 
-# Clean Docker (containers, networks, volumes, images)
+# Clean everything in Docker
 .PHONY: clean
 clean:
-	@echo "🧹 Cleaning Docker system (containers, volumes, images)..."
-	docker compose -f $(COMPOSE_FILE) down --volumes --remove-orphans
-	docker system prune -af --volumes
-	@echo "✅ Docker cleaned!"
+	@echo "🧹 Cleaning all Docker resources..."
+	# Stop and remove all containers
+	docker rm -f $$(docker ps -aq) 2>/dev/null || true
+	# Remove all images
+	docker rmi -f $$(docker images -aq) 2>/dev/null || true
+	# Remove all volumes
+	docker volume rm $$(docker volume ls -q) 2>/dev/null || true
+	# Remove all networks
+	docker network rm $$(docker network ls -q) 2>/dev/null || true
+	# Prune build cache
+	docker builder prune -af
+	@echo "✅ All Docker resources cleaned!"
+
 
 # Build only
 .PHONY: build

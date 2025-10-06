@@ -13,10 +13,10 @@ const HeroSection = () => {
   
   return (
     <section
-      className="relative flex flex-col items-center justify-center p-4 lg:px-20 h-screen w-full text-[#1d2e28]"
+      className="relative flex flex-col items-center justify-center p-4 lg:px-20 h-screen w-full lg:w-screen text-[#1d2e28]"
     >
       <div className="w-full h-full flex flex-row lg:p-2">
-        <div className="flex flex-col justify-center lg:items-start items-center h-full w-full lg:p-8 space-y-2 overflow-hidden">
+        <div className="flex flex-col justify-center lg:items-start items-center h-full w-full lg:w-screen lg:p-8 space-y-2">
           <motion.div
             variants={textItem}
             initial="hidden"

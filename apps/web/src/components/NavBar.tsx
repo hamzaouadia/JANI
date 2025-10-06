@@ -24,9 +24,9 @@ const NavBar = () => {
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="px-3 rounded-full bg-[#77af9c] flex flex-row items-center justify-center h-full"
+                        className="px-1 rounded-full border-2 border-[#77af9c] flex flex-row items-center justify-center h-full"
                     >
-                        <div className="flex items-center p-4 text-white font-bold">
+                        <div className="flex items-center p-4 px-6 text-black bg-white/50 backdrop-blur-md border border-white/20 shadow-lg rounded-full font-bold">
                             <h1 className="text-xl whitespace-nowrap">JANI</h1>
                         </div>
                     </motion.div>
@@ -36,7 +36,7 @@ const NavBar = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
                         className="rounded-full border-2 border-[#77af9c] flex-row items-center p-1 justify-center h-full hidden lg:flex">
-                        <div className="flex flex-row justify-center items-center text-lg h-full p-1 bg-white rounded-full">
+                        <div className="flex flex-row justify-center items-center gap-2 text-lg h-full p-1 bg-white/50 backdrop-blur-md border border-white/20 shadow-lg rounded-full">
                             {menuItems.map((item) => (
                                 <button
                                     onClick={() => setActive(item)}

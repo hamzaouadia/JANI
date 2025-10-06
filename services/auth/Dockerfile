@@ -1,16 +1,31 @@
-FROM node:20-bullseye
-
+# Build stage
+FROM node:20-alpine AS build
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y curl bash
+# install pnpm
+RUN npm install -g pnpm
 
-COPY package.json package-lock.json* ./
+# copy package manifests first for cached install
+COPY package.json pnpm-lock.yaml* ./
+# install deps
+RUN pnpm install --frozen-lockfile
 
-COPY tsconfig.json ./
-COPY prisma ./prisma
-COPY src ./src
+# copy sources and build
+COPY . .
+RUN pnpm run build
 
-RUN npm install
-RUN npx prisma generate
+# Runtime stage
+FROM node:20-alpine AS runtime
+WORKDIR /app
+ENV NODE_ENV=production
 
-CMD ["npm", "run", "dev"]
+# install pnpm to use pnpm dlx or future needs (optional)
+RUN npm install -g pnpm
+
+# copy only built artifacts and package.json (to know deps if needed)
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/node_modules ./node_modules
+COPY package.json ./
+
+EXPOSE 4000
+CMD ["node", "dist/index.js"]

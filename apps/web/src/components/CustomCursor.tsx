@@ -13,7 +13,6 @@ export default function CustomCursor() {
   const gapRef = useRef<HTMLDivElement>(null);
 
   const gap = 20; // default small square
-  let hoveredEl: HTMLElement | null = null;
 
   useEffect(() => {
     setMounted(true);
@@ -21,6 +20,8 @@ export default function CustomCursor() {
 
   useEffect(() => {
     if (!mounted) return;
+
+    let hoveredEl: HTMLElement | null = null; // Moved inside useEffect to fix ESLint warning
 
     const v1 = verticalRef1.current!;
     const v2 = verticalRef2.current!;
@@ -130,7 +131,7 @@ export default function CustomCursor() {
   if (!mounted) return null;
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-[999] opacity-70">
+    <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-[0] opacity-70">
       {/* Vertical dashed lines */}
       <div
         ref={verticalRef1}

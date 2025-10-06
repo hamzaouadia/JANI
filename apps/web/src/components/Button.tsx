@@ -18,7 +18,7 @@ const Button: React.FC<ButtonProps> = ({ text, border = "#77af9c", background = 
           borderColor: border,
         }}
         onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = backgroundHover, e.currentTarget.style.color = textHover)}
-        onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent", e.currentTarget.style.color = textColor)}
+        onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = background, e.currentTarget.style.color = textColor)}
       >
         {text}
       </button>

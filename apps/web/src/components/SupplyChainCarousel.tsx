@@ -17,7 +17,6 @@ const items = [
   { title: "Cheese", desc: "Artisan cheeses with transparent sourcing, preserving traditional recipes and quality.", url: "/images/Cheese.jpeg" },
   { title: "Chocolate", desc: "Premium chocolate made from traceable cocoa beans, supporting ethical farming practices.", url: "/images/Chocolate.jpeg" },
   { title: "Olive Oil", desc: "Extra virgin olive oil carefully pressed from verified groves, ensuring purity and taste.", url: "/images/OliveOil.jpeg" },
-  { title: "Fruit Juice", desc: "Freshly pressed fruit juices with complete sourcing information, guaranteeing flavor and safety.", url: "/images/FruitJuice.jpeg" },
 ];
 
 
@@ -89,7 +88,7 @@ export default function InfiniteCarousel() {
 
           </div>
       </div>
-      <div className="relative pt-20 lg:pt-10 w-full h-full flex lg:flex-row flex-col items-center justify-between p-4 backdrop-blur-sm z-40">
+      <div className="relative pt-20 lg:pt-10 w-full lg:w-screen h-full flex lg:flex-row flex-col items-center justify-between p-4 backdrop-blur-sm z-40">
       {/* Left Section - Text */}
       <div className="lg:w-1/2 h-full flex justify-center items-center p-4 lg:p-8">
         <div className="h-full w-full flex flex-col justify-center lg:items-start text-center lg:text-left">

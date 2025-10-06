@@ -9,12 +9,7 @@ const textItem = {
   show: { opacity: 1, transition: { delay: 0.8, duration: 0.5 } },
 };
 
-export default function SupplyChainSection({
-                                                innerRef,
-                                                }: {
-                                                  innerRef?: React.RefObject<HTMLDivElement | null>;
-                                                })
-{
+export default function SupplyChainSection(){
   const features = [
     {
       title: "Tailored to your workflow",
@@ -43,8 +38,7 @@ export default function SupplyChainSection({
 
   return (
     <section
-      ref={innerRef}
-      className="snap-start relative flex flex-col items-center justify-center p-4 lg:h-screen h-full text-[#0e2e20]"
+      className="relative flex flex-col items-center justify-center p-4 px-24 lg:h-screen w-full h-full text-[#0e2e20]"
     >
       <div className="w-full h-full flex flex-col justify-end p-2 pt-6 z-40">
         {/* Section Heading */}
@@ -73,13 +67,13 @@ export default function SupplyChainSection({
 
         <div className="w-full lg:h-160 flex lg:flex-row flex-col justify-between">
           {/* Left: Map / Illustration */}
-          <div className="lg:w-160 h-full p-5">
+          <div className="w-1/3 h-full p-5">
             <motion.div
               variants={textItem}
               initial="hidden"
               animate="show"
               exit="hidden"
-              className="relative rounded-2xl border-2 bg-white border-[#77af9c] lg:p-6 p-4 flex items-center justify-center min-h-[320px] h-full"
+              className="relative rounded-2xl border-2 bg-white border-[#77af9c] lg:p-6 p-4 flex items-center justify-center  min-h-[320px] h-full"
             >
               <div className="text-center">
                 <p className="custom-font uppercase tracking-wide font-semibold"
