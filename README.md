@@ -1,173 +1,122 @@
-# JANI Platform
+# JANI Platform Monorepo
 
-Modern supply-chain enablement platform built as a TypeScript-first monorepo. It bundles a Next.js marketing experience, an Expo mobile companion app, and several containerised backend services that run locally with Docker Compose or through automated CI/CD gates.
+JANI is a supply-chain enablement platform that pairs a web experience, an Expo-powered mobile app, and a trio of lightweight Node.js services. Everything ships as a TypeScript-first monorepo with shared tooling, Docker orchestration, and CI automation.
 
-## Contents
+## Project Overview
 
-- [Architecture Overview](#architecture-overview)
-- [Repository Layout](#repository-layout)
-- [Prerequisites](#prerequisites)
-- [Environment & Secrets](#environment--secrets)
-- [Installing Dependencies](#installing-dependencies)
-- [Running the Stack with Docker](#running-the-stack-with-docker)
-- [Running Apps Locally](#running-apps-locally)
-- [Quality Checks](#quality-checks)
-- [Continuous Integration](#continuous-integration)
-- [Deployment Notes](#deployment-notes)
+| Area            | Tech stack                                   | Purpose |
+|-----------------|-----------------------------------------------|---------|
+| `apps/web`      | Next.js 15, React 19, Tailwind CSS            | Marketing site and dashboard shell |
+| `apps/mobile`   | Expo (React Native), TypeScript               | Field companion for traceability capture |
+| `services/auth` | Express, MongoDB, JWT                         | User registration & login API |
+| `services/user` | Express                                      | Lightweight façade for account metadata |
+| `services/ai`   | Express                                      | Placeholder endpoint for AI integrations |
+| `docker-compose.yml` | MongoDB, Redis, service containers     | Local infrastructure bundle |
 
-## Architecture Overview
-
-```text
-┌──────────────────────────────────────────────────────────────────────┐
-│                           Client Experiences                          │
-│  • apps/web    – Next.js 15 landing + dashboards                      │
-│  • apps/mobile – Expo (React Native) companion app                    │
-└──────────────┬───────────────────────────────────────────────────────┘
-               │ HTTPS / Metro (tunnel)
-┌──────────────▼───────────────────────────────────────────────────────┐
-│                        Backend Services (Docker)                     │
-│  • services/auth  – Express + Mongoose auth API (JWT)                │
-│  • services/user  – Express façade for profile endpoints             │
-│  • services/ai    – Express placeholder for AI integrations          │
-│  • MongoDB / Redis – provisioned by docker-compose                   │
-└──────────────┬───────────────────────────────────────────────────────┘
-               │ Internal networking (Docker bridge)
-┌──────────────▼───────────────────────────────────────────────────────┐
-│                    Shared Tooling & Operations                       │
-│  • Make targets      – build/up/down/clean orchestration              │
-│  • Jest / ESLint     – automated testing & linting for mobile         │
-│  • GitHub Actions    – quality gates + container build validation     │
-└──────────────────────────────────────────────────────────────────────┘
-```
+Supporting tooling includes Jest, ESLint, Expo CLI, and GitHub Actions for quality gates.
 
 ## Repository Layout
 
 ```text
 .
 ├── apps
-│   ├── mobile/   # Expo + TypeScript mobile client
-│   └── web/      # Next.js 15 web experience
+│   ├── mobile/         Expo client (Metro bundle or native builds)
+│   └── web/            Next.js marketing + dashboard app
 ├── services
-│   ├── ai/       # Express stub for AI integrations
-│   ├── auth/     # Express + Mongoose auth service
-│   └── user/     # Express user façade service
-├── docker-compose.yml
-├── Makefile
-├── package.json
-├── package-lock.json
-└── README.md
+│   ├── ai/             AI integration stub (Express)
+│   ├── auth/           Authentication API (Express + MongoDB)
+│   └── user/           User/account façade (Express)
+├── docker-compose.yml  Local stack definition (web, mobile, services, Mongo, Redis)
+├── Makefile            Convenience commands for build/run/clean
+├── package.json        Root workspace metadata
+└── README.md           You are here
 ```
 
 ## Prerequisites
 
 - **Node.js 20.x** (ships with npm 10)
-- **npm** (workspace-aware)
-- **pnpm 10** (required only for `services/auth`; run `corepack enable pnpm@10`)
 - **Docker & Docker Compose**
-- **Make** (GNU make for the automation targets)
+- **GNU Make**
+- **pnpm 10.x** (used only by `services/auth`; install via `corepack prepare pnpm@10 --activate`)
 
-## Environment & Secrets
+## Environment Configuration
 
-The root `.env` powers `docker-compose.yml` and the services. Copy it from your secure store or craft a new one using:
+Create a root `.env` (used by Docker Compose) with values similar to:
 
 ```dotenv
 AUTH_PORT=4000
-WEB_PORT=3000
 USER_PORT=5000
 AI_PORT=5001
-JWT_SECRET=supersecret123
+WEB_PORT=3000
+MONGO_URI=mongodb://mongo:27017/jani
+REDIS_URL=redis://redis:6379
+JWT_SECRET=dev-secret
 NEXT_PUBLIC_AUTH_URL=http://localhost:4000
 OPENAI_API_KEY=dummy-key
 ```
 
-> **Warning:** never commit real credentials—use secrets managers for production workloads.
+Each service exposes a `/health` endpoint for quick diagnostics. Secret values should be rotated and injected from a secure manager in non-development environments.
 
-## Installing Dependencies
-
-Install the packages for each workspace you intend to touch:
+## Quick Start (Docker)
 
 ```bash
-# Web client
-npm install --workspace apps/web
+# Build and start the full stack
+make up
 
-# Mobile app (Expo)
-npm install --workspace apps/mobile
-
-# Auth service (pnpm for lockfile fidelity)
-corepack prepare pnpm@10 --activate
-pnpm install --dir services/auth --frozen-lockfile
-
-# Optional lightweight services
-npm install --workspace services/ai
-npm install --workspace services/user
-```
-
-## Running the Stack with Docker
-
-Use the provided Make targets for end-to-end workflows:
-
-```bash
-# Build and start all containers in detached mode
-make
-
-# Tail combined logs
+# Follow logs
 make logs
 
 # Stop everything
 make down
-
-# ⚠️ Remove ALL Docker containers, images, volumes, and networks on the host
-make clean
 ```
 
-> `make clean` is intentionally destructive—prefer it only on disposable development machines.
+The Compose file publishes:
 
-## Running Apps Locally
+- Web UI at `http://localhost:3000`
+- Expo dev server at `http://localhost:8081`
+- Auth API at `http://localhost:4000/auth`
+- User API at `http://localhost:5000`
+- AI stub at `http://localhost:5001`
 
-Run services outside Docker for iterative development:
+## Local Development (without Docker)
 
 ```bash
-# Web client
+# Install dependencies per workspace
+npm install --workspace apps/web
+npm install --workspace apps/mobile
+npm install --workspace services/ai
+npm install --workspace services/user
+corepack prepare pnpm@10 --activate
+pnpm install --dir services/auth --frozen-lockfile
+
+# Start runtimes
 npm run dev --workspace apps/web
-
-# Mobile app (starts Expo CLI)
 npm run start --workspace apps/mobile
-
-# Auth API (TypeScript build → Node runtime)
-pnpm --dir services/auth run build
-pnpm --dir services/auth run start
-
-# User + AI stubs
+pnpm --dir services/auth run build && pnpm --dir services/auth run start
 npm run start --workspace services/user
 npm run start --workspace services/ai
 ```
 
+When running outside Docker, start your own MongoDB instance (defaults to `mongodb://localhost:27017/jani-ai-auth`).
+
 ## Quality Checks
 
-| Area           | Command                                                             |
-| -------------- | -------------------------------------------------------------------- |
-| Web (lint)     | `npm run lint --workspace apps/web`                                 |
-| Mobile (lint)  | `npm run lint --workspace apps/mobile`                              |
-| Mobile (types) | `npm run typecheck --workspace apps/mobile`                         |
-| Mobile (tests) | `npm run test --workspace apps/mobile -- --watchAll=false`          |
-| Auth (build)   | `pnpm --dir services/auth run build`                                |
-| Node stubs     | `node --check services/ai/server.js` / `node --check services/user/server.js` |
+| Scope              | Command |
+|--------------------|---------|
+| Web lint           | `npm run lint --workspace apps/web`
+| Mobile lint        | `npm run lint --workspace apps/mobile`
+| Mobile types       | `npm run typecheck --workspace apps/mobile`
+| Mobile tests       | `npm run test --workspace apps/mobile -- --watchAll=false`
+| Auth build         | `pnpm --dir services/auth run build`
+| AI/User syntax     | `node --check services/ai/server.js` and `node --check services/user/server.js`
 
-## Continuous Integration
+The CI workflow defined in `.github/workflows/ci.yml` mirrors these commands and additionally validates Docker Compose builds.
 
-Automated checks live in [`.github/workflows/ci.yml`](.github/workflows/ci.yml):
+## Documentation
 
-1. **Web Quality Gate** – installs dependencies, executes `next lint`, and confirms production builds succeed.
-2. **Mobile Quality Gate** – runs linting, TypeScript checks, and Jest tests in CI mode.
-3. **Auth Service Build** – uses pnpm to install dependencies and compile the TypeScript API.
-4. **Container Build Validation** – renders the Compose configuration and builds every image to detect infrastructure drift early.
+- [`services/auth/README.md`](services/auth/README.md)
+- [`services/user/README.md`](services/user/README.md)
+- [`services/ai/README.md`](services/ai/README.md)
+- [`apps/web/README.md`](apps/web/README.md)
 
-Jobs cache npm/pnpm artifacts and execute in parallel for fast feedback on pull requests and pushes to `main`.
-
-## Deployment Notes
-
-- Container definitions live in `docker-compose.yml`; mirror them in your production orchestrator or extend the Dockerfiles with environment-specific entrypoints.
-- Mobile releases should go through Expo Application Services (EAS) or an equivalent pipeline; the CI job focuses on linting, types, and unit tests.
-- Always source secrets from a secure manager (GitHub Environments, AWS Secrets Manager, HashiCorp Vault, etc.).
-
-Refer to workspace-specific READMEs for deeper dives into each application.
+Refer to those guides for service-specific configuration, environment variables, and API notes.
