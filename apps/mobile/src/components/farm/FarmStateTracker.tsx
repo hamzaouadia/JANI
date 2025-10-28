@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { View, Text, StyleSheet, Pressable, ViewStyle } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Animated, { useSharedValue, useAnimatedStyle, withTiming, interpolate } from 'react-native-reanimated';
 import Ionicons from '@expo/vector-icons/Ionicons';
@@ -58,6 +58,14 @@ export const FarmStateTracker = ({
     };
 
     if (vertical) {
+      const stateColor = getStateColor();
+      const verticalIconStyle: ViewStyle = {
+        backgroundColor: stateColor + '20',
+        borderColor: stateColor,
+        borderWidth: isActive ? 3 : 2,
+        transform: [{ scale: isActive ? 1.05 : 1 }],
+      };
+
       return (
         <Pressable
           key={state}
@@ -70,12 +78,7 @@ export const FarmStateTracker = ({
             <View
               style={[
                 styles.verticalStateIcon,
-                {
-                  backgroundColor: getStateColor() + '20',
-                  borderColor: getStateColor(),
-                  borderWidth: isActive ? 3 : 2,
-                  transform: [{ scale: isActive ? 1.05 : 1 }],
-                },
+                verticalIconStyle,
               ]}
             >
               <Ionicons 
