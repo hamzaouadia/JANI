@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 env:
-  NODE_VERSION: '20'
+  NODE_VERSION: '20.19'
 
 jobs:
   web:
@@ -49,12 +49,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: npm
-          cache-dependency-path: apps/mobile/package-lock.json
 
       - name: Install dependencies
         working-directory: apps/mobile
-        run: npm ci
+        run: npm install --legacy-peer-deps --engine-strict=false
 
       - name: Lint
         working-directory: apps/mobile
