@@ -2,7 +2,6 @@ import { useState, useCallback, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { ActivityIndicator, FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import type { ParamListBase } from '@react-navigation/native';
 import { z } from 'zod';
 
 import { Screen } from '@/components/layout/Screen';
