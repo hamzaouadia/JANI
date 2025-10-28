@@ -1,6 +1,8 @@
 import 'react-native-gesture-handler/jestSetup';
 import '@testing-library/jest-native/extend-expect';
 
+jest.mock('expo/src/winter/runtime.native', () => ({}));
+jest.mock('expo/src/winter/runtime', () => ({}));
 jest.mock('react-native-safe-area-context', () => {
   const React = require('react');
   return {
@@ -21,3 +23,11 @@ jest.mock('@react-native-async-storage/async-storage', () =>
 );
 
 jest.mock('react-native-reanimated', () => require('react-native-reanimated/mock'));
+
+// Mock expo-font ESM to avoid Jest parse errors
+jest.mock('expo-font', () => ({
+  __esModule: true,
+  loadAsync: jest.fn().mockResolvedValue(undefined)
+}));
+
+(globalThis as Record<string, unknown>).__ExpoImportMetaRegistry ||= new Map();

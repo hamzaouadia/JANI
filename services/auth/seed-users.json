@@ -1,0 +1,252 @@
+[
+  {
+    "role": "admin",
+    "email": "admin@jani.test",
+    "identifier": "ADMIN-001",
+    "password": "Admin123!",
+    "profile": {
+      "fullName": "System Administrator",
+      "department": "IT & Operations",
+      "accessLevel": "full"
+    }
+  },
+  {
+    "role": "admin",
+    "email": "admin.morocco@jani.test",
+    "identifier": "ADMIN-002",
+    "password": "Admin123!",
+    "profile": {
+      "fullName": "Fatima Zahra El Alami",
+      "department": "Moroccan Operations",
+      "accessLevel": "full"
+    }
+  },
+  {
+    "role": "farm",
+    "email": "farm-owner@jani.test",
+    "identifier": "REG-98241",
+    "password": "Password123!",
+    "profile": {
+      "businessName": "Domaine Atlas Vert",
+      "hectares": "85",
+      "contactName": "Ahmed Bennis",
+      "registrationId": "REG-98241"
+    }
+  },
+  {
+    "role": "farm",
+    "email": "ferme.saada@jani.test",
+    "identifier": "REG-45678",
+    "password": "Password123!",
+    "profile": {
+      "businessName": "Ferme Saada Agrumes",
+      "hectares": "120",
+      "contactName": "Saada Bouchaib",
+      "registrationId": "REG-45678"
+    }
+  },
+  {
+    "role": "farm",
+    "email": "coop.rif@jani.test",
+    "identifier": "REG-33210",
+    "password": "Password123!",
+    "profile": {
+      "businessName": "Coopérative Rif Vert",
+      "hectares": "45",
+      "contactName": "Hassan Kettani",
+      "registrationId": "REG-33210"
+    }
+  },
+  {
+    "role": "farm",
+    "email": "dattes.draa@jani.test",
+    "identifier": "REG-78945",
+    "password": "Password123!",
+    "profile": {
+      "businessName": "Exploitation Datte Drâa",
+      "hectares": "200",
+      "contactName": "Mohamed Ait Ouahmane",
+      "registrationId": "REG-78945"
+    }
+  },
+  {
+    "role": "farm",
+    "email": "argan.essaouira@jani.test",
+    "identifier": "REG-55432",
+    "password": "Password123!",
+    "profile": {
+      "businessName": "Coopérative Argan Essaouira",
+      "hectares": "65",
+      "contactName": "Fatima Amrani",
+      "registrationId": "REG-55432"
+    }
+  },
+  {
+    "role": "farm",
+    "email": "safran.taliouine@jani.test",
+    "identifier": "REG-12890",
+    "password": "Password123!",
+    "profile": {
+      "businessName": "Safran Taliouine Bio",
+      "hectares": "15",
+      "contactName": "Brahim Ouazzani",
+      "registrationId": "REG-12890"
+    }
+  },
+  {
+    "role": "exporter",
+    "email": "exporter@jani.test",
+    "identifier": "EXP-7781",
+    "password": "Password123!",
+    "profile": {
+      "companyName": "MAROC EXPORT",
+      "primaryMarket": "EU",
+      "complianceOfficer": "Rachid Benani",
+      "exportLicense": "EXP-7781"
+    }
+  },
+  {
+    "role": "exporter",
+    "email": "delassus@jani.test",
+    "identifier": "EXP-8892",
+    "password": "Password123!",
+    "profile": {
+      "companyName": "DELASSUS Group",
+      "primaryMarket": "EU & Middle East",
+      "complianceOfficer": "Hassan El Alami",
+      "exportLicense": "EXP-8892"
+    }
+  },
+  {
+    "role": "exporter",
+    "email": "azura@jani.test",
+    "identifier": "EXP-6543",
+    "password": "Password123!",
+    "profile": {
+      "companyName": "AZURA Maroc",
+      "primaryMarket": "EU",
+      "complianceOfficer": "Fatima Zahra Idrissi",
+      "exportLicense": "EXP-6543"
+    }
+  },
+  {
+    "role": "exporter",
+    "email": "copag@jani.test",
+    "identifier": "EXP-4521",
+    "password": "Password123!",
+    "profile": {
+      "companyName": "COPAG - Coopérative Agricole",
+      "primaryMarket": "International",
+      "complianceOfficer": "Ahmed Tazi",
+      "exportLicense": "EXP-4521"
+    }
+  },
+  {
+    "role": "buyer",
+    "email": "buyer@jani.test",
+    "identifier": "BUY-5542",
+    "password": "Password123!",
+    "profile": {
+      "organizationName": "Carrefour Maroc",
+      "category": "Retail",
+      "annualDemand": "5000",
+      "buyerCode": "BUY-5542"
+    }
+  },
+  {
+    "role": "buyer",
+    "email": "aljazira@jani.test",
+    "identifier": "BUY-7789",
+    "password": "Password123!",
+    "profile": {
+      "organizationName": "Al Jazira Fresh - UAE",
+      "category": "Import-Export",
+      "annualDemand": "3000",
+      "buyerCode": "BUY-7789"
+    }
+  },
+  {
+    "role": "buyer",
+    "email": "biomarkt@jani.test",
+    "identifier": "BUY-3321",
+    "password": "Password123!",
+    "profile": {
+      "organizationName": "BioMarkt Germany",
+      "category": "Organic Retail",
+      "annualDemand": "2500",
+      "buyerCode": "BUY-3321"
+    }
+  },
+  {
+    "role": "buyer",
+    "email": "auchan@jani.test",
+    "identifier": "BUY-9945",
+    "password": "Password123!",
+    "profile": {
+      "organizationName": "Auchan France",
+      "category": "Retail",
+      "annualDemand": "8000",
+      "buyerCode": "BUY-9945"
+    }
+  },
+  {
+    "role": "buyer",
+    "email": "tesco@jani.test",
+    "identifier": "BUY-6612",
+    "password": "Password123!",
+    "profile": {
+      "organizationName": "Tesco UK - Fresh Produce",
+      "category": "Retail",
+      "annualDemand": "6500",
+      "buyerCode": "BUY-6612"
+    }
+  },
+  {
+    "role": "logistics",
+    "email": "logistics@jani.test",
+    "identifier": "FLEET-204",
+    "password": "Password123!",
+    "profile": {
+      "companyName": "CTM Logistique",
+      "coverageRegion": "Maroc & EU",
+      "fleetSize": "45",
+      "fleetCode": "FLEET-204"
+    }
+  },
+  {
+    "role": "logistics",
+    "email": "sntl@jani.test",
+    "identifier": "FLEET-318",
+    "password": "Password123!",
+    "profile": {
+      "companyName": "SNTL - Société Nationale de Transport",
+      "coverageRegion": "Maroc",
+      "fleetSize": "120",
+      "fleetCode": "FLEET-318"
+    }
+  },
+  {
+    "role": "logistics",
+    "email": "ram.cargo@jani.test",
+    "identifier": "FLEET-551",
+    "password": "Password123!",
+    "profile": {
+      "companyName": "Royal Air Maroc Cargo",
+      "coverageRegion": "International Air",
+      "fleetSize": "15 Aircraft",
+      "fleetCode": "FLEET-551"
+    }
+  },
+  {
+    "role": "logistics",
+    "email": "tangermed@jani.test",
+    "identifier": "PORT-100",
+    "password": "Password123!",
+    "profile": {
+      "companyName": "Tangermed Port Authority",
+      "coverageRegion": "Mediterranean",
+      "fleetSize": "Port Facility",
+      "fleetCode": "PORT-100"
+    }
+  }
+]

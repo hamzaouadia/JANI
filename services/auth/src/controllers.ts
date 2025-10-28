@@ -1,48 +1,95 @@
 import { Request, Response } from "express";
-import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
+import mongoose from "mongoose";
 
-dotenv.config();
+import {
+  User,
+  type UserRole,
+  ROLE_REQUIREMENTS,
+  isUserRole,
+  resolveIdentifier,
+  normalizeProfile,
+  serializeProfile,
+  normalizeString
+} from "./userModel";
+import { JWT_SECRET } from "./config";
 
-const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/jani-ai-auth";
-
-mongoose.connect(MONGO_URI)
-  .then(() => console.log("✅ Connected to MongoDB"))
-  .catch(err => console.error("❌ MongoDB connection error:", err));
-
-
-const userSchema = new mongoose.Schema({
-  email: { type: String, required: true, unique: true },
-  passwordHash: { type: String, required: true },
-});
-
-const User = mongoose.model("User", userSchema);
-
-
-const JWT_SECRET = process.env.JWT_SECRET || "supersecret";
-
-function generateToken(payload: object) {
-  return jwt.sign(payload, JWT_SECRET, { expiresIn: "15m" });
+function generateToken(user: {
+  _id: mongoose.Types.ObjectId | string;
+  email: string;
+  role: UserRole;
+  identifier: string;
+}) {
+  return jwt.sign(
+    { id: user._id.toString(), email: user.email, role: user.role, identifier: user.identifier },
+    JWT_SECRET,
+    { expiresIn: "15m" }
+  );
 }
 
-
 export async function signup(req: Request, res: Response) {
-  const { email, password } = req.body;
+  const { email, password, role, identifier, profile } = req.body;
 
-  if (!email || !password) return res.status(400).json({ error: "Missing email or password" });
+  if (!isUserRole(role)) {
+    return res.status(400).json({ error: "Invalid role" });
+  }
+
+  const normalizedEmail = normalizeString(email)?.toLowerCase();
+  const normalizedPassword = normalizeString(password);
+
+  if (!normalizedEmail || !normalizedPassword) {
+    return res.status(400).json({ error: "Email and password are required" });
+  }
+
+  let identifierValue: string;
+  let normalizedProfile: Record<string, string>;
 
   try {
-    const existing = await User.findOne({ email });
-    if (existing) return res.status(400).json({ error: "Email already registered" });
+    identifierValue = resolveIdentifier(role, identifier, profile);
+    normalizedProfile = normalizeProfile(role, profile);
+    normalizedProfile[ROLE_REQUIREMENTS[role].identifier.name] = identifierValue;
+  } catch (validationError) {
+    return res.status(400).json({
+      error:
+        validationError instanceof Error ? validationError.message : "Invalid profile information"
+    });
+  }
 
-    const passwordHash = await bcrypt.hash(password, 10);
-    const user = await User.create({ email, passwordHash });
+  try {
+    const existingEmail = await User.findOne({ email: normalizedEmail });
+    if (existingEmail) {
+      return res.status(400).json({ error: "Email already registered" });
+    }
 
-    const token = generateToken({ id: user._id, email: user.email });
+    const existingIdentifier = await User.findOne({ role, identifier: identifierValue });
+    if (existingIdentifier) {
+      return res
+        .status(400)
+        .json({ error: `${ROLE_REQUIREMENTS[role].identifier.label} already registered` });
+    }
 
-    res.json({ accessToken: token });
+    const passwordHash = await bcrypt.hash(normalizedPassword, 10);
+    const user = await User.create({
+      email: normalizedEmail,
+      passwordHash,
+      role,
+      identifier: identifierValue,
+      profile: normalizedProfile
+    });
+
+    const token = generateToken(user);
+
+    res.json({
+      accessToken: token,
+      user: {
+        id: user._id.toString(),
+        email: user.email,
+        role: user.role,
+        identifier: user.identifier,
+        profile: serializeProfile(user.profile)
+      }
+    });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Internal server error" });
@@ -51,20 +98,47 @@ export async function signup(req: Request, res: Response) {
 
 
 export async function login(req: Request, res: Response) {
-  const { email, password } = req.body;
+  const { role, identifier, password } = req.body;
 
-  if (!email || !password) return res.status(400).json({ error: "Missing email or password" });
+  if (!isUserRole(role)) {
+    return res.status(400).json({ error: "Invalid role" });
+  }
+
+  const normalizedPassword = normalizeString(password);
+  if (!normalizedPassword) {
+    return res.status(400).json({ error: "Password is required" });
+  }
+
+  let identifierValue: string;
 
   try {
-    const user = await User.findOne({ email });
+    identifierValue = resolveIdentifier(role, identifier, null);
+  } catch (validationError) {
+    return res.status(400).json({
+      error:
+        validationError instanceof Error ? validationError.message : "Identifier is required"
+    });
+  }
+
+  try {
+    const user = await User.findOne({ role, identifier: identifierValue });
     if (!user) return res.status(401).json({ error: "Invalid credentials" });
 
-    const valid = await bcrypt.compare(password, user.passwordHash);
+    const valid = await bcrypt.compare(normalizedPassword, user.passwordHash);
     if (!valid) return res.status(401).json({ error: "Invalid credentials" });
 
-    const token = generateToken({ id: user._id, email: user.email });
+    const token = generateToken(user);
 
-    res.json({ accessToken: token });
+    res.json({
+      accessToken: token,
+      user: {
+        id: user._id.toString(),
+        email: user.email,
+        role: user.role as UserRole,
+        identifier: user.identifier,
+        profile: serializeProfile(user.profile)
+      }
+    });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Internal server error" });
@@ -80,7 +154,13 @@ export async function me(req: Request, res: Response) {
     const dbUser = await User.findById(user.id).select("-passwordHash");
     if (!dbUser) return res.status(404).json({ error: "User not found" });
 
-    res.json({ email: dbUser.email, id: dbUser._id });
+    res.json({
+      email: dbUser.email,
+      id: dbUser._id,
+      role: dbUser.role,
+      identifier: dbUser.identifier,
+      profile: serializeProfile(dbUser.profile)
+    });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Internal server error" });

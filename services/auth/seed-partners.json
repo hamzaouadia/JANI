@@ -1,0 +1,138 @@
+[
+  {
+    "ownerRole": "farm",
+    "ownerIdentifier": "REG-98241",
+    "name": "MAROC EXPORT",
+    "role": "exporter",
+    "status": "active",
+    "notes": "Premier exportateur d'agrumes et primeurs marocains vers l'Europe. Contact: Rachid Benani, r.benani@marocexport.ma"
+  },
+  {
+    "ownerRole": "farm",
+    "ownerIdentifier": "REG-98241",
+    "name": "DELASSUS Group",
+    "role": "exporter",
+    "status": "active",
+    "notes": "Groupe international spécialisé dans l'export de tomates et fruits rouges marocains. Contact: Hassan El Alami"
+  },
+  {
+    "ownerRole": "farm",
+    "ownerIdentifier": "REG-98241",
+    "name": "AZURA Maroc",
+    "role": "exporter",
+    "status": "active",
+    "notes": "Export de myrtilles, framboises et fraises vers l'Europe et le Moyen-Orient. Basé à Larache"
+  },
+  {
+    "ownerRole": "farm",
+    "ownerIdentifier": "REG-98241",
+    "name": "COPAG - Coopérative Agricole",
+    "role": "exporter",
+    "status": "active",
+    "notes": "Coopérative leader pour légumes primeurs. Contact: Ahmed Tazi, Taroudant"
+  },
+  {
+    "ownerRole": "farm",
+    "ownerIdentifier": "REG-98241",
+    "name": "Carrefour Maroc",
+    "role": "buyer",
+    "status": "active",
+    "notes": "Chaîne de distribution leader au Maroc pour produits frais bio. Contact: Sophie Laville, Casablanca"
+  },
+  {
+    "ownerRole": "farm",
+    "ownerIdentifier": "REG-98241",
+    "name": "Al Jazira Fresh - UAE",
+    "role": "buyer",
+    "status": "active",
+    "notes": "Importateur de dattes premium marocaines pour le marché du Golfe. Dubai, UAE"
+  },
+  {
+    "ownerRole": "farm",
+    "ownerIdentifier": "REG-98241",
+    "name": "BioMarkt Germany",
+    "role": "buyer",
+    "status": "active",
+    "notes": "Distributeur bio allemand pour huile d'argan et produits certifiés. Berlin"
+  },
+  {
+    "ownerRole": "farm",
+    "ownerIdentifier": "REG-98241",
+    "name": "Auchan France",
+    "role": "buyer",
+    "status": "active",
+    "notes": "Acheteur de tomates, fraises et agrumes marocains pour le marché français. Villeneuve-d'Ascq"
+  },
+  {
+    "ownerRole": "farm",
+    "ownerIdentifier": "REG-98241",
+    "name": "Tesco UK - Fresh Produce",
+    "role": "buyer",
+    "status": "active",
+    "notes": "Importateur britannique de clémentines et avocats marocains. Londres"
+  },
+  {
+    "ownerRole": "farm",
+    "ownerIdentifier": "REG-98241",
+    "name": "CTM Logistique",
+    "role": "logistics",
+    "status": "active",
+    "notes": "Leader du transport frigorifique au Maroc pour produits frais. Casablanca Port"
+  },
+  {
+    "ownerRole": "farm",
+    "ownerIdentifier": "REG-98241",
+    "name": "SNTL - Société Nationale de Transport",
+    "role": "logistics",
+    "status": "active",
+    "notes": "Transport routier national pour distribution locale et export terrestre. Rabat"
+  },
+  {
+    "ownerRole": "farm",
+    "ownerIdentifier": "REG-98241",
+    "name": "ENA Moroccan Certification",
+    "role": "advisor",
+    "status": "active",
+    "notes": "Organisme de certification bio Ecocert et GlobalGAP au Maroc. Contact: Nadia Alaoui"
+  },
+  {
+    "ownerRole": "farm",
+    "ownerIdentifier": "REG-98241",
+    "name": "ONSSA - Office National de Sécurité Sanitaire",
+    "role": "advisor",
+    "status": "active",
+    "notes": "Autorité de régulation sanitaire et phytosanitaire au Maroc. Dr. Kamal Ouazzani, Rabat"
+  },
+  {
+    "ownerRole": "farm",
+    "ownerIdentifier": "REG-98241",
+    "name": "INRA Maroc",
+    "role": "advisor",
+    "status": "active",
+    "notes": "Institut National de Recherche Agronomique - conseil technique aux producteurs. Prof. Lahcen Ouadghiri"
+  },
+  {
+    "ownerRole": "farm",
+    "ownerIdentifier": "REG-98241",
+    "name": "Crédit Agricole du Maroc",
+    "role": "advisor",
+    "status": "active",
+    "notes": "Financement agricole et accompagnement des exploitations. Contact: Samira Benkirane"
+  },
+  {
+    "ownerRole": "farm",
+    "ownerIdentifier": "REG-98241",
+    "name": "Royal Air Maroc Cargo",
+    "role": "logistics",
+    "status": "active",
+    "notes": "Fret aérien pour produits frais et périssables vers l'international. Aéroport Mohammed V"
+  },
+  {
+    "ownerRole": "farm",
+    "ownerIdentifier": "REG-98241",
+    "name": "Tangermed Port Authority",
+    "role": "logistics",
+    "status": "active",
+    "notes": "Terminal de conteneurs frigorifiques port Tanger Med. Mehdi Tazi, Tanger Med"
+  }
+]

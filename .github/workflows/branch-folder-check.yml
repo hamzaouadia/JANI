@@ -2,7 +2,7 @@ name: Branch Folder Check
 
 on:
   push:
-    branches: [auth, web, user, ai]
+    branches: [auth, web, user, ai, operations, traceability, mobile]
   pull_request:
     branches: [main]
 
@@ -21,11 +21,14 @@ jobs:
           BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
           case "$BRANCH" in
-            auth) FOLDER="services/auth" ;;
-            web)  FOLDER="apps/web" ;;
-            user) FOLDER="services/user" ;;
-            ai)   FOLDER="services/ai" ;;
-            *)    exit 0 ;;
+            auth)         FOLDER="services/auth" ;;
+            web)          FOLDER="apps/web" ;;
+            mobile)       FOLDER="apps/mobile" ;;
+            user)         FOLDER="services/user" ;;
+            ai)           FOLDER="services/ai" ;;
+            operations)   FOLDER="services/operations" ;;
+            traceability) FOLDER="services/traceability" ;;
+            *)            exit 0 ;;
           esac
 
           # Fetch main to compare against

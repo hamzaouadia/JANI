@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+ 
 type LogLevel = 'info' | 'warn' | 'error' | 'debug';
 
 const log = (level: LogLevel, message: string, payload?: unknown) => {

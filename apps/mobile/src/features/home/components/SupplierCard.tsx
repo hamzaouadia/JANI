@@ -1,19 +1,22 @@
 import { memo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Animated, { FadeInUp, Layout } from 'react-native-reanimated';
 
 import { useAppTheme } from '@/theme/ThemeProvider';
-
-import type { Supplier } from '../api/getFeaturedSuppliers';
+import type { Supplier } from '@/features/home/api/getFeaturedSuppliers';
 
 type SupplierCardProps = {
   supplier: Supplier;
+  index?: number;
 };
 
-export const SupplierCard = memo(({ supplier }: SupplierCardProps) => {
+export const SupplierCard = memo(({ supplier, index = 0 }: SupplierCardProps) => {
   const theme = useAppTheme();
 
   return (
-    <View
+    <Animated.View
+      entering={FadeInUp.delay(Math.min(index * 40, 400)).springify().damping(14)}
+      layout={Layout.springify()}
       style={[
         styles.card,
         {
@@ -23,16 +26,16 @@ export const SupplierCard = memo(({ supplier }: SupplierCardProps) => {
       ]}
     >
       <View style={styles.headerRow}>
-        <Text style={[theme.typography.subheading, styles.title]}>{supplier.name}</Text>
+        <Text style={[theme.typography.subheading, styles.title, { color: theme.colors.text }]}>{supplier.name}</Text>
         <View
           style={[
             styles.badge,
             {
-              backgroundColor: theme.colors.primaryMuted
+              backgroundColor: `${theme.colors.secondary}20`
             }
           ]}
         >
-          <Text style={[styles.badgeLabel, { color: theme.colors.primary }]}>★ {supplier.rating}</Text>
+          <Text style={[styles.badgeLabel, { color: theme.colors.secondary }]}>★ {supplier.rating}</Text>
         </View>
       </View>
       <Text style={[theme.typography.body, styles.meta, { color: theme.colors.textMuted }]}>
@@ -41,7 +44,7 @@ export const SupplierCard = memo(({ supplier }: SupplierCardProps) => {
       <Text style={[theme.typography.caption, { color: theme.colors.textMuted }]}>
         Avg. lead time: {supplier.leadTimeDays} days
       </Text>
-    </View>
+    </Animated.View>
   );
 });
 

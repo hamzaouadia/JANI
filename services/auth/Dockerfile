@@ -27,5 +27,10 @@ COPY --from=build /app/dist ./dist
 COPY --from=build /app/node_modules ./node_modules
 COPY package.json ./
 
+# copy seed data files for database initialization
+COPY --from=build /app/seed-*.json ./
+COPY --from=build /app/seed-all-data.js ./
+COPY --from=build /app/seed-traceability-events.js ./
+
 EXPOSE 4000
 CMD ["node", "dist/index.js"]

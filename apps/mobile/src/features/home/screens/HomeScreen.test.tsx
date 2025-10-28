@@ -1,3 +1,4 @@
+/// <reference types="jest" />
 import { renderWithProviders } from '@/utils/test-utils';
 import { HomeScreen } from './HomeScreen';
 

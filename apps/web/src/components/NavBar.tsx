@@ -24,7 +24,7 @@ const NavBar = () => {
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="px-1 rounded-full border-2 border-[#77af9c] flex flex-row items-center justify-center h-full"
+        className="px-1 rounded-full border-2 border-[#8b4513] flex flex-row items-center justify-center h-full"
                     >
                         <div className="flex items-center p-4 px-6 text-black bg-white/50 backdrop-blur-md border border-white/20 shadow-lg rounded-full font-bold">
                             <h1 className="text-xl whitespace-nowrap">JANI</h1>
@@ -35,7 +35,8 @@ const NavBar = () => {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="rounded-full border-2 border-[#77af9c] flex-row items-center p-1 justify-center h-full hidden lg:flex">
+                        className="rounded-full border-2 border-[#8b4513] flex-row items-center p-1 justify-center h-full hidden lg:flex"
+                    >
                         <div className="flex flex-row justify-center items-center gap-2 text-lg h-full p-1 bg-white/50 backdrop-blur-md border border-white/20 shadow-lg rounded-full">
                             {menuItems.map((item) => (
                                 <button
@@ -43,8 +44,8 @@ const NavBar = () => {
                                     key={item}
                                     className={`flex items-center justify-center px-8 py-3 rounded-full cursor-pointer transition duration-300 ${
                                     active === item
-                                        ? "bg-[#77af9c] text-white shadow-md"
-                                        : "hover:bg-[#77af9c]/20"
+                                        ? "bg-[#8b4513] text-white shadow-md"
+                                        : "hover:bg-[#8b4513]/20"
                                     }`}
                                 >
                                     <a href="#" title={item}>
@@ -57,7 +58,7 @@ const NavBar = () => {
                     
                     <motion.button
                         className={`flex items-center justify-center z-100 rounded-full border-2 h-[60px] w-[60px] lg:hidden
-                            ${isOpen ? "border-white" : "border-[#77af9c]"}`}
+                            ${isOpen ? "border-white" : "border-[#8b4513]"}`}
                         onClick={() => {setIsOpen(!isOpen)}}
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}

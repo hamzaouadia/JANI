@@ -1,23 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { verifyToken } from "@jani/auth/verifyToken";
-import type { AuthUser } from "../libs/types";
-import type { Request, Response } from "express";
-
-interface AuthenticatedRequest extends NextRequest {
-  user?: AuthUser | null;
-}
-
-// Define minimal fake types to match Express expectations
-interface FakeRequest {
-  headers: Record<string, string>;
-  user: AuthUser | null;
-  get: (key: string) => string | undefined;
-}
-
-interface FakeResponse {
-  status: (code: number) => { json: (data: unknown) => void };
-  json: (data: unknown) => void;
-}
 
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
@@ -27,35 +8,55 @@ export async function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  try {
-    // Wrap verifyToken in a Promise
-    await new Promise<void>((resolve, reject) => {
-      const fakeReq: FakeRequest = {
-        headers: Object.fromEntries(req.headers),
-        user: null,
-        get: (key: string) => req.headers.get(key) || undefined,
-      };
-      const fakeRes: FakeResponse = {
-        status: (code: number) => ({
-          json: () => {
-            if (code >= 400) reject(new Error(`Auth failed with status ${code}`));
-            else resolve();
-          },
-        }),
-        json: () => resolve(),
-      };
+  const token = req.cookies.get("token")?.value || req.cookies.get("auth-token")?.value;
+  
+  if (!token) {
+    console.log("No token found, redirecting to /login");
+    return NextResponse.redirect(new URL("/login", req.url));
+  }
 
-      // Call the auth middleware with typed fakes
-      verifyToken(fakeReq as unknown as Request, fakeRes as unknown as Response, () => {
-        (req as AuthenticatedRequest).user = fakeReq.user;
-        resolve();
-      });
+  // Handle direct admin token
+  if (token.startsWith("admin_token_")) {
+    // Check if accessing admin routes
+    if (pathname.startsWith("/admin")) {
+      console.log("Admin token verified for admin panel");
+      return NextResponse.next();
+    } else {
+      // Redirect admin to admin panel
+      return NextResponse.redirect(new URL("/admin", req.url));
+    }
+  }
+
+  try {
+    // Call internal API route instead of direct service call (Edge Runtime compatible)
+    const verifyUrl = new URL("/api/auth/verify", req.url);
+    const response = await fetch(verifyUrl, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
     });
 
-    // If auth succeeds, proceed to the requested route
+    if (!response.ok) {
+      console.log("Token verification failed");
+      return NextResponse.redirect(new URL("/login", req.url));
+    }
+
+    const userData = await response.json();
+    
+    // Check if accessing admin routes
+    if (pathname.startsWith("/admin")) {
+      if (userData.user?.role !== "admin") {
+        console.log("Unauthorized access to admin panel");
+        return NextResponse.redirect(new URL("/dashboard", req.url));
+      }
+    }
+
+    console.log("Token verified successfully");
     return NextResponse.next();
-  } catch {
-    // If auth fails, redirect to login
+  } catch (error) {
+    console.error("Auth verification error:", error);
     return NextResponse.redirect(new URL("/login", req.url));
   }
 }

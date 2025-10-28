@@ -3,7 +3,24 @@
   "private": true,
   "version": "0.0.1",
   "workspaces": [
-    "apps/*",
+    "apps/mobile",
+    "apps/web",
     "services/*"
-  ]
+  ],
+  "scripts": {
+    "lint:web": "npm run lint --workspace apps/web",
+    "typecheck:web": "npm run typecheck --workspace apps/web",
+    "build:web": "npm run build --workspace apps/web",
+    "lint:mobile": "npm run lint --workspace apps/mobile",
+    "typecheck:mobile": "npm run typecheck --workspace apps/mobile",
+    "test:mobile": "npm run test --workspace apps/mobile -- --watchAll=false",
+    "ci:web": "npm run lint:web && npm run typecheck:web && npm run build:web",
+    "ci:mobile": "npm run lint:mobile && npm run typecheck:mobile && npm run test:mobile",
+    "ci": "npm run ci:web && npm run ci:mobile"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.46.2",
+    "@typescript-eslint/parser": "^8.46.2",
+    "eslint": "^8.57.1"
+  }
 }

@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-// import { CircleDot } from "lucide-react";
 import { fluidFont } from "../utils/fontSize";
 
 
@@ -22,7 +21,7 @@ const items = [
 
 export default function InfiniteCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -37,7 +36,7 @@ export default function InfiniteCarousel() {
   }, []);
 
   const startInterval = () => {
-    clearInterval(intervalRef.current as NodeJS.Timeout);
+    if (intervalRef.current) clearInterval(intervalRef.current);
     intervalRef.current = setInterval(() => {
         setCurrentIndex((prev) => (prev + 1) % items.length);
     }, 3000);
@@ -45,7 +44,9 @@ export default function InfiniteCarousel() {
 
   useEffect(() => {
     startInterval();
-    return () => clearInterval(intervalRef.current as NodeJS.Timeout);
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
   }, []);
 
   return (
@@ -63,7 +64,7 @@ export default function InfiniteCarousel() {
           >
             <div className="cursor-pointer w-full z-30">
               <div className="flex flex-row justify-center items-center">
-                {items.map((item, index) => {
+                {items.map((_item, index) => {
                   const width = !isMobile ? Math.max(4, 400 / items.length) : 250 / items.length; // Minimum width for mobile
                   return (
                     <div

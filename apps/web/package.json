@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start -p 3000",
-    "lint": "next lint"
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@kinde-oss/kinde-auth-nextjs": "^2.9.2",
@@ -21,8 +22,8 @@
     "lucide-react": "^0.540.0",
     "motion": "^12.23.12",
     "next": "15.4.7",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "three": "^0.180.0",
     "zod": "^3.25.76"
   },

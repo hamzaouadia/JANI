@@ -62,8 +62,8 @@ const HeroSection = () => {
             animate="show"
             exit="hidden"
             className="flex space-x-4 mt-4 px-4 text-lg font-semibold">
-            <Button text="Get Started" border="#77af9c" backgroundHover="#77af9c" />
-            <Button text="Contact Sales" border="#77af9c" backgroundHover="#77af9c" />
+            <Button text="Get Started" border="#8b4513" backgroundHover="#8b4513" />
+            <Button text="Contact Sales" border="#cd853f" backgroundHover="#cd853f" />
           </motion.div>
         </div>
       </div>

@@ -1,0 +1,580 @@
+[
+  {
+    "farmName": "Domaine Atlas Vert",
+    "userEmail": "farmer1@example.com",
+    "eventType": "planting",
+    "description": "Plantation de 500 oliviers Picholine sur Parcelle Nord",
+    "timestamp": "2024-11-15T08:00:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-5.5471, 33.8935]
+    },
+    "metadata": {
+      "variety": "Picholine Marocaine",
+      "density": "250 arbres/ha",
+      "irrigation": "Goutte-à-goutte",
+      "certification": "En conversion bio"
+    }
+  },
+  {
+    "farmName": "Domaine Atlas Vert",
+    "userEmail": "farmer1@example.com",
+    "eventType": "irrigation",
+    "description": "Irrigation localisée oliveraie - 40m³/ha",
+    "timestamp": "2025-06-10T06:30:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-5.5471, 33.8935]
+    },
+    "metadata": {
+      "waterSource": "Puits agricole",
+      "volume": "40 m³/ha",
+      "duration": "4 heures",
+      "frequency": "Tous les 15 jours"
+    }
+  },
+  {
+    "farmName": "Domaine Atlas Vert",
+    "userEmail": "farmer1@example.com",
+    "eventType": "treatment",
+    "description": "Traitement préventif mouche de l'olive (Bactrocera oleae) - bio",
+    "timestamp": "2025-08-05T07:00:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-5.5471, 33.8935]
+    },
+    "metadata": {
+      "product": "Piège à phéromones",
+      "method": "Lutte biologique",
+      "certification": "Certifié Ecocert",
+      "applicator": "Technicien INRA"
+    }
+  },
+  {
+    "farmName": "Domaine Atlas Vert",
+    "userEmail": "farmer1@example.com",
+    "eventType": "harvesting",
+    "description": "Récolte mécanique olives Menara - Parcelle Sud",
+    "timestamp": "2025-10-20T08:00:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-5.5480, 33.8920]
+    },
+    "metadata": {
+      "method": "Vibreur mécanique",
+      "quantity": "12 tonnes",
+      "quality": "Extra - Acidité <0.5%",
+      "destination": "Huilerie Atlas Meknès"
+    }
+  },
+  {
+    "farmName": "Domaine Atlas Vert",
+    "userEmail": "farmer1@example.com",
+    "eventType": "processing",
+    "description": "Trituration et extraction huile d'olive extra vierge à froid",
+    "timestamp": "2025-10-21T10:00:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-5.5500, 33.8950]
+    },
+    "metadata": {
+      "method": "Extraction à froid <27°C",
+      "rendement": "18%",
+      "quantityProduced": "2160 litres",
+      "certification": "ONSSA + Ecocert"
+    }
+  },
+  {
+    "farmName": "Ferme Saada Bio",
+    "userEmail": "farmer2@example.com",
+    "eventType": "planting",
+    "description": "Plantation plants de tomates rondes bio sous serre - 5000 plants",
+    "timestamp": "2025-08-01T07:00:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-9.5981, 30.4278]
+    },
+    "metadata": {
+      "variety": "Daniela F1 - Résistante virus",
+      "method": "Plantation sur substrat coco",
+      "density": "2 plants/m²",
+      "certification": "Ecocert Bio"
+    }
+  },
+  {
+    "farmName": "Ferme Saada Bio",
+    "userEmail": "farmer2@example.com",
+    "eventType": "irrigation",
+    "description": "Fertigation bio tomates - Solution nutritive organique",
+    "timestamp": "2025-09-15T06:00:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-9.5981, 30.4278]
+    },
+    "metadata": {
+      "system": "Goutte-à-goutte automatisé",
+      "EC": "2.5 mS/cm",
+      "pH": "6.2",
+      "fertilizer": "Fumier composté certifié bio"
+    }
+  },
+  {
+    "farmName": "Ferme Saada Bio",
+    "userEmail": "farmer2@example.com",
+    "eventType": "treatment",
+    "description": "Lutte biologique aleurodes - Lâcher Encarsia formosa",
+    "timestamp": "2025-09-20T08:00:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-9.5981, 30.4278]
+    },
+    "metadata": {
+      "pest": "Bemisia tabaci (Mouche blanche)",
+      "bioControl": "Encarsia formosa (parasitoïde)",
+      "density": "10 individus/m²",
+      "supplier": "Koppert Maroc"
+    }
+  },
+  {
+    "farmName": "Ferme Saada Bio",
+    "userEmail": "farmer2@example.com",
+    "eventType": "harvesting",
+    "description": "Récolte tomates rondes bio - Grade A export",
+    "timestamp": "2025-10-22T05:30:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-9.5981, 30.4278]
+    },
+    "metadata": {
+      "quantity": "12 tonnes",
+      "caliber": "57-67mm",
+      "brix": "5.2° (haute qualité)",
+      "packaging": "Cartons 6kg export"
+    }
+  },
+  {
+    "farmName": "Ferme Saada Bio",
+    "userEmail": "farmer2@example.com",
+    "eventType": "packaging",
+    "description": "Conditionnement et étiquetage bio tomates export Europe",
+    "timestamp": "2025-10-22T14:00:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-9.5981, 30.4278]
+    },
+    "metadata": {
+      "packaging": "2000 cartons 6kg",
+      "labels": "Ecocert + GLOBALG.A.P.",
+      "traceCode": "MAR-BIO-TOM-2025-042",
+      "coolChain": "4-6°C maintenu"
+    }
+  },
+  {
+    "farmName": "Exploitation Agrumes du Gharb",
+    "userEmail": "farmer1@example.com",
+    "eventType": "treatment",
+    "description": "Traitement foliaire orangers Valencia - Nutrition zinc et bore",
+    "timestamp": "2025-07-10T07:00:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-6.1450, 34.2600]
+    },
+    "metadata": {
+      "product": "Chélate de zinc + Bore foliaire",
+      "dosage": "2kg/ha",
+      "method": "Pulvérisation atomiseur",
+      "purpose": "Prévention chlorose"
+    }
+  },
+  {
+    "farmName": "Exploitation Agrumes du Gharb",
+    "userEmail": "farmer1@example.com",
+    "eventType": "harvesting",
+    "description": "Récolte oranges Valencia Late - Calibre export 1",
+    "timestamp": "2025-10-23T06:00:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-6.1450, 34.2600]
+    },
+    "metadata": {
+      "quantity": "25 tonnes",
+      "caliber": "Calibre 1 (67-77mm)",
+      "brix": "11.5° (optimal export)",
+      "method": "Récolte manuelle sécateur"
+    }
+  },
+  {
+    "farmName": "Exploitation Agrumes du Gharb",
+    "userEmail": "farmer1@example.com",
+    "eventType": "processing",
+    "description": "Passage station conditionnement - Lavage, cirage, calibrage",
+    "timestamp": "2025-10-23T10:00:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-6.1500, 34.2650]
+    },
+    "metadata": {
+      "station": "Station Agrumes Kénitra",
+      "treatment": "Lavage eau chlorée + Cirage végétal",
+      "calibration": "Électronique 10 calibres",
+      "certification": "ONSSA + GLOBALG.A.P."
+    }
+  },
+  {
+    "farmName": "Coopérative Arganeraie Essaouira",
+    "userEmail": "farmer3@example.com",
+    "eventType": "harvesting",
+    "description": "Collecte noix d'argan mûres - Récolte traditionnelle",
+    "timestamp": "2025-08-15T06:00:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-9.7728, 31.5085]
+    },
+    "metadata": {
+      "quantity": "3 tonnes noix",
+      "method": "Ramassage au sol - Traditionnel",
+      "origin": "Arganeraie UNESCO",
+      "certification": "IGP Huile d'Argan + Bio"
+    }
+  },
+  {
+    "farmName": "Coopérative Arganeraie Essaouira",
+    "userEmail": "farmer3@example.com",
+    "eventType": "processing",
+    "description": "Extraction huile d'argan première pression à froid - Coopérative féminine",
+    "timestamp": "2025-09-05T08:00:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-9.7700, 31.5100]
+    },
+    "metadata": {
+      "method": "Concassage manuel + Presse à froid",
+      "rendement": "2 litres/100kg noix",
+      "quality": "Cosmétique Extra - Acide oléique >43%",
+      "workers": "Coopérative 45 femmes"
+    }
+  },
+  {
+    "farmName": "Palmeraie Tafilalet Bio",
+    "userEmail": "farmer2@example.com",
+    "eventType": "pollination",
+    "description": "Pollinisation assistée palmiers dattiers Medjool",
+    "timestamp": "2025-03-20T08:00:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-4.4333, 31.4333]
+    },
+    "metadata": {
+      "method": "Pollinisation manuelle inflorescences",
+      "palmsCount": "850 palmiers femelles",
+      "pollenSource": "Palmiers mâles sélectionnés",
+      "technique": "Traditionnelle berbère"
+    }
+  },
+  {
+    "farmName": "Palmeraie Tafilalet Bio",
+    "userEmail": "farmer2@example.com",
+    "eventType": "treatment",
+    "description": "Protection régimes dattes contre Ectomyelois ceratoniae",
+    "timestamp": "2025-05-15T07:00:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-4.4333, 31.4333]
+    },
+    "metadata": {
+      "method": "Ensachage régimes - Filets anti-insectes",
+      "coverage": "100% des régimes",
+      "material": "Filets polypropylène réutilisables",
+      "certification": "Bio - Sans pesticide"
+    }
+  },
+  {
+    "farmName": "Palmeraie Tafilalet Bio",
+    "userEmail": "farmer2@example.com",
+    "eventType": "harvesting",
+    "description": "Récolte dattes Medjool Premium - Grade Jumbo",
+    "timestamp": "2025-10-10T06:00:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-4.4333, 31.4333]
+    },
+    "metadata": {
+      "quantity": "5 tonnes",
+      "grade": "Jumbo (>5cm) - Premium",
+      "humidity": "18-22% optimal",
+      "method": "Récolte manuelle sélective"
+    }
+  },
+  {
+    "farmName": "Palmeraie Tafilalet Bio",
+    "userEmail": "farmer2@example.com",
+    "eventType": "processing",
+    "description": "Tri, lavage vapeur et conditionnement dattes Medjool export",
+    "timestamp": "2025-10-12T09:00:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-4.4350, 31.4340]
+    },
+    "metadata": {
+      "station": "Station Dattes Errachidia",
+      "process": "Lavage vapeur + Tri optique",
+      "packaging": "Barquettes 500g luxury",
+      "destination": "Export Dubai - Al Jazira Fresh"
+    }
+  },
+  {
+    "farmName": "Plantation Fraisiers Larache",
+    "userEmail": "farmer3@example.com",
+    "eventType": "planting",
+    "description": "Plantation plants fraisiers Fortuna - 80,000 plants/ha",
+    "timestamp": "2025-02-01T08:00:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-6.1563, 35.1819]
+    },
+    "metadata": {
+      "variety": "Fortuna - Précoce",
+      "density": "8 plants/m² sur buttes",
+      "substrate": "Tourbe + Perlite sous paillage plastique",
+      "irrigation": "Goutte-à-goutte intégré"
+    }
+  },
+  {
+    "farmName": "Plantation Fraisiers Larache",
+    "userEmail": "farmer3@example.com",
+    "eventType": "harvesting",
+    "description": "Récolte fraises Fortuna calibre export - Récolte manuelle quotidienne",
+    "timestamp": "2025-10-23T05:00:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-6.1563, 35.1819]
+    },
+    "metadata": {
+      "quantity": "6 tonnes",
+      "caliber": ">25mm - Grade 1",
+      "brix": "9.5° (excellent goût)",
+      "packaging": "Barquettes 250g export UK"
+    }
+  },
+  {
+    "farmName": "Plantation Fraisiers Larache",
+    "userEmail": "farmer3@example.com",
+    "eventType": "transportation",
+    "description": "Expédition fraises fraîches vers UK - Chaîne du froid",
+    "timestamp": "2025-10-23T18:00:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-6.1563, 35.1819]
+    },
+    "metadata": {
+      "carrier": "Royal Air Maroc Cargo",
+      "flight": "AT7543 - TNG to LHR",
+      "temperature": "2-4°C contrôlé",
+      "arrival": "24/10/2025 08:00 London Heathrow"
+    }
+  },
+  {
+    "farmName": "Coopérative Safran Taliouine",
+    "userEmail": "farmer1@example.com",
+    "eventType": "planting",
+    "description": "Plantation bulbes Crocus sativus - Safran AOP Taliouine",
+    "timestamp": "2024-10-15T07:00:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-7.9167, 30.5278]
+    },
+    "metadata": {
+      "quantity": "50,000 bulbes/ha",
+      "origin": "Bulbes sélectionnés localement",
+      "depth": "15cm profondeur",
+      "certification": "AOP Safran Taliouine + Bio"
+    }
+  },
+  {
+    "farmName": "Coopérative Safran Taliouine",
+    "userEmail": "farmer1@example.com",
+    "eventType": "harvesting",
+    "description": "Récolte fleurs safran - Cueillette manuelle à l'aube",
+    "timestamp": "2025-10-28T05:00:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-7.9167, 30.5278]
+    },
+    "metadata": {
+      "quantity": "120,000 fleurs",
+      "method": "Cueillette manuelle traditionnelle",
+      "timing": "Aube avant ouverture complète",
+      "workers": "Coopérative 80 femmes"
+    }
+  },
+  {
+    "farmName": "Coopérative Safran Taliouine",
+    "userEmail": "farmer1@example.com",
+    "eventType": "processing",
+    "description": "Émondage stigmates et séchage safran - Qualité ISO 3632 Cat I",
+    "timestamp": "2025-10-28T09:00:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-7.9167, 30.5278]
+    },
+    "metadata": {
+      "process": "Émondage manuel + Séchage 60°C",
+      "yield": "2kg safran sec/120,000 fleurs",
+      "quality": "ISO 3632 Catégorie I",
+      "crocin": ">250 (coloration excellente)"
+    }
+  },
+  {
+    "farmName": "Exploitation Avocatiers Gharb",
+    "userEmail": "farmer2@example.com",
+    "eventType": "treatment",
+    "description": "Irrigation de précision avocatiers Hass - Gestion sonde tensiométrique",
+    "timestamp": "2025-09-10T06:00:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-6.0500, 34.8000]
+    },
+    "metadata": {
+      "system": "Irrigation pilotée par sondes",
+      "volume": "60m³/ha/semaine",
+      "technology": "Tensiomètres + météo station",
+      "efficiency": "95% efficience hydrique"
+    }
+  },
+  {
+    "farmName": "Exploitation Avocatiers Gharb",
+    "userEmail": "farmer2@example.com",
+    "eventType": "harvesting",
+    "description": "Récolte avocats Hass - Maturité physiologique 23% matière sèche",
+    "timestamp": "2025-10-20T07:00:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-6.0500, 34.8000]
+    },
+    "metadata": {
+      "quantity": "15 tonnes",
+      "dryMatter": "23.5% (optimal export)",
+      "caliber": "Calibre 16-18 (200-235g)",
+      "method": "Cueillette manuelle avec perche"
+    }
+  },
+  {
+    "farmName": "Clémentiniers Berkane",
+    "userEmail": "farmer3@example.com",
+    "eventType": "treatment",
+    "description": "Traitement fongicide préventif clémentiniers - Alternaria",
+    "timestamp": "2025-09-01T07:00:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-2.3167, 34.8639]
+    },
+    "metadata": {
+      "product": "Cuivre hydroxyde - Bio autorisé",
+      "dosage": "250g/hl",
+      "target": "Alternaria + Stemphylium",
+      "DAR": "21 jours avant récolte"
+    }
+  },
+  {
+    "farmName": "Clémentiniers Berkane",
+    "userEmail": "farmer3@example.com",
+    "eventType": "harvesting",
+    "description": "Récolte clémentines Nour - Calibre export premium",
+    "timestamp": "2025-10-23T06:30:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-2.3167, 34.8639]
+    },
+    "metadata": {
+      "quantity": "30 tonnes",
+      "caliber": "Calibre 1-2 (58-78mm)",
+      "brix": "12° (très sucrées)",
+      "colorBreak": ">75% coloration orange"
+    }
+  },
+  {
+    "farmName": "Clémentiniers Berkane",
+    "userEmail": "farmer3@example.com",
+    "eventType": "packaging",
+    "description": "Conditionnement station agrumes - Export conteneur réfrigéré Rotterdam",
+    "timestamp": "2025-10-24T10:00:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-2.3200, 34.8650]
+    },
+    "metadata": {
+      "packaging": "Cartons 10kg télescope",
+      "pallets": "80 palettes - 1200kg/palette",
+      "container": "Reefer 40' - 5°C",
+      "destination": "Port Rotterdam - MAROC EXPORT"
+    }
+  },
+  {
+    "farmName": "Roseraie du Dadès",
+    "userEmail": "farmer1@example.com",
+    "eventType": "harvesting",
+    "description": "Récolte roses de Damas - Cueillette matinale pour distillation",
+    "timestamp": "2025-05-10T05:00:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-6.0833, 31.4500]
+    },
+    "metadata": {
+      "quantity": "2 tonnes pétales frais",
+      "timing": "05h00-09h00 avant chaleur",
+      "method": "Cueillette manuelle sélective",
+      "purpose": "Distillation eau de rose"
+    }
+  },
+  {
+    "farmName": "Roseraie du Dadès",
+    "userEmail": "farmer1@example.com",
+    "eventType": "processing",
+    "description": "Distillation traditionnelle eau de rose - Alambic cuivre",
+    "timestamp": "2025-05-10T10:00:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-6.0833, 31.4500]
+    },
+    "metadata": {
+      "method": "Hydrodistillation alambic traditionnel",
+      "rendement": "100 litres/2 tonnes pétales",
+      "quality": "Eau de rose pure - pH 5.5-6.5",
+      "byproduct": "Huile essentielle 50ml"
+    }
+  },
+  {
+    "farmName": "Amandiers du Souss",
+    "userEmail": "farmer2@example.com",
+    "eventType": "harvesting",
+    "description": "Gaulage amandes Ferragnes - Récolte mécanisée",
+    "timestamp": "2025-09-15T07:00:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-8.5333, 30.4700]
+    },
+    "metadata": {
+      "quantity": "5 tonnes coques",
+      "method": "Vibreur + filet réception",
+      "variety": "Ferragnes - Amande douce",
+      "dryness": "Coque sèche - 8% humidité"
+    }
+  },
+  {
+    "farmName": "Amandiers du Souss",
+    "userEmail": "farmer2@example.com",
+    "eventType": "processing",
+    "description": "Décorticage et tri amandes - Calibre export",
+    "timestamp": "2025-09-20T08:00:00Z",
+    "location": {
+      "type": "Point",
+      "coordinates": [-8.5350, 30.4710]
+    },
+    "metadata": {
+      "process": "Décorticage mécanique + Tri optique",
+      "yield": "3 tonnes amandes décortiquées",
+      "quality": "Extra - 23/25mm calibre",
+      "packaging": "Sacs 25kg sous vide"
+    }
+  }
+]

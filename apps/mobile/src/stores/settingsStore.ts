@@ -7,7 +7,7 @@ type SettingsState = {
   themePreference: ThemePreference;
   hydrated: boolean;
   hydrate: () => Promise<void>;
-  setThemePreference: (preference: ThemePreference) => void;
+  setThemePreference: (_preference: ThemePreference) => void;
 };
 
 const STORAGE_KEY = 'jani-settings-preference';

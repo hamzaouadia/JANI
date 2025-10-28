@@ -11,7 +11,7 @@ const textItem = {
 
 const BusinessSection = () => {
   return (
-    <section className="snap-start relative flex flex-col items-center justify-center p-4 h-screen lg:w-screen w-full bg-[#82ceb5] text-white z-10">
+    <section className="snap-start relative flex flex-col items-center justify-center p-4 h-screen lg:w-screen w-full bg-[#cd853f] text-white z-10">
       <div className="lg:w-screen h-full text-center flex flex-row lg:justify-start justify-center lg:p-2">
         <div className="lg:w-1/2 h-full flex flex-col justify-center items-center lg:p-20 p-4">
           {/* Title */}
@@ -60,8 +60,8 @@ const BusinessSection = () => {
             animate="show"
             exit="hidden"
             className="flex space-x-4 mt-4 px-4 text-lg font-semibold text-white">
-            <Button text="Register" textColor="white" textHover="#77af9c" border="white" background="#82ceb5" backgroundHover="white" />
-              <Button text="Login" textColor="white" textHover="#77af9c" border="white" background="#82ceb5" backgroundHover="white" />
+            <Button text="Register" textColor="white" textHover="#8b4513" border="white" background="#cd853f" backgroundHover="white" />
+              <Button text="Login" textColor="white" textHover="#8b4513" border="white" background="#cd853f" backgroundHover="white" />
           </motion.div>
         </div>
       </div>

@@ -39,9 +39,9 @@ export default function Chatbot() {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 p-4 rounded-full bg-white border border-[#77af9c] shadow-lg transition-all z-200"
+          className="fixed bottom-6 right-6 p-4 rounded-full bg-white border border-[#8b4513] shadow-lg transition-all z-200"
         >
-          <MessageCircle className="text-[#77af9c] w-6 h-6" />
+          <MessageCircle className="text-[#8b4513] w-6 h-6" />
         </button>
       )}
 
@@ -53,10 +53,10 @@ export default function Chatbot() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 50 }}
             transition={{ duration: 0.3 }}
-            className="fixed bottom-10 right-6 w-[350px] max-w-[90vw] h-[500px] flex flex-col rounded-2xl shadow-2xl border border-[#77af9c] bg-white overflow-hidden z-200"
+            className="fixed bottom-10 right-6 w-[350px] max-w-[90vw] h-[500px] flex flex-col rounded-2xl shadow-2xl border border-[#8b4513] bg-white overflow-hidden z-200"
           >
             {/* Header */}
-            <div className="flex justify-between items-center bg-[#77af9c] text-white p-4">
+            <div className="flex justify-between items-center bg-[#8b4513] text-white p-4">
               <h2 className="text-lg font-semibold">JANI-AI</h2>
               <button onClick={() => setIsOpen(false)}>
                 <X className="w-5 h-5" />
@@ -73,8 +73,8 @@ export default function Chatbot() {
                   transition={{ duration: 0.2 }}
                   className={`max-w-[80%] p-3 rounded-2xl shadow-sm ${
                     msg.role === "bot"
-                      ? "bg-[#a1e9d1] text-green-900 self-start"
-                      : "bg-[#77af9c] text-white self-end"
+                      ? "bg-[#d2b48c] text-amber-900 self-start"
+                      : "bg-[#8b4513] text-white self-end"
                   }`}
                 >
                   {msg.text}
@@ -84,10 +84,10 @@ export default function Chatbot() {
             </div>
 
             {/* Input */}
-            <div className="p-3 border-t border-[#77af9c] bg-white flex items-center gap-2">
+            <div className="p-3 border-t border-[#8b4513] bg-white flex items-center gap-2">
               <input
                 type="text"
-                className="flex-1 px-4 py-2 rounded-full border border-[#77af9c] focus:outline-none focus:ring-2 focus:ring-[#77af9c]"
+                className="flex-1 px-4 py-2 rounded-full border border-[#8b4513] focus:outline-none focus:ring-2 focus:ring-[#8b4513]"
                 placeholder="Type your message..."
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
@@ -95,7 +95,7 @@ export default function Chatbot() {
               />
               <button
                 onClick={handleSend}
-                className="p-2 rounded-full bg-[#77af9c] hover:bg-[#77af9c] transition-colors"
+                className="p-2 rounded-full bg-[#8b4513] hover:bg-[#cd853f] transition-colors"
               >
                 <Send className="text-white w-5 h-5" />
               </button>

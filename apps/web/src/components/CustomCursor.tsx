@@ -11,6 +11,7 @@ export default function CustomCursor() {
   const horizontalRef1 = useRef<HTMLDivElement>(null);
   const horizontalRef2 = useRef<HTMLDivElement>(null);
   const gapRef = useRef<HTMLDivElement>(null);
+  const hoveredElRef = useRef<HTMLElement | null>(null);
 
   const gap = 20; // default small square
 
@@ -21,13 +22,13 @@ export default function CustomCursor() {
   useEffect(() => {
     if (!mounted) return;
 
-    let hoveredEl: HTMLElement | null = null; // Moved inside useEffect to fix ESLint warning
+    const v1 = verticalRef1.current;
+    const v2 = verticalRef2.current;
+    const h1 = horizontalRef1.current;
+    const h2 = horizontalRef2.current;
+    const gapEl = gapRef.current;
 
-    const v1 = verticalRef1.current!;
-    const v2 = verticalRef2.current!;
-    const h1 = horizontalRef1.current!;
-    const h2 = horizontalRef2.current!;
-    const gapEl = gapRef.current!;
+    if (!v1 || !v2 || !h1 || !h2 || !gapEl) return;
 
     const moveHandler = (e: MouseEvent) => {
       let x = e.clientX;
@@ -36,8 +37,8 @@ export default function CustomCursor() {
       let targetHeight = gap;
 
       // If hovering → lock to element center & dimensions
-      if (hoveredEl) {
-        const rect = hoveredEl.getBoundingClientRect();
+      if (hoveredElRef.current) {
+        const rect = hoveredElRef.current.getBoundingClientRect();
         x = rect.left + rect.width / 2;
         y = rect.top + rect.height / 2;
         targetWidth = rect.width;
@@ -85,8 +86,8 @@ export default function CustomCursor() {
 
     // Hover enter → lock rect
     const hoverHandler = (e: Event) => {
-      hoveredEl = e.currentTarget as HTMLElement;
-      const rect = hoveredEl.getBoundingClientRect();
+      hoveredElRef.current = e.currentTarget as HTMLElement;
+      const rect = hoveredElRef.current.getBoundingClientRect();
       gsap.to(gapEl, {
         width: rect.width,
         height: rect.height,
@@ -99,7 +100,7 @@ export default function CustomCursor() {
 
     // Hover leave → release lock
     const leaveHandler = () => {
-      hoveredEl = null;
+      hoveredElRef.current = null;
       gsap.to(gapEl, {
         width: gap,
         height: gap,

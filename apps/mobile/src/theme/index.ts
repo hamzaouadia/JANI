@@ -6,9 +6,9 @@ export interface Theme {
   colors: {
     background: string;
     surface: string;
-    primary: string;
-    primaryMuted: string;
-    secondary: string;
+    primary: string; // #4C6EF5
+    primaryMuted: string; // subtle tint of primary for chips/badges
+    secondary: string; // accent #00D4FF
     text: string;
     textMuted: string;
     border: string;
@@ -16,86 +16,151 @@ export interface Theme {
     warning: string;
     error: string;
   };
-  spacing: (multiplier: number) => number;
+  spacing: (_multiplier: number) => number;
   radii: {
     sm: number;
     md: number;
     lg: number;
     pill: number;
   };
+  shadows: {
+    sm: {
+      shadowColor: string;
+      shadowOffset: { width: number; height: number };
+      shadowOpacity: number;
+      shadowRadius: number;
+      elevation: number;
+    };
+    md: {
+      shadowColor: string;
+      shadowOffset: { width: number; height: number };
+      shadowOpacity: number;
+      shadowRadius: number;
+      elevation: number;
+    };
+    lg: {
+      shadowColor: string;
+      shadowOffset: { width: number; height: number };
+      shadowOpacity: number;
+      shadowRadius: number;
+      elevation: number;
+    };
+  };
   typography: {
     heading: TextStyle;
     subheading: TextStyle;
+    subtitle: TextStyle;
     body: TextStyle;
     caption: TextStyle;
   };
 }
 
-const spacing = (multiplier: number) => multiplier * 4;
+// 8pt grid
+const spacing = (multiplier: number) => multiplier * 8;
 
-const baseTypography: Theme['typography'] = {
-  heading: {
-    fontSize: 28,
-    fontWeight: '700'
-  },
-  subheading: {
-    fontSize: 20,
-    fontWeight: '600'
-  },
-  body: {
-    fontSize: 16,
-    fontWeight: '400'
-  },
-  caption: {
-    fontSize: 13,
-    fontWeight: '400'
-  }
-};
 
 export const lightTheme: Theme = {
   colors: {
-    background: '#FAFAFA',
+    background: '#F9FDF7',
     surface: '#FFFFFF',
-    primary: '#1E7F55',
-    primaryMuted: '#CBE8DB',
-    secondary: '#3865F4',
-    text: '#1A1C1E',
-    textMuted: '#67728A',
-    border: '#E1E5EC',
-    success: '#2A9D8F',
-    warning: '#F4A261',
-    error: '#E63946'
+    primary: '#8CCFA2',
+    primaryMuted: '#EAF6EF',
+    secondary: '#5BA7D1',
+    text: '#1F2C26',
+    textMuted: '#597064',
+    border: 'rgba(31,44,38,0.10)',
+    success: '#2F6E49',
+    warning: '#F0B429',
+    error: '#E74C3C'
   },
   spacing,
   radii: {
-    sm: 6,
+    sm: 8,
     md: 12,
-    lg: 20,
+    lg: 12,
     pill: 999
   },
-  typography: baseTypography
+  shadows: {
+    sm: {
+      shadowColor: '#1F2C26',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.06,
+      shadowRadius: 4,
+      elevation: 1
+    },
+    md: {
+      shadowColor: '#1F2C26',
+      shadowOffset: { width: 0, height: 4 },
+      shadowOpacity: 0.08,
+      shadowRadius: 8,
+      elevation: 2
+    },
+    lg: {
+      shadowColor: '#1F2C26',
+      shadowOffset: { width: 0, height: 8 },
+      shadowOpacity: 0.12,
+      shadowRadius: 16,
+      elevation: 4
+    }
+  },
+  typography: {
+    heading: { fontSize: 28, fontWeight: '700', letterSpacing: 0.1 },
+    subheading: { fontSize: 20, fontWeight: '600', letterSpacing: 0.1 },
+    subtitle: { fontSize: 18, fontWeight: '600', letterSpacing: 0.1 },
+    body: { fontSize: 16, fontWeight: '400' },
+    caption: { fontSize: 14, fontWeight: '400' }
+  }
 };
 
 export const darkTheme: Theme = {
   colors: {
-    background: '#0F1115',
-    surface: '#16191F',
-    primary: '#4DD197',
-    primaryMuted: '#254030',
-    secondary: '#6C8CFF',
-    text: '#F9FAFB',
-    textMuted: '#9EA6B7',
-    border: '#2B303A',
-    success: '#35C2AC',
-    warning: '#E9A96F',
-    error: '#F26D7A'
+    background: '#1C2621',
+    surface: '#16201B',
+    primary: '#89E4B2',
+    primaryMuted: '#244036',
+    secondary: '#5BA7D1',
+    text: '#EAF6EF',
+    textMuted: '#A8C0B3',
+    border: 'rgba(234,246,239,0.12)',
+    success: '#8CCFA2',
+    warning: '#F0B429',
+    error: '#F0776B'
   },
   spacing,
   radii: {
-    sm: 6,
+    sm: 8,
     md: 12,
-    lg: 20,
+    lg: 12,
     pill: 999
   },
-  typography: baseTypography
+  shadows: {
+    sm: {
+      shadowColor: '#000000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.15,
+      shadowRadius: 4,
+      elevation: 1
+    },
+    md: {
+      shadowColor: '#000000',
+      shadowOffset: { width: 0, height: 4 },
+      shadowOpacity: 0.20,
+      shadowRadius: 8,
+      elevation: 2
+    },
+    lg: {
+      shadowColor: '#000000',
+      shadowOffset: { width: 0, height: 8 },
+      shadowOpacity: 0.25,
+      shadowRadius: 16,
+      elevation: 4
+    }
+  },
+  typography: {
+    heading: { fontSize: 28, fontWeight: '700', letterSpacing: 0.1 },
+    subheading: { fontSize: 20, fontWeight: '600', letterSpacing: 0.1 },
+    subtitle: { fontSize: 18, fontWeight: '600', letterSpacing: 0.1 },
+    body: { fontSize: 16, fontWeight: '400' },
+    caption: { fontSize: 14, fontWeight: '400' }
+  }
 };

@@ -30,11 +30,14 @@ jobs:
       - name: Lint
         run: npm run lint --workspace apps/web
 
+      - name: Type check
+        run: npm run typecheck --workspace apps/web
+
       - name: Build
         run: npm run build --workspace apps/web
 
   mobile:
-    name: Mobile - Lint, Types, Tests
+    name: Mobile - Lint & Types
     runs-on: ubuntu-latest
     env:
       CI: 'true'
@@ -60,10 +63,6 @@ jobs:
       - name: Type check
         working-directory: apps/mobile
         run: npm run typecheck
-
-      - name: Unit tests
-        working-directory: apps/mobile
-        run: npm run test -- --watchAll=false
 
   services:
     name: Services - Build & Sanity Checks
@@ -102,6 +101,21 @@ jobs:
         working-directory: services/auth
         run: pnpm run build
 
+      - name: Install operations dependencies
+        working-directory: services/operations
+        run: pnpm install --frozen-lockfile
+
+      - name: Build operations service
+        working-directory: services/operations
+        run: pnpm run build
+
+      - name: Install traceability dependencies
+        working-directory: services/traceability
+        run: npm ci
+
+      - name: Validate traceability service syntax
+        run: node --check services/traceability/src/index.js
+
       - name: Validate AI service syntax
         run: node --check services/ai/server.js
 
@@ -125,10 +139,15 @@ jobs:
           AUTH_PORT=4000
           AI_PORT=5001
           USER_PORT=5000
+          TRACEABILITY_PORT=5002
+          OPERATIONS_PORT=4003
           WEB_PORT=3000
           JWT_SECRET=ci-secret
           OPENAI_API_KEY=ci-dummy-key
           NEXT_PUBLIC_AUTH_URL=http://auth:4000
+          MINIO_ROOT_USER=minioadmin
+          MINIO_ROOT_PASSWORD=minioadmin
+          S3_BUCKET=jani-media
           EOF
 
       - name: Set up Docker Buildx

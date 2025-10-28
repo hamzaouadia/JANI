@@ -1,0 +1,302 @@
+[
+  {
+    "farmName": "Domaine Atlas Vert",
+    "name": "Parcelle Oliviers Nord",
+    "hectares": 25.0,
+    "crop": "Olives Picholine",
+    "stage": "growing",
+    "linked": true,
+    "lastSync": "2025-10-23T10:30:00Z",
+    "sensors": {
+      "soilMoisture": "SM-MAR-001-A",
+      "weatherStation": true,
+      "logisticsPartner": "FLEET-204"
+    },
+    "nextActions": ["Irrigation", "Surveillance mouche de l'olive"]
+  },
+  {
+    "farmName": "Domaine Atlas Vert",
+    "name": "Parcelle Oliviers Sud",
+    "hectares": 20.0,
+    "crop": "Olives Menara",
+    "stage": "harvesting",
+    "linked": true,
+    "lastSync": "2025-10-23T10:30:00Z",
+    "sensors": {
+      "soilMoisture": "SM-MAR-001-B",
+      "weatherStation": true,
+      "logisticsPartner": "FLEET-204"
+    },
+    "nextActions": ["Récolte mécanisée", "Transport huilerie"]
+  },
+  {
+    "farmName": "Ferme Saada Bio",
+    "name": "Serre Tomates 1",
+    "hectares": 2.5,
+    "crop": "Tomates Rondes",
+    "stage": "growing",
+    "linked": true,
+    "lastSync": "2025-10-22T15:45:00Z",
+    "sensors": {
+      "soilMoisture": "SM-MAR-002-A",
+      "weatherStation": false,
+      "logisticsPartner": "FLEET-204"
+    },
+    "nextActions": ["Taille des plants", "Contrôle bio ravageurs"]
+  },
+  {
+    "farmName": "Ferme Saada Bio",
+    "name": "Serre Tomates 2",
+    "hectares": 2.0,
+    "crop": "Tomates Cerise Bio",
+    "stage": "harvesting",
+    "linked": true,
+    "lastSync": "2025-10-22T15:45:00Z",
+    "sensors": {
+      "soilMoisture": "SM-MAR-002-B",
+      "weatherStation": false,
+      "logisticsPartner": "FLEET-204"
+    },
+    "nextActions": ["Récolte quotidienne", "Emballage certification bio"]
+  },
+  {
+    "farmName": "Exploitation Agrumes du Gharb",
+    "name": "Verger Orangers Valencia",
+    "hectares": 30.0,
+    "crop": "Oranges Valencia",
+    "stage": "harvesting",
+    "linked": true,
+    "lastSync": "2025-10-23T08:00:00Z",
+    "sensors": {
+      "soilMoisture": "SM-MAR-003-A",
+      "weatherStation": true,
+      "logisticsPartner": "FLEET-204"
+    },
+    "nextActions": ["Récolte export", "Calibrage station"]
+  },
+  {
+    "farmName": "Exploitation Agrumes du Gharb",
+    "name": "Verger Mandariniers",
+    "hectares": 15.0,
+    "crop": "Mandarines Nadorcott",
+    "stage": "growing",
+    "linked": true,
+    "lastSync": "2025-10-23T08:00:00Z",
+    "sensors": {
+      "soilMoisture": "SM-MAR-003-B",
+      "weatherStation": true,
+      "logisticsPartner": null
+    },
+    "nextActions": ["Fertilisation foliaire", "Irrigation localisée"]
+  },
+  {
+    "farmName": "Coopérative Arganeraie Essaouira",
+    "name": "Zone Arganiers Traditionnels",
+    "hectares": 50.0,
+    "crop": "Argan Traditionnel",
+    "stage": "growing",
+    "linked": true,
+    "lastSync": "2025-10-23T12:00:00Z",
+    "sensors": {
+      "soilMoisture": "SM-MAR-004-A",
+      "weatherStation": false,
+      "logisticsPartner": "FLEET-204"
+    },
+    "nextActions": ["Collecte des noix", "Tri manuel"]
+  },
+  {
+    "farmName": "Palmeraie Tafilalet Bio",
+    "name": "Palmeraie Medjool Section A",
+    "hectares": 18.0,
+    "crop": "Dattes Medjool Premium",
+    "stage": "growing",
+    "linked": true,
+    "lastSync": "2025-10-23T09:15:00Z",
+    "sensors": {
+      "soilMoisture": "SM-MAR-005-A",
+      "weatherStation": true,
+      "logisticsPartner": null
+    },
+    "nextActions": ["Pollinisation assistée", "Protection régimes"]
+  },
+  {
+    "farmName": "Palmeraie Tafilalet Bio",
+    "name": "Palmeraie Boufeggous",
+    "hectares": 12.0,
+    "crop": "Dattes Boufeggous",
+    "stage": "growing",
+    "linked": true,
+    "lastSync": "2025-10-23T09:15:00Z",
+    "sensors": {
+      "soilMoisture": "SM-MAR-005-B",
+      "weatherStation": true,
+      "logisticsPartner": null
+    },
+    "nextActions": ["Irrigation gravitaire", "Entretien palmiers"]
+  },
+  {
+    "farmName": "Domaine Viticole Meknès",
+    "name": "Vignoble Syrah",
+    "hectares": 8.0,
+    "crop": "Raisins Syrah",
+    "stage": "growing",
+    "linked": true,
+    "lastSync": "2025-10-22T18:30:00Z",
+    "sensors": {
+      "soilMoisture": "SM-MAR-006-A",
+      "weatherStation": true,
+      "logisticsPartner": null
+    },
+    "nextActions": ["Palissage", "Traitement oïdium"]
+  },
+  {
+    "farmName": "Plantation Fraisiers Larache",
+    "name": "Planche Fraises 1",
+    "hectares": 3.5,
+    "crop": "Fraises Fortuna",
+    "stage": "harvesting",
+    "linked": true,
+    "lastSync": "2025-10-23T07:00:00Z",
+    "sensors": {
+      "soilMoisture": "SM-MAR-007-A",
+      "weatherStation": false,
+      "logisticsPartner": "FLEET-204"
+    },
+    "nextActions": ["Récolte quotidienne", "Conditionnement frais"]
+  },
+  {
+    "farmName": "Plantation Fraisiers Larache",
+    "name": "Planche Fraises 2",
+    "hectares": 4.0,
+    "crop": "Fraises Camarosa",
+    "stage": "harvesting",
+    "linked": true,
+    "lastSync": "2025-10-23T07:00:00Z",
+    "sensors": {
+      "soilMoisture": "SM-MAR-007-B",
+      "weatherStation": false,
+      "logisticsPartner": "FLEET-204"
+    },
+    "nextActions": ["Récolte export", "Chambre froide"]
+  },
+  {
+    "farmName": "Coopérative Safran Taliouine",
+    "name": "Champ Safran Montagne",
+    "hectares": 1.2,
+    "crop": "Safran Crocus Sativus",
+    "stage": "planning",
+    "linked": true,
+    "lastSync": "2025-10-23T11:00:00Z",
+    "sensors": {
+      "soilMoisture": "SM-MAR-008-A",
+      "weatherStation": false,
+      "logisticsPartner": null
+    },
+    "nextActions": ["Préparation sol", "Plantation bulbes octobre"]
+  },
+  {
+    "farmName": "Exploitation Avocatiers Gharb",
+    "name": "Verger Avocats Hass",
+    "hectares": 12.0,
+    "crop": "Avocats Hass Export",
+    "stage": "growing",
+    "linked": true,
+    "lastSync": "2025-10-23T13:30:00Z",
+    "sensors": {
+      "soilMoisture": "SM-MAR-009-A",
+      "weatherStation": true,
+      "logisticsPartner": "FLEET-204"
+    },
+    "nextActions": ["Irrigation précise", "Taille formation"]
+  },
+  {
+    "farmName": "Roseraie du Dadès",
+    "name": "Roseraie Vallée",
+    "hectares": 3.0,
+    "crop": "Rose de Damas",
+    "stage": "growing",
+    "linked": true,
+    "lastSync": "2025-10-22T16:00:00Z",
+    "sensors": {
+      "soilMoisture": "SM-MAR-010-A",
+      "weatherStation": false,
+      "logisticsPartner": null
+    },
+    "nextActions": ["Récolte matinale mai", "Distillation"]
+  },
+  {
+    "farmName": "Domaine Céréalier Chaouia",
+    "name": "Parcelle Blé Dur 1",
+    "hectares": 100.0,
+    "crop": "Blé Dur Karim",
+    "stage": "planning",
+    "linked": true,
+    "lastSync": "2025-10-23T10:00:00Z",
+    "sensors": {
+      "soilMoisture": "SM-MAR-011-A",
+      "weatherStation": true,
+      "logisticsPartner": "FLEET-204"
+    },
+    "nextActions": ["Labour profond", "Semis novembre"]
+  },
+  {
+    "farmName": "Amandiers du Souss",
+    "name": "Verger Amandiers Ferragnes",
+    "hectares": 22.0,
+    "crop": "Amandes Ferragnes",
+    "stage": "growing",
+    "linked": true,
+    "lastSync": "2025-10-23T14:00:00Z",
+    "sensors": {
+      "soilMoisture": "SM-MAR-012-A",
+      "weatherStation": true,
+      "logisticsPartner": "FLEET-204"
+    },
+    "nextActions": ["Taille hiver", "Fertilisation organique"]
+  },
+  {
+    "farmName": "Clémentiniers Berkane",
+    "name": "Verger Clémentines Nour",
+    "hectares": 20.0,
+    "crop": "Clémentines Nour",
+    "stage": "harvesting",
+    "linked": true,
+    "lastSync": "2025-10-23T15:00:00Z",
+    "sensors": {
+      "soilMoisture": "SM-MAR-013-A",
+      "weatherStation": true,
+      "logisticsPartner": "FLEET-204"
+    },
+    "nextActions": ["Récolte calibre export", "Station conditionnement"]
+  },
+  {
+    "farmName": "Ferme Maraîchère Ourika",
+    "name": "Serre Légumes Bio",
+    "hectares": 1.5,
+    "crop": "Légumes Bio Variés",
+    "stage": "planning",
+    "linked": false,
+    "lastSync": null,
+    "sensors": {
+      "soilMoisture": "SM-MAR-014-A",
+      "weatherStation": false,
+      "logisticsPartner": null
+    },
+    "nextActions": ["Installation goutte-à-goutte", "Certification Ecocert"]
+  },
+  {
+    "farmName": "Figueraie Taounate",
+    "name": "Parcelle Figuiers Traditionnels",
+    "hectares": 8.0,
+    "crop": "Figues Khadhraoui",
+    "stage": "growing",
+    "linked": false,
+    "lastSync": null,
+    "sensors": {
+      "soilMoisture": "SM-MAR-015-A",
+      "weatherStation": false,
+      "logisticsPartner": null
+    },
+    "nextActions": ["Enregistrement parcelle", "Formation séchage"]
+  }
+]

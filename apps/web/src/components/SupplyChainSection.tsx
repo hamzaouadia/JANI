@@ -73,7 +73,7 @@ export default function SupplyChainSection(){
               initial="hidden"
               animate="show"
               exit="hidden"
-              className="relative rounded-2xl border-2 bg-white border-[#77af9c] lg:p-6 p-4 flex items-center justify-center  min-h-[320px] h-full"
+              className="relative rounded-2xl border-2 bg-white border-[#8b4513] lg:p-6 p-4 flex items-center justify-center  min-h-[320px] h-full"
             >
               <div className="text-center">
                 <p className="custom-font uppercase tracking-wide font-semibold"
@@ -87,7 +87,7 @@ export default function SupplyChainSection(){
                   Drop in your map, flow diagram, or live metrics component here
                   to visualize every step from farm to fork.
                 </p>
-                <div className="mt-6 lg:min-h-40 lg:h-80 h-40 rounded-xl border border-dashed border-[#77af9c] hover:bg-[#77af9c] transition duration-300 hover:text-white text-[#1d2e28] ">
+                <div className="mt-6 lg:min-h-40 lg:h-80 h-40 rounded-xl border border-dashed border-[#8b4513] hover:bg-[#8b4513] transition duration-300 hover:text-white text-[#1d2e28] ">
                   <div className="flex flex-col items-center justify-center h-full">
                     <label
                       htmlFor="file"
@@ -113,7 +113,7 @@ export default function SupplyChainSection(){
             {features.map(({ title, desc, Icon }) => (
               <div
                 key={title}
-                className="rounded-2xl border-2 bg-white border-[#77af9c] hover:bg-[#77af9c] transition group hover:text-white text-[#1d2e28] flex items-center p-5"
+                className="rounded-2xl border-2 bg-white border-[#8b4513] hover:bg-[#8b4513] transition group hover:text-white text-[#1d2e28] flex items-center p-5"
               >
                 <motion.div
                   variants={textItem}
@@ -122,9 +122,9 @@ export default function SupplyChainSection(){
                   exit="hidden"
                   className="flex items-center justify-center gap-3"
                 >
-                  <div className="rounded-xl border-2 border-[#77af9c] group-hover:border-white p-2">
+                  <div className="rounded-xl border-2 border-[#8b4513] group-hover:border-white p-2">
                     <Icon
-                      className="h-6 w-6 text-[#77af9c] group-hover:text-white"
+                      className="h-6 w-6 text-[#8b4513] group-hover:text-white"
                       aria-hidden="true"
                     />
                   </div>
