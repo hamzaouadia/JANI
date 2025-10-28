@@ -6,3 +6,15 @@ jest.mock('expo-constants', () => ({
   __esModule: true,
   default: {},
 }));
+
+// Mock expo-sqlite for testing
+jest.mock('expo-sqlite', () => ({
+  openDatabaseSync: jest.fn(() => ({
+    execSync: jest.fn(),
+    runSync: jest.fn(),
+    getFirstSync: jest.fn(),
+    getAllSync: jest.fn(),
+    closeSync: jest.fn(),
+  })),
+}));
+

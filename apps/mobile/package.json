@@ -52,9 +52,10 @@
     "zustand": "^5.0.8"
   },
   "devDependencies": {
+    "@babel/runtime": "^7.28.4",
     "@tanstack/query-async-storage-persister": "^5.90.7",
     "@testing-library/jest-native": "^5.4.3",
-    "@testing-library/react-native": "^13.3.3",
+    "@testing-library/react-native": "^12.7.2",
     "@types/events": "^3.0.3",
     "@types/jest": "^29.5.14",
     "@types/react": "~18.2.0",
@@ -85,7 +86,8 @@
     ]
   },
   "overrides": {
-    "@types/react": "~18.2.0"
+    "@types/react": "~18.2.0",
+    "react-test-renderer": "18.2.0"
   },
   "private": true
 }
