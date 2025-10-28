@@ -10,10 +10,12 @@
     "paths": {
       "@/*": [
         "src/*"
-      ]
+      ],
+      "react": ["../../node_modules/@types/react"]
     },
     "types": [
-      "jest"
+      "jest",
+      "react"
     ]
   },
   "include": [
@@ -25,6 +27,7 @@
     "src/**/*.test.ts",
     "src/**/*.test.tsx",
     "src/**/*.spec.ts",
-    "src/**/*.spec.tsx"
+    "src/**/*.spec.tsx",
+    "../../node_modules/react-native/node_modules"
   ]
 }
