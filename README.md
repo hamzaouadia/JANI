@@ -1,404 +1,490 @@
-# 🌱 JANI Platform# JANI Platform# JANI Platform
+# 🌱 JANI Platform# 🌱 JANI Platform
 
 
 
-> **Agricultural Traceability & Supply Chain Management System**
+> **Agricultural Traceability & Supply Chain Management Platform**> **Agricultural Traceability & Supply Chain Management Platform**
 
 
 
-A comprehensive agricultural platform enabling farmers, exporters, and supply chain stakeholders to track produce from farm to consumer with complete transparency and blockchain-ready traceability.> **Agricultural Traceability & Supply Chain Management Platform**> **Agricultural Traceability & Supply Chain Management Platform**
+JANI is a comprehensive agricultural traceability platform that empowers farmers, exporters, and consumers with blockchain-ready supply chain transparency. Built as a modern TypeScript monorepo, JANI combines mobile-first field data capture, powerful web dashboards, and intelligent microservices to track produce from seed to table.JANI is a comprehensive agricultural traceability platform that empowers farmers, exporters, and consumers with blockchain-ready supply chain transparency. Built as a modern TypeScript monorepo, JANI combines mobile-first field data capture, powerful web dashboards, and intelligent microservices to track produce from seed to table.
 
 
 
-[![Node](https://img.shields.io/badge/node-20.18.3+-green.svg)](package.json)
+[![Node](https://img.shields.io/badge/node-20.18.3+-green.svg)](package.json)[![Node](https://img.shields.io/badge/node-20.18.3+-green.svg)](package.json)
 
-[![TypeScript](https://img.shields.io/badge/typescript-5.x-blue.svg)](package.json)
+[![TypeScript](https://img.shields.io/badge/typescript-5.x-blue.svg)](package.json)[![TypeScript](https://img.shields.io/badge/typescript-5.x-blue.svg)](package.json)
 
-[![React Native](https://img.shields.io/badge/react--native-0.81.5-61dafb.svg)](apps/mobile/package.json)JANI is a comprehensive agricultural traceability platform that empowers farmers, exporters, and consumers with blockchain-ready supply chain transparency. Built as a modern TypeScript monorepo, JANI combines mobile-first field data capture, powerful web dashboards, and intelligent microservices to track produce from seed to table.JANI is a comprehensive agricultural traceability platform that empowers farmers, exporters, and consumers with blockchain-ready supply chain transparency. Built as a modern TypeScript monorepo, JANI combines mobile-first field data capture, powerful web dashboards, and intelligent microservices to track produce from seed to table.
+[![React Native](https://img.shields.io/badge/react--native-0.81.5-61dafb.svg)](apps/mobile/package.json)[![React Native](https://img.shields.io/badge/react--native-0.81.5-61dafb.svg)](apps/mobile/package.json)
 
-[![Next.js](https://img.shields.io/badge/next.js-15.4.7-black.svg)](apps/web/package.json)
+[![Next.js](https://img.shields.io/badge/next.js-15.4.7-black.svg)](apps/web/package.json)[![Next.js](https://img.shields.io/badge/next.js-15.4.7-black.svg)](apps/web/package.json)
 
-
-
----
-
-[![Node](https://img.shields.io/badge/node-20.18.3+-green.svg)](package.json)[![License](https://img.shields.io/badge/license-Proprietary-red.svg)](LICENSE)
-
-## 📋 Table of Contents
-
-[![TypeScript](https://img.shields.io/badge/typescript-5.x-blue.svg)](package.json)[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](package.json)
-
-- [Platform Overview](#-platform-overview)
-
-- [Project Status](#-project-status)[![License](https://img.shields.io/badge/license-Proprietary-red.svg)](LICENSE)[![Node](https://img.shields.io/badge/node-20.x-green.svg)](package.json)
-
-- [Quick Start](#-quick-start)
-
-- [Architecture](#-architecture)[![TypeScript](https://img.shields.io/badge/typescript-5.x-blue.svg)](package.json)
-
-- [Features & Functionality](#-features--functionality)
-
-- [API Reference](#-api-reference)---
-
-- [Development](#-development)
-
-- [Testing](#-testing)## 🌟 Platform Overview
-
-- [Deployment](#-deployment)
-
-## 📋 Table of Contents
-
----
-
-| Component | Technology | Purpose | Port |
-
-## 🌟 Platform Overview
-
-- [Platform Overview](#-platform-overview)|-----------|------------|---------|------|
-
-### System Components
-
-- [Project Status](#-project-status)| **Mobile App** | React Native + Expo 54 | Field data capture, offline-first farm management | - |
-
-| Component | Stack | Purpose | Port | Status |
-
-|-----------|-------|---------|------|--------|- [Quick Start](#-quick-start)| **Web App** | Next.js 15 + React 18 | Marketing site, dashboards, traceability portal | 3000 |
-
-| **Mobile App** | React Native + Expo 54 | Farmer field app for data capture | - | ✅ Production |
-
-| **Web App** | Next.js 15 + React 18 | Marketing & admin dashboards | 3000 | ⚠️ In Progress |- [Workspace Structure](#-workspace-structure)| **Auth Service** | Express + MongoDB + JWT | Authentication, data management, media uploads | 4000 |
-
-| **Auth Service** | Express + MongoDB + TypeScript | Authentication & core data management | 4000 | ✅ Production |
-
-| **User Service** | Express + MongoDB | User & farm management | 5000 | ✅ Production |- [Development Workflow](#-development-workflow)| **User Service** | Express + MongoDB | Farm management, access control | 5000 |
-
-| **Traceability** | Express + MongoDB + TypeScript | Blockchain-ready event tracking | 5002 | ✅ Production |
-
-| **Operations** | Express + TypeScript | Farm operations management | 5003 | ✅ Production |- [Testing & Quality](#-testing--quality)| **AI Service** | Express | ML/AI integrations (placeholder) | 5001 |
-
-| **AI Service** | Express | ML/AI integrations | 5001 | 🟡 Placeholder |
-
-| **MongoDB** | MongoDB 6 | Primary database | 27017 | ✅ Production |- [Architecture](#-architecture)| **Traceability Service** | Express + MongoDB | Blockchain-ready event tracking | 5002 |
-
-| **Redis** | Redis 7 | Caching & sessions | 6379 | ✅ Production |
-
-| **MinIO** | S3-Compatible | Media storage | 9000 | ✅ Production |- [Key Features](#-key-features)| **Infrastructure** | Docker Compose | MongoDB, Redis, MinIO (S3) | - |
+[![License](https://img.shields.io/badge/license-Proprietary-red.svg)](LICENSE)[![License](https://img.shields.io/badge/license-Proprietary-red.svg)](LICENSE)
 
 
 
-### Technology Highlights- [API Documentation](#-api-documentation)
+------
 
 
 
-- **Monorepo Architecture**: Unified codebase with npm workspaces- [Deployment](#-deployment)## ✅ Project Status
+## 📑 Table of Contents## 📑 Table of Contents
 
-- **TypeScript First**: Strict mode across all services
 
-- **Offline-First Mobile**: AsyncStorage + SQLite for field work- [Contributing](#-contributing)
 
-- **RESTful APIs**: Express-based microservices
+- [Project Status](#-project-status)- [Project Status](#-project-status)
 
-- **Docker-Ready**: Full containerization support### CI/CD Status
+- [Platform Overview](#-platform-overview)- [Platform Overview](#-platform-overview)
 
-- **CI/CD**: GitHub Actions with local testing
+- [Quick Start](#-quick-start)- [Quick Start](#-quick-start)
 
----- ✅ **Mobile App**: Lint passing, TypeCheck passing, Tests 4/6 passing (67%)
+- [Documentation](#-documentation)- [Documentation](#-documentation)
+
+- [Architecture](#-architecture)- [API Documentation](#-api-documentation)
+
+- [Development](#-development)- [Development](#-development)
+
+- [API Documentation](#-api-documentation)- [Testing](#-testing)
+
+- [Testing](#-testing)- [Deployment](#-deployment)
+
+- [Deployment](#-deployment)- [Known Issues](#-known-issues)
+
+- [Known Issues](#-known-issues)
 
 ---
 
-- ⚠️ **Web App**: Lint passing, TypeCheck passing, Build failing (known Next.js SSG issue)
+---
 
 ## ✅ Project Status
 
-## 🌟 Platform Overview- ✅ **Services**: All services building and running successfully
+## ✅ Project Status
 
-### Build & Quality Status
+### CI/CD Status
 
-- ✅ **Infrastructure**: Docker Compose orchestration configured
+### CI/CD Status
 
 | Component | Lint | TypeCheck | Tests | Build | Overall |
 
-|-----------|------|-----------|-------|-------|---------|| Component | Technology | Purpose | Port |
+| Component | Lint | TypeCheck | Tests | Build | Overall ||-----------|------|-----------|-------|-------|---------|
 
-| **Mobile App** | ✅ 0 errors | ✅ 0 errors | ⚠️ 4/6 (67%) | N/A | 🟢 Good |
+|-----------|------|-----------|-------|-------|---------|| **Mobile App** | ✅ 0 errors | ✅ 0 errors | ⚠️ 4/6 (67%) | N/A | 🟢 Good |
 
-| **Web App** | ✅ 0 errors | ✅ 0 errors | N/A | ❌ SSG issue | 🟡 Fair ||-----------|------------|---------|------|### Recent Improvements
+| **Mobile App** | ✅ 0 errors | ✅ 0 errors | ⚠️ 4/6 (67%) | N/A | 🟢 Good || **Web App** | ✅ 0 errors | ✅ 0 errors | N/A | ❌ SSG issue | 🟡 Fair |
 
-| **Auth Service** | ✅ Pass | ✅ Pass | ✅ Pass | ✅ Pass | 🟢 Excellent |
+| **Web App** | ✅ 0 errors | ✅ 0 errors | N/A | ❌ SSG issue | 🟡 Fair || **Auth Service** | ✅ Pass | ✅ Pass | ✅ Pass | ✅ Pass | 🟢 Excellent |
 
-| **User Service** | ✅ Pass | N/A (JS) | ✅ Pass | ✅ Pass | 🟢 Excellent || **Mobile App** | React Native + Expo 54 | Field data capture, offline-first farm management | - |- Upgraded npm from 9.2.0 → 11.6.2 for better dependency resolution
+| **Auth Service** | ✅ Pass | ✅ Pass | ✅ Pass | ✅ Pass | 🟢 Excellent || **User Service** | ✅ Pass | N/A (JS) | ✅ Pass | ✅ Pass | 🟢 Excellent |
 
-| **Traceability** | ✅ Pass | ✅ Pass | ✅ Pass | ✅ Pass | 🟢 Excellent |
+| **User Service** | ✅ Pass | N/A (JS) | ✅ Pass | ✅ Pass | 🟢 Excellent || **Traceability** | ✅ Pass | ✅ Pass | ✅ Pass | ✅ Pass | 🟢 Excellent |
 
-| **Operations** | ✅ Pass | ✅ Pass | ✅ Pass | ✅ Pass | 🟢 Excellent || **Web App** | Next.js 15 + React 18 | Marketing site, dashboards, traceability portal | 3000 |- Fixed React version conflicts (aligned to React 18.2.0 across monorepo)
+| **Traceability** | ✅ Pass | ✅ Pass | ✅ Pass | ✅ Pass | 🟢 Excellent || **Operations** | ✅ Pass | ✅ Pass | ✅ Pass | ✅ Pass | 🟢 Excellent |
+
+| **Operations** | ✅ Pass | ✅ Pass | ✅ Pass | ✅ Pass | 🟢 Excellent || **AI Service** | ✅ Pass | N/A (JS) | ✅ Pass | ✅ Pass | 🟢 Excellent |
 
 | **AI Service** | ✅ Pass | N/A (JS) | ✅ Pass | ✅ Pass | 🟢 Excellent |
 
-| **Auth Service** | Express + MongoDB + JWT | Authentication, data management, media uploads | 4000 |- Removed unused dependencies (@kinde-oss causing version conflicts)
+### Recent Achievements ✨
 
 ### Recent Achievements ✨
 
-| **User Service** | Express + MongoDB | Farm management, access control | 5000 |- Fixed TypeScript strict mode compliance
-
 - ✅ **npm Modernization**: Upgraded 9.2.0 → 11.6.2 for improved dependency resolution
 
-- ✅ **React Standardization**: Aligned entire monorepo on React 18.2.0| **AI Service** | Express | ML/AI integrations (placeholder) | 5001 |- Improved mobile test coverage with proper mocks
+- ✅ **npm Modernization**: Upgraded 9.2.0 → 11.6.2 for improved dependency resolution- ✅ **React Standardization**: Aligned entire monorepo on React 18.2.0
 
-- ✅ **TypeScript Strict**: All TS packages pass strict mode (0 errors)
+- ✅ **React Standardization**: Aligned entire monorepo on React 18.2.0- ✅ **TypeScript Strict**: All TS packages pass strict mode (0 errors)
 
-- ✅ **Dependency Cleanup**: Removed conflicting packages (@kinde-oss)| **Traceability Service** | Express + MongoDB | Blockchain-ready event tracking | 5002 |- Created comprehensive CI test scripts for local validation
+- ✅ **TypeScript Strict**: All TS packages pass strict mode (0 errors)- ✅ **Dependency Cleanup**: Removed conflicting packages (@kinde-oss)
 
-- ✅ **Test Infrastructure**: Mobile tests at 67% with proper mocks
+- ✅ **Dependency Cleanup**: Removed conflicting packages (@kinde-oss)- ✅ **Test Infrastructure**: Mobile tests at 67% with proper mocks
 
-- ✅ **CI/CD Scripts**: Local GitHub Actions testing with `act`| **Infrastructure** | Docker Compose | MongoDB, Redis, MinIO (S3) | - |
+- ✅ **Test Infrastructure**: Mobile tests at 67% with proper mocks- ✅ **CI/CD Scripts**: Local GitHub Actions testing with `act`
 
-- ✅ **API Documentation**: Complete endpoint documentation
+- ✅ **CI/CD Scripts**: Local GitHub Actions testing with `act`- ✅ **API Documentation**: Complete endpoint documentation
 
-- ✅ **Docker Compose**: Full stack orchestration### Known Issues
+- ✅ **Complete Documentation**: Individual READMEs for all services and apps- ✅ **Docker Compose**: Full stack orchestration
+
+- ✅ **Docker Compose**: Full stack orchestration configured
+
+### Known Issues 🔍
+
+### Known Issues 🔍
+
+- **Web Build**: Static page generation failing on 404 page (React error #31) - under investigation
+
+- **Web Build**: Static page generation failing on 404 page (React error #31) - workaround: use `npm run dev`
+
+- **Mobile Tests**: 2/6 tests need additional mocks (expo-secure-store, netinfo) - low priority
 
 
 
-### Known Issues 🔍---- **Web Build**: Static page generation failing on 404 page (React error #31) - under investigation
+---1. **Web Build (Non-Critical)**- **Mobile Tests**: 2 tests need additional mocks (expo-secure-store, netinfo)
 
 
 
-1. **Web Build (Non-Critical)**- **Mobile Tests**: 2 tests need additional mocks (expo-secure-store, netinfo)
+## 🌟 Platform Overview   - **Issue**: Next.js SSG fails on 404 page generation
 
-   - **Issue**: Next.js SSG fails on 404 page generation
 
-   - **Error**: React error #31 during static page pre-rendering## ✅ Project Status
 
-   - **Impact**: Build fails but development works fine
+### Technology Stack   - **Error**: React error #31 during static page pre-rendering## ✅ Project Status
 
-   - **Status**: Under investigation - Next.js 15 + React 18 compatibility## 📚 Documentation
 
-   - **Workaround**: Use `npm run dev` for development
 
-### CI/CD Pipeline Status
+| Component | Technology | Purpose | Port |   - **Impact**: Build fails but development works fine
 
-2. **Mobile Tests (Minor)**
+|-----------|------------|---------|------|
+
+| **Mobile App** | React Native + Expo 54 | Field data capture, offline-first farm management | - |   - **Status**: Under investigation - Next.js 15 + React 18 compatibility## 📚 Documentation
+
+| **Web App** | Next.js 15 + React 18 | Marketing site, dashboards, traceability portal | 3000 |
+
+| **Auth Service** | Express + MongoDB + JWT | Authentication, data management, media uploads | 4000 |   - **Workaround**: Use `npm run dev` for development
+
+| **User Service** | Express + MongoDB | Farm & user management, access control | 5000 |
+
+| **AI Service** | Express | ML/AI integrations (placeholder) | 5001 |### CI/CD Pipeline Status
+
+| **Traceability** | Express + MongoDB | Blockchain-ready event tracking, QR codes | 5002 |
+
+| **Operations** | Express + TypeScript | Farm operations and activities management | 5003 |2. **Mobile Tests (Minor)**
+
+| **Infrastructure** | Docker Compose | MongoDB, Redis, MinIO (S3) | - |
 
    - **Issue**: 2/6 tests failingComprehensive documentation is available for each component:
 
+### Key Features
+
    - **Missing**: expo-secure-store and netinfo mocks
 
-   - **Impact**: Low - core functionality tested| Component | Lint | TypeCheck | Tests | Build | Status |
+#### 📱 Mobile App (React Native)
 
-   - **Status**: Low priority
+- **Offline-First**: Full functionality without internet   - **Impact**: Low - core functionality tested| Component | Lint | TypeCheck | Tests | Build | Status |
 
-|-----------|------|-----------|-------|-------|--------|### Applications
+- **Farm Management**: Create/edit farms, plots, orders
+
+- **Activity Tracking**: Log planting, irrigation, harvesting   - **Status**: Low priority
+
+- **Photo Uploads**: Capture and sync images
+
+- **QR Code Scanner**: Product traceability lookup|-----------|------|-----------|-------|-------|--------|### Applications
+
+- **Multi-Language**: English & French support
 
 ---
 
-| **Mobile App** | ✅ Passing | ✅ Passing | ⚠️ 4/6 (67%) | N/A | 🟡 Good |- **[Mobile App Documentation](apps/mobile/README.md)** - React Native app for farmers
+#### 🌐 Web Application (Next.js)
 
-## 🚀 Quick Start
+- **Marketing Site**: Landing page with animations| **Mobile App** | ✅ Passing | ✅ Passing | ⚠️ 4/6 (67%) | N/A | 🟡 Good |- **[Mobile App Documentation](apps/mobile/README.md)** - React Native app for farmers
 
-| **Web App** | ✅ Passing | ✅ Passing | N/A | ❌ Known Issue | 🟡 Good |- **[Web App Documentation](apps/web/README.md)** - Next.js web platform
+- **Admin Dashboard**: User, farm, and order management
 
-### Prerequisites
+- **Exporter Portal**: Lot tracking and analytics## 🚀 Quick Start
 
-| **Auth Service** | ✅ Passing | ✅ Passing | ✅ Passing | ✅ Passing | 🟢 Excellent |
+- **Consumer Traceability**: Product journey visualization
 
-Ensure you have:
+- **Responsive Design**: Mobile-friendly interface| **Web App** | ✅ Passing | ✅ Passing | N/A | ❌ Known Issue | 🟡 Good |- **[Web App Documentation](apps/web/README.md)** - Next.js web platform
 
-| **User Service** | ✅ Passing | N/A | ✅ Passing | ✅ Passing | 🟢 Excellent |### Services
 
-- **Node.js** 20.18.3+ (20.19.4+ recommended for React Native)
 
-- **npm** 11.6.2+| **Traceability** | ✅ Passing | ✅ Passing | ✅ Passing | ✅ Passing | 🟢 Excellent |- **[Auth Service Documentation](services/auth/README.md)** - Authentication & data management
+#### ⚙️ Backend Services### Prerequisites
 
-- **Docker & Docker Compose**
+- **RESTful APIs**: Express-based microservices
 
-- **pnpm** 10.x (for TypeScript services)| **AI Service** | ✅ Passing | N/A | ✅ Passing | ✅ Passing | 🟢 Excellent |- **[User Service Documentation](services/user/README.md)** - Farm & user management
+- **JWT Authentication**: Secure token-based auth| **Auth Service** | ✅ Passing | ✅ Passing | ✅ Passing | ✅ Passing | 🟢 Excellent |
 
-- **Expo CLI** (optional, for mobile development)
+- **Media Storage**: S3-compatible MinIO
 
-- **[AI Service Documentation](services/ai/README.md)** - AI/ML integrations (planned)
+- **Offline Sync**: Queue-based synchronizationEnsure you have:
 
-### 🏃 Fast Setup (5 minutes)
+- **Background Jobs**: Merkle tree generation
 
-### Recent Improvements ✨- **[Traceability Service Documentation](services/traceability/README.md)** - Event tracking
+- **Rate Limiting**: API protection| **User Service** | ✅ Passing | N/A | ✅ Passing | ✅ Passing | 🟢 Excellent |### Services
 
-```bash
 
-# 1. Clone repository
+
+---- **Node.js** 20.18.3+ (20.19.4+ recommended for React Native)
+
+
+
+## 🚀 Quick Start- **npm** 11.6.2+| **Traceability** | ✅ Passing | ✅ Passing | ✅ Passing | ✅ Passing | 🟢 Excellent |- **[Auth Service Documentation](services/auth/README.md)** - Authentication & data management
+
+
+
+### Prerequisites- **Docker & Docker Compose**
+
+
+
+Ensure you have the following installed:- **pnpm** 10.x (for TypeScript services)| **AI Service** | ✅ Passing | N/A | ✅ Passing | ✅ Passing | 🟢 Excellent |- **[User Service Documentation](services/user/README.md)** - Farm & user management
+
+
+
+- **Node.js** 20.18.3 or higher (20.19.4+ recommended for React Native)- **Expo CLI** (optional, for mobile development)
+
+- **npm** 11.6.2+ (for better override support)
+
+- **Docker & Docker Compose** (for infrastructure services)- **[AI Service Documentation](services/ai/README.md)** - AI/ML integrations (planned)
+
+- **pnpm** 10.x+ (for TypeScript services)
+
+- **Expo CLI** (optional, for mobile development)### 🏃 Fast Setup (5 minutes)
+
+
+
+### One-Command Setup### Recent Improvements ✨- **[Traceability Service Documentation](services/traceability/README.md)** - Event tracking
+
+
+
+```bash```bash
+
+# 1. Clone the repository
+
+git clone https://github.com/hamzaouadia/JANI.git# 1. Clone repository
+
+cd JANI
 
 git clone https://github.com/hamzaouadia/JANI.git
 
-cd JANI- ✅ **npm Upgrade**: 9.2.0 → 11.6.2 for better dependency resolution and override support### Additional Resources
+# 2. Install workspace dependencies
+
+npm installcd JANI- ✅ **npm Upgrade**: 9.2.0 → 11.6.2 for better dependency resolution and override support### Additional Resources
 
 
 
-# 2. Install dependencies- ✅ **React Alignment**: Standardized on React 18.2.0 across entire monorepo- **[Setup Guide](SETUP.md)** - Complete installation and configuration
+# 3. Copy environment configuration
 
-npm install
+cp .env.example .env
+
+# Edit .env with your configuration# 2. Install dependencies- ✅ **React Alignment**: Standardized on React 18.2.0 across entire monorepo- **[Setup Guide](SETUP.md)** - Complete installation and configuration
+
+
+
+# 4. Start infrastructure (MongoDB, Redis, MinIO)npm install
+
+docker-compose up -d mongo redis minio
 
 - ✅ **Dependency Cleanup**: Removed unused @kinde-oss dependency causing version conflicts- **[Project Blueprint](docs/jani-ai-project-blueprint.md)** - Architecture and design
 
-# 3. Setup environment
+# 5. Seed demo data
 
-cp .env.example .env- ✅ **TypeScript Fixes**: All packages passing strict mode type checking (0 errors)- **[UX Design Guide](docs/jani-ai-ux-design.md)** - User experience principles
-
-# Edit .env with your configuration
-
-- ✅ **Test Coverage**: Mobile tests improved with proper mocks for Expo modules
-
-# 4. Start infrastructure
-
-docker-compose up -d mongo redis minio- ✅ **CI Scripts**: Added local testing scripts for GitHub Actions simulation## 🚀 Quick Start
-
-
-
-# 5. Start auth service (required for mobile/web)
-
-cd services/auth
-
-pnpm install### Known Issues 🔍## 🚀 Quick Start
-
-pnpm run dev
-
-
-
-# 6. Seed demo data (optional)
-
-pnpm run seed:demo1. **Web Build (Non-blocking)**:### Prerequisites
+docker-compose run --rm seed-data# 3. Setup environment
 
 ```
 
-   - Static page generation failing on 404 page (React error #31)
+cp .env.example .env- ✅ **TypeScript Fixes**: All packages passing strict mode type checking (0 errors)- **[UX Design Guide](docs/jani-ai-ux-design.md)** - User experience principles
 
-Now you can start the mobile or web app!
+### Running Individual Components
 
-   - Root cause: Next.js 15 + React 18 compatibility during SSG- **Node.js** 20.18.3 or higher (20.19.4+ recommended for React Native)
+# Edit .env with your configuration
 
-### 📱 Start Mobile App
+#### Mobile App
 
-   - Impact: Build fails but lint/typecheck pass ✅- **npm** 11.6.2+ (upgraded for better dependency resolution)
+- ✅ **Test Coverage**: Mobile tests improved with proper mocks for Expo modules
 
 ```bash
 
-cd apps/mobile   - Status: Under investigation, does not block development- **Docker & Docker Compose** for local services
+cd apps/mobile# 4. Start infrastructure
 
 npm install
 
-npm start- **pnpm** 10.x (for TypeScript services: auth, operations, traceability)
+npm startdocker-compose up -d mongo redis minio- ✅ **CI Scripts**: Added local testing scripts for GitHub Actions simulation## 🚀 Quick Start
 
 
 
-# Then:2. **Mobile Tests (Minor)**:- **Expo CLI** (for mobile development)
+# Scan QR code with Expo Go app on your phone
 
-# Press 'i' for iOS Simulator
+# Or press 'i' for iOS simulator, 'a' for Android emulator
 
-# Press 'a' for Android Emulator   - 2/6 tests failing due to missing mocks
-
-# Scan QR code with Expo Go app
-
-```   - Needs: expo-secure-store and @react-native-community/netinfo mocks### Environment Setup
+```# 5. Start auth service (required for mobile/web)
 
 
 
-### 🌐 Start Web App   - Impact: Low, core functionality tested
+#### Web Appcd services/auth
 
 
 
-```bash   - Status: Low priority1. **Install Node.js dependencies**:
+```bashpnpm install### Known Issues 🔍## 🚀 Quick Start
 
 cd apps/web
 
-npm install```bash
+npm installpnpm run dev
 
 npm run dev
 
----# Install workspace dependencies (this installs for all packages)
+
 
 # Access at http://localhost:3000
+
+```# 6. Seed demo data (optional)
+
+
+
+#### Auth Service (Required for Mobile/Web)pnpm run seed:demo1. **Web Build (Non-blocking)**:### Prerequisites
+
+
+
+```bash```
+
+cd services/auth
+
+pnpm install   - Static page generation failing on 404 page (React error #31)
+
+pnpm run dev
+
+Now you can start the mobile or web app!
+
+# Service runs on http://localhost:4000
+
+```   - Root cause: Next.js 15 + React 18 compatibility during SSG- **Node.js** 20.18.3 or higher (20.19.4+ recommended for React Native)
+
+
+
+#### Traceability Service### 📱 Start Mobile App
+
+
+
+```bash   - Impact: Build fails but lint/typecheck pass ✅- **npm** 11.6.2+ (upgraded for better dependency resolution)
+
+cd services/traceability
+
+pnpm install```bash
+
+pnpm run dev
+
+cd apps/mobile   - Status: Under investigation, does not block development- **Docker & Docker Compose** for local services
+
+# Service runs on http://localhost:5002
 
 ```npm install
 
 
 
-### 🐳 Full Docker Stack## 🚀 Quick Start
+### Full Stack with Dockernpm start- **pnpm** 10.x (for TypeScript services: auth, operations, traceability)
 
 
 
-```bash# Verify npm version (should be 11.6.2+)
+```bash
 
-# Start everything
+# Start all services
 
-docker-compose up -d### Prerequisitesnpm --version
+docker-compose up -d# Then:2. **Mobile Tests (Minor)**:- **Expo CLI** (for mobile development)
 
 
 
-# View logs```
+# Check service health# Press 'i' for iOS Simulator
+
+docker-compose ps
+
+./test-health.sh# Press 'a' for Android Emulator   - 2/6 tests failing due to missing mocks
+
+
+
+# View logs# Scan QR code with Expo Go app
 
 docker-compose logs -f
 
-Ensure you have the following installed:
-
-# Check service health
-
-docker-compose ps2. **Configure environment variables**:
-
-./test-health.sh
-
-- **Node.js** 20.18.3 or higher (20.19.4+ recommended for React Native)```bash
+```   - Needs: expo-secure-store and @react-native-community/netinfo mocks### Environment Setup
 
 # Stop all services
 
-docker-compose down- **npm** 11.6.2+ (for better override support)# Copy the example environment file
+docker-compose down
 
 ```
 
-- **Docker & Docker Compose** (for infrastructure services)cp .env.example .env
+### 🌐 Start Web App   - Impact: Low, core functionality tested
 
 ---
 
-- **pnpm** 10.x+ (for TypeScript services)
+
+
+## 📚 Documentation
+
+```bash   - Status: Low priority1. **Install Node.js dependencies**:
+
+Comprehensive documentation is available for each component:
+
+cd apps/web
+
+### Applications
+
+npm install```bash
+
+- **[Mobile App Documentation](apps/mobile/README.md)** - React Native app for farmers
+
+- **[Web App Documentation](apps/web/README.md)** - Next.js web platformnpm run dev
+
+
+
+### Services---# Install workspace dependencies (this installs for all packages)
+
+
+
+- **[Auth Service Documentation](services/auth/README.md)** - Authentication & data management# Access at http://localhost:3000
+
+- **[User Service Documentation](services/user/README.md)** - Farm & user management
+
+- **[Traceability Service Documentation](services/traceability/README.md)** - Event tracking```npm install
+
+- **[Operations Service Documentation](services/operations/README.md)** - Farm operations
+
+- **[AI Service Documentation](services/ai/README.md)** - AI/ML integrations (planned)
+
+
+
+### Additional Resources### 🐳 Full Docker Stack## 🚀 Quick Start
+
+
+
+- **[Setup Guide](SETUP.md)** - Complete installation and configuration
+
+- **[Copilot Instructions](.github/copilot-instructions.md)** - AI agent development guide
+
+```bash# Verify npm version (should be 11.6.2+)
+
+---
+
+# Start everything
 
 ## 🏗️ Architecture
 
-- **Expo CLI** (optional, for mobile development)# Edit .env with your configuration
+docker-compose up -d### Prerequisitesnpm --version
 
 ### System Architecture
 
-# Key variables:
+
 
 ```
 
-┌─────────────────────────────────────────────────────────────────┐### Installation# - MONGODB_URI
+┌─────────────────────────────────────────────────────────────────┐# View logs```
 
 │                         JANI Platform                            │
 
-├─────────────────────────────────────────────────────────────────┤# - JWT_SECRET
+├─────────────────────────────────────────────────────────────────┤docker-compose logs -f
 
 │                                                                  │
 
-│  ┌──────────────┐                           ┌──────────────┐   │```bash# - Service ports (AUTH_PORT, USER_PORT, etc.)
+│  ┌──────────────┐                           ┌──────────────┐   │Ensure you have the following installed:
 
 │  │  Mobile App  │                            │   Web App    │   │
 
-│  │   (Expo)     │◄────── REST APIs ─────────►│  (Next.js)   │   │# 1. Clone the repository```
+│  │   (Expo)     │◄────── REST APIs ─────────►│  (Next.js)   │   │# Check service health
 
 │  │              │                            │              │   │
 
-│  │ • Farm Mgmt  │                            │ • Marketing  │   │git clone https://github.com/hamzaouadia/JANI.git
+│  │ • Farm Mgmt  │                            │ • Marketing  │   │docker-compose ps2. **Configure environment variables**:
 
 │  │ • Activities │                            │ • Dashboards │   │
 
-│  │ • Offline    │                            │ • Analytics  │   │cd JANI3. **Start infrastructure services**:
+│  │ • Offline    │                            │ • Analytics  │   │./test-health.sh
 
 │  └──────┬───────┘                            └──────┬───────┘   │
 
-│         │                                           │           │```bash
+│         │                                           │           │- **Node.js** 20.18.3 or higher (20.19.4+ recommended for React Native)```bash
 
 │         │                 HTTP/JSON                 │           │
 
-│         └────────────────┬──────────────────────────┘           │# 2. Install workspace dependencies# Start MongoDB, Redis, and MinIO
+│         └────────────────┬──────────────────────────┘           │# Stop all services
 
 │                          │                                       │
 
-│              ┌───────────▼────────────┐                         │npm installdocker-compose up -d mongo redis minio
+│              ┌───────────▼────────────┐                         │docker-compose down- **npm** 11.6.2+ (for better override support)# Copy the example environment file
 
 │              │    Auth Service        │                         │
 
@@ -406,391 +492,888 @@ docker-compose down- **npm** 11.6.2+ (for better override support)# Copy the exa
 
 │              │                        │                         │
 
-│              │  /auth    - Login      │                         │# 3. Copy environment configuration
+│              │  /auth    - Login      │                         │- **Docker & Docker Compose** (for infrastructure services)cp .env.example .env
 
 │              │  /data    - Farms      │                         │
 
-│              │  /sync    - Offline    │                         │cp .env.example .env### One-Command Setup
+│              │  /sync    - Offline    │                         │---
 
 │              │  /media   - Uploads    │                         │
 
-│              │  /jobs    - Background │                         │# Edit .env with your configuration
+│              │  /jobs    - Background │                         │- **pnpm** 10.x+ (for TypeScript services)
 
 │              └───────────┬────────────┘                         │
 
-│                          │                                       │```bash
+│                          │                                       │## 🏗️ Architecture
 
 │         ┌────────────────┼────────────────┬──────────┐          │
 
-│         │                │                │          │          │# 4. Start infrastructure (MongoDB, Redis, MinIO)# Full stack startup
+│         │                │                │          │          │- **Expo CLI** (optional, for mobile development)# Edit .env with your configuration
 
 │    ┌────▼────┐     ┌────▼────┐     ┌────▼─────┐ ┌──▼───┐     │
 
-│    │  User   │     │ Trace-  │     │Operations│ │  AI  │     │docker-compose up -d mongo redis minionpm install
+│    │  User   │     │ Trace-  │     │Operations│ │  AI  │     │### System Architecture
 
 │    │ Service │     │ ability │     │ Service  │ │ Svc  │     │
 
-│    │ (5000)  │     │ (5002)  │     │ (5003)   │ │(5001)│     │```docker-compose up -d
+│    │ (5000)  │     │ (5002)  │     │ (5003)   │ │(5001)│     │# Key variables:
 
 │    └────┬────┘     └────┬────┘     └────┬─────┘ └──────┘     │
 
-│         │               │               │                      │
+│         │               │               │                      │```
 
 │         └───────┬───────┴───────┬───────┘                      │
 
-│                 │               │                               │### Running the Platform# Web app
+│                 │               │                               │┌─────────────────────────────────────────────────────────────────┐### Installation# - MONGODB_URI
 
 │    ┌────────────▼──┐      ┌────▼────┐       ┌──────────┐     │
 
-│    │   MongoDB     │      │  Redis  │       │  MinIO   │     │cd apps/web
+│    │   MongoDB     │      │  Redis  │       │  MinIO   │     ││                         JANI Platform                            │
 
 │    │   (27017)     │      │  (6379) │       │  (9000)  │     │
 
-│    │               │      │         │       │   S3     │     │#### Option 1: Full Stack (Docker Compose)npm run dev
+│    │               │      │         │       │   S3     │     │├─────────────────────────────────────────────────────────────────┤# - JWT_SECRET
 
 │    │ • Users       │      │ • Cache │       │ • Images │     │
 
-│    │ • Farms       │      │ • Jobs  │       │ • Files  │     │
+│    │ • Farms       │      │ • Jobs  │       │ • Files  │     ││                                                                  │
 
 │    │ • Orders      │      └─────────┘       └──────────┘     │
 
-│    │ • Plots       │                                          │```bash# Mobile app  
+│    │ • Plots       │                                          ││  ┌──────────────┐                           ┌──────────────┐   │```bash# - Service ports (AUTH_PORT, USER_PORT, etc.)
 
 │    │ • Events      │                                          │
 
-│    └───────────────┘                                          │# Start all servicescd apps/mobile
+│    └───────────────┘                                          ││  │  Mobile App  │                            │   Web App    │   │
 
 │                                                                │
 
-└────────────────────────────────────────────────────────────────┘docker-compose up -dnpm start
+└────────────────────────────────────────────────────────────────┘│  │   (Expo)     │◄────── REST APIs ─────────►│  (Next.js)   │   │# 1. Clone the repository```
 
 ```
 
-```
+│  │              │                            │              │   │
 
 ### Data Flow Example
 
-# Check service health
+│  │ • Farm Mgmt  │                            │ • Marketing  │   │git clone https://github.com/hamzaouadia/JANI.git
 
 ```
 
-Farmer opens mobile appdocker-compose ps### Individual Service Setup
+Farmer opens mobile app│  │ • Activities │                            │ • Dashboards │   │
 
   ↓
 
-1. Login → POST /auth/login (Auth Service)./test-health.sh
+1. Login → POST /auth/login (Auth Service)│  │ • Offline    │                            │ • Analytics  │   │cd JANI3. **Start infrastructure services**:
 
   ↓
 
-2. JWT token stored in AsyncStorage```#### Start Backend Services
+2. JWT token stored in AsyncStorage│  └──────┬───────┘                            └──────┬───────┘   │
 
   ↓
 
-3. Fetch farms → GET /data/farms (Auth Service)
+3. Fetch farms → GET /data/farms (Auth Service)│         │                                           │           │```bash
 
   ↓
 
-4. View farm details → Stored in Zustand + React Query cache#### Option 2: Individual Services```bash
+4. View farm details → Stored in Zustand + React Query cache│         │                 HTTP/JSON                 │           │
 
   ↓
 
-5. Create activity → POST /sync/activities (Auth Service)# Start MongoDB and Redis
+5. Create activity → POST /sync/push (Auth Service)│         └────────────────┬──────────────────────────┘           │# 2. Install workspace dependencies# Start MongoDB, Redis, and MinIO
 
   ↓
 
-6. Upload photo → POST /media/upload (Auth Service → MinIO)**Start Backend Services:**docker-compose up -d mongo redis
+6. Upload photo → POST /media/prepare (Auth Service → MinIO)│                          │                                       │
 
   ↓
 
-7. Sync when offline → Queue in AsyncStorage → Sync later
+7. Sync when offline → Queue in AsyncStorage → Sync later│              ┌───────────▼────────────┐                         │npm installdocker-compose up -d mongo redis minio
+
+  ↓
+
+8. Create traceability event → POST /api/events (Traceability Service)│              │    Auth Service        │                         │
+
+  ↓
+
+9. Generate QR code → GET /api/qr/generate/:lotId (Traceability Service)│              │    (Port 4000)         │                         │```
 
 ```
 
-```bash# Start Auth Service (TypeScript/pnpm)
-
-### Technology Stack
-
-# Auth Service (TypeScript/pnpm)cd services/auth
-
-#### Frontend
-
-cd services/authpnpm install
-
-**Mobile App** (apps/mobile/)
-
-- React Native 0.81.5pnpm installpnpm run dev        # Development with hot reload
-
-- Expo SDK 54.0.17
-
-- TypeScript 5.9 (strict mode)pnpm run dev# or
-
-- State: Zustand + React Query v5
-
-- Storage: AsyncStorage + expo-sqlitepnpm run seed:demo  # Seed database with demo data
-
-- UI: Custom components + React Native Reanimated
-
-- Testing: Jest + React Testing Library# User Service (JavaScript/npm)
-
-
-
-**Web App** (apps/web/)cd services/user# Start User Service (JavaScript/npm)
-
-- Next.js 15.4.7 (App Router)
-
-- React 18.2.0npm installcd services/user
-
-- TypeScript 5.x
-
-- Styling: Tailwind CSS 4npm startnpm install
-
-- Animations: Framer Motion + GSAP
-
-- Auth: JWT-based (custom)npm start
-
-
-
-#### Backend Services# Traceability Service (TypeScript/pnpm)
-
-
-
-**Auth Service** (services/auth/) - **PRIMARY SERVICE**cd services/traceability# Start Traceability Service (TypeScript/pnpm)
-
-- Express.js with TypeScript
-
-- MongoDB (Mongoose)pnpm installcd services/traceability
-
-- JWT authentication
-
-- S3/MinIO media uploadspnpm run devpnpm install
-
-- Background job processing
-
-- **Routes**:pnpm run dev
-
-  - `/auth` - Authentication
-
-  - `/data` - Farms, partners, orders# AI Service (JavaScript/npm)
-
-  - `/sync` - Offline sync
-
-  - `/media` - File uploadscd services/ai# Start AI Service (JavaScript/npm)
-
-  - `/jobs` - Background tasks
-
-npm installcd services/ai
-
-**User Service** (services/user/)
-
-- Express.js (JavaScript)npm startnpm install
-
-- MongoDB
-
-- User & farm management```npm start
-
-
-
-**Traceability Service** (services/traceability/)```
-
-- Express.js with TypeScript
-
-- MongoDB**Start Web Application:**
-
-- Blockchain-ready event tracking
-
-- QR code generation**Service Endpoints:**
-
-
-
-**Operations Service** (services/operations/)```bash- Auth: `http://localhost:4000`
-
-- Express.js with TypeScript
-
-- Farm operations & activitiescd apps/web- User: `http://localhost:5000`
-
-
-
-**AI Service** (services/ai/)npm install- Traceability: `http://localhost:5002`
-
-- Express.js (JavaScript)
-
-- Placeholder for ML/AI featuresnpm run dev- AI: `http://localhost:5001`
-
-
-
-#### Infrastructure# Access at http://localhost:3000
-
-
-
-- **Database**: MongoDB 6```#### Start Web Application
-
-- **Cache**: Redis 7
-
-- **Storage**: MinIO (S3-compatible)
-
-- **Container**: Docker + Docker Compose
-
-- **Package Managers**: npm 11.6.2 (apps), pnpm 10.x (TS services)**Start Mobile Application:**```bash
-
-
-
----cd apps/web
-
-
-
-## 🎯 Features & Functionality```bashnpm install
-
-
-
-### 🌾 For Farmers (Mobile App)cd apps/mobilenpm run dev
-
-
-
-#### Farm Managementnpm install```
-
-- ✅ **Multi-farm support**: Manage multiple farms from one account
-
-- ✅ **GPS coordinates**: Geolocation for each farmnpm start
-
-- ✅ **Plot subdivision**: Divide farms into plots with crops
-
-- ✅ **Crop tracking**: Track different crops per plot# Press 'i' for iOS, 'a' for Android, or scan QR codeAccess at: `http://localhost:3000`
-
-- ✅ **Lifecycle stages**: Planning → Planting → Growing → Harvesting → Completed
-
-```
-
-#### Activity Logging
-
-- ✅ **Daily activities**: Log field work (planting, irrigation, harvest)#### Start Mobile Application
-
-- ✅ **Photo documentation**: Capture and upload images
-
-- ✅ **Resource tracking**: Water, fertilizers, pesticides usage### Seeding Data
-
-- ✅ **Geotags**: GPS coordinates per activity
-
-- ✅ **Offline support**: Work without internet, sync later```bash
-
-
-
-#### Offline-First Design```bashcd apps/mobile
-
-- ✅ **AsyncStorage**: Local data persistence
-
-- ✅ **SQLite**: Structured data storage# Seed demo data (farms, users, orders, etc.)npm install
-
-- ✅ **Queue system**: Background sync when online
-
-- ✅ **Conflict resolution**: Smart merge on synccd services/authnpm start
-
-
-
-### 📦 For Exporters (Web & Mobile)pnpm run seed:demo```
-
-
-
-#### Order Management
-
-- ✅ **Create orders**: Link orders to specific farm lots
-
-- ✅ **Track shipments**: Status tracking from farm to export# Or via DockerThen:
-
-- ✅ **QR codes**: Generate traceability QR codes
-
-- ✅ **Documentation**: Compliance and certification docsdocker-compose run --rm seed-data- Press `i` for iOS Simulator
-
-
-
-#### Supply Chain Visibility```- Press `a` for Android Emulator  
-
-- ✅ **Farm-to-export tracking**: Complete journey visibility
-
-- ✅ **Partner network**: Manage partner relationships- Scan QR code with Expo Go app on physical device
-
-- ✅ **Analytics dashboard**: Volume, value, performance metrics
+│              │                        │                         │
 
 ---
 
-### 🔍 For Consumers (Web App)
+│              │  /auth    - Login      │                         │# 3. Copy environment configuration
 
-**Mobile Development:**
+## 💻 Development
 
-#### Product Traceability
+│              │  /data    - Farms      │                         │
 
-- ✅ **QR code scanning**: Scan product QR codes## 📁 Workspace Structure- Uses React Native 0.81.5 with Expo SDK 54
+### Monorepo Structure
 
-- ✅ **Farm journey**: View complete production history
+│              │  /sync    - Offline    │                         │cp .env.example .env### One-Command Setup
 
-- ✅ **Farmer profiles**: Learn about the farmer- React 18.2.0 for compatibility
+```
 
-- ✅ **Photo timeline**: See production photos
+JANI/│              │  /media   - Uploads    │                         │
 
-- ✅ **Treatment details**: Fertilizers, pesticides used```- Offline-first with AsyncStorage
+├── apps/
+
+│   ├── mobile/              # React Native + Expo 54│              │  /jobs    - Background │                         │# Edit .env with your configuration
+
+│   │   ├── src/
+
+│   │   │   ├── components/  # UI components│              └───────────┬────────────┘                         │
+
+│   │   │   ├── features/    # Feature modules
+
+│   │   │   ├── lib/         # API clients, utilities│                          │                                       │```bash
+
+│   │   │   ├── stores/      # Zustand state management
+
+│   │   │   └── navigation/  # React Navigation config│         ┌────────────────┼────────────────┬──────────┐          │
+
+│   │   ├── package.json
+
+│   │   └── App.tsx│         │                │                │          │          │# 4. Start infrastructure (MongoDB, Redis, MinIO)# Full stack startup
+
+│   │
+
+│   └── web/                 # Next.js 15│    ┌────▼────┐     ┌────▼────┐     ┌────▼─────┐ ┌──▼───┐     │
+
+│       ├── src/
+
+│       │   ├── app/         # App Router pages│    │  User   │     │ Trace-  │     │Operations│ │  AI  │     │docker-compose up -d mongo redis minionpm install
+
+│       │   ├── components/  # React components
+
+│       │   └── utils/       # Utilities│    │ Service │     │ ability │     │ Service  │ │ Svc  │     │
+
+│       ├── package.json
+
+│       └── next.config.ts│    │ (5000)  │     │ (5002)  │     │ (5003)   │ │(5001)│     │```docker-compose up -d
+
+│
+
+├── services/│    └────┬────┘     └────┬────┘     └────┬─────┘ └──────┘     │
+
+│   ├── auth/                # Authentication service (TypeScript)
+
+│   │   ├── src/│         │               │               │                      │
+
+│   │   │   ├── routes.ts    # Auth endpoints
+
+│   │   │   ├── dataRoutes.ts # Data endpoints│         └───────┬───────┴───────┬───────┘                      │
+
+│   │   │   ├── syncRoutes.ts # Offline sync
+
+│   │   │   ├── mediaRoutes.ts # Media uploads│                 │               │                               │### Running the Platform# Web app
+
+│   │   │   └── index.ts     # Main server
+
+│   │   └── package.json│    ┌────────────▼──┐      ┌────▼────┐       ┌──────────┐     │
+
+│   │
+
+│   ├── user/                # User service (JavaScript)│    │   MongoDB     │      │  Redis  │       │  MinIO   │     │cd apps/web
+
+│   ├── traceability/        # Traceability service (JavaScript)
+
+│   ├── operations/          # Operations service (TypeScript)│    │   (27017)     │      │  (6379) │       │  (9000)  │     │
+
+│   └── ai/                  # AI service (JavaScript, placeholder)
+
+││    │               │      │         │       │   S3     │     │#### Option 1: Full Stack (Docker Compose)npm run dev
+
+├── scripts/                 # Utility scripts
+
+├── .github/                 # GitHub Actions CI/CD│    │ • Users       │      │ • Cache │       │ • Images │     │
+
+├── docker-compose.yml       # Full stack orchestration
+
+├── package.json             # Root workspace config│    │ • Farms       │      │ • Jobs  │       │ • Files  │     │
+
+└── README.md                # This file
+
+```│    │ • Orders      │      └─────────┘       └──────────┘     │
 
 
+
+### Package Managers│    │ • Plots       │                                          │```bash# Mobile app  
+
+
+
+- **npm** (11.6.2+): Used for apps (`apps/mobile`, `apps/web`) and root workspace│    │ • Events      │                                          │
+
+- **pnpm** (10.x+): Used for TypeScript services (`services/auth`, `services/operations`, `services/traceability`)
+
+│    └───────────────┘                                          │# Start all servicescd apps/mobile
+
+### Environment Variables
+
+│                                                                │
+
+Create a `.env` file in the root directory:
+
+└────────────────────────────────────────────────────────────────┘docker-compose up -dnpm start
+
+```bash
+
+# MongoDB```
+
+MONGODB_URI=mongodb://localhost:27017/jani
+
+```
+
+# Redis
+
+REDIS_URL=redis://localhost:6379### Data Flow Example
+
+
+
+# MinIO (S3)# Check service health
+
+S3_ENDPOINT=http://localhost:9000
+
+S3_ACCESS_KEY=minioadmin```
+
+S3_SECRET_KEY=minioadmin
+
+S3_BUCKET=jani-mediaFarmer opens mobile appdocker-compose ps### Individual Service Setup
+
+
+
+# JWT  ↓
+
+JWT_SECRET=your-secret-key-change-in-production
+
+1. Login → POST /auth/login (Auth Service)./test-health.sh
+
+# Service Ports
+
+AUTH_PORT=4000  ↓
+
+USER_PORT=5000
+
+AI_PORT=50012. JWT token stored in AsyncStorage```#### Start Backend Services
+
+TRACEABILITY_PORT=5002
+
+OPERATIONS_PORT=5003  ↓
+
+WEB_PORT=3000
+
+3. Fetch farms → GET /data/farms (Auth Service)
+
+# Mobile
+
+MOBILE_HOST=192.168.1.100  # Your local IP for Expo  ↓
+
+EXPO_PUBLIC_AUTH_API=http://192.168.1.100:4000
+
+EXPO_PUBLIC_TRACEABILITY_API=http://192.168.1.100:50024. View farm details → Stored in Zustand + React Query cache#### Option 2: Individual Services```bash
+
+```
+
+  ↓
+
+### Development Workflow
+
+5. Create activity → POST /sync/activities (Auth Service)# Start MongoDB and Redis
+
+```bash
+
+# Install dependencies for all packages  ↓
+
+npm install
+
+6. Upload photo → POST /media/upload (Auth Service → MinIO)**Start Backend Services:**docker-compose up -d mongo redis
+
+# Start infrastructure
+
+docker-compose up -d mongo redis minio  ↓
+
+
+
+# Start auth service (terminal 1)7. Sync when offline → Queue in AsyncStorage → Sync later
+
+cd services/auth
+
+pnpm install```
+
+pnpm run dev
+
+```bash# Start Auth Service (TypeScript/pnpm)
+
+# Start web app (terminal 2)
+
+cd apps/web### Technology Stack
+
+npm install
+
+npm run dev# Auth Service (TypeScript/pnpm)cd services/auth
+
+
+
+# Start mobile app (terminal 3)#### Frontend
+
+cd apps/mobile
+
+npm installcd services/authpnpm install
+
+npm start
+
+```**Mobile App** (apps/mobile/)
+
+
+
+---- React Native 0.81.5pnpm installpnpm run dev        # Development with hot reload
+
+
+
+## 📡 API Documentation- Expo SDK 54.0.17
+
+
+
+### Auth Service (Port 4000)- TypeScript 5.9 (strict mode)pnpm run dev# or
+
+
+
+**Authentication:**- State: Zustand + React Query v5
+
+- `POST /auth/signup` - Create new user
+
+- `POST /auth/login` - User login- Storage: AsyncStorage + expo-sqlitepnpm run seed:demo  # Seed database with demo data
+
+- `POST /auth/verify` - Verify JWT token
+
+- `GET /auth/me` - Get current user- UI: Custom components + React Native Reanimated
+
+
+
+**Data Management:**- Testing: Jest + React Testing Library# User Service (JavaScript/npm)
+
+- `GET /data/farms` - List farms
+
+- `POST /data/farms/:id/link` - Link farm to user
+
+- `GET /data/partners` - List partners
+
+- `GET /data/orders` - List orders**Web App** (apps/web/)cd services/user# Start User Service (JavaScript/npm)
+
+
+
+**Offline Sync:**- Next.js 15.4.7 (App Router)
+
+- `POST /sync/push` - Push offline events
+
+- `POST /sync/commit` - Commit sync- React 18.2.0npm installcd services/user
+
+- `POST /sync/pull` - Pull server data
+
+- TypeScript 5.x
+
+**Media:**
+
+- `POST /media/prepare` - Prepare media upload- Styling: Tailwind CSS 4npm startnpm install
+
+
+
+**Background Jobs:**- Animations: Framer Motion + GSAP
+
+- `POST /jobs/merkle/run` - Generate Merkle tree
+
+- Auth: JWT-based (custom)npm start
+
+### Traceability Service (Port 5002)
+
+
+
+- `GET /api/events` - List events
+
+- `POST /api/events` - Create event#### Backend Services# Traceability Service (TypeScript/pnpm)
+
+- `GET /api/events/:id` - Get event
+
+- `PUT /api/events/:id` - Update event
+
+- `DELETE /api/events/:id` - Delete event
+
+- `GET /api/events/lot/:lotId` - Get events by lot**Auth Service** (services/auth/) - **PRIMARY SERVICE**cd services/traceability# Start Traceability Service (TypeScript/pnpm)
+
+- `GET /api/qr/generate/:lotId` - Generate QR code
+
+- Express.js with TypeScript
+
+### User Service (Port 5000)
+
+- MongoDB (Mongoose)pnpm installcd services/traceability
+
+- `GET /farms` - List farms
+
+- `POST /farms` - Create farm- JWT authentication
+
+- `GET /farms/:id` - Get farm
+
+- `PATCH /farms/:id` - Update farm- S3/MinIO media uploadspnpm run devpnpm install
+
+- `POST /farms/link` - Link farm to user
+
+- `GET /data/orders` - List orders- Background job processing
+
+
+
+### Operations Service (Port 5003)- **Routes**:pnpm run dev
+
+
+
+- `GET /api/farms` - List farms  - `/auth` - Authentication
+
+- `GET /api/fields` - List fields
+
+- `GET /api/activities` - List activities  - `/data` - Farms, partners, orders# AI Service (JavaScript/npm)
+
+- `POST /api/activities` - Create activity
+
+- `GET /api/farms/:id/statistics` - Get farm stats  - `/sync` - Offline sync
+
+
+
+For detailed API documentation with examples, see individual service READMEs.  - `/media` - File uploadscd services/ai# Start AI Service (JavaScript/npm)
+
+
+
+---  - `/jobs` - Background tasks
+
+
+
+## 🧪 Testingnpm installcd services/ai
+
+
+
+### Run All Tests**User Service** (services/user/)
+
+
+
+```bash- Express.js (JavaScript)npm startnpm install
+
+# Root - runs all package tests
+
+npm test- MongoDB
+
+
+
+# Individual packages- User & farm management```npm start
+
+cd apps/mobile && npm test
+
+cd services/auth && pnpm test
+
+```
+
+**Traceability Service** (services/traceability/)```
+
+### Linting
+
+- Express.js with TypeScript
+
+```bash
+
+# Root- MongoDB**Start Web Application:**
+
+npm run lint
+
+- Blockchain-ready event tracking
+
+# Individual packages
+
+cd apps/mobile && npm run lint- QR code generation**Service Endpoints:**
+
+cd apps/web && npm run lint
+
+cd services/auth && pnpm run lint
+
+```
+
+**Operations Service** (services/operations/)```bash- Auth: `http://localhost:4000`
+
+### Type Checking
+
+- Express.js with TypeScript
+
+```bash
+
+# Root- Farm operations & activitiescd apps/web- User: `http://localhost:5000`
+
+npm run typecheck
+
+
+
+# Individual packages
+
+cd apps/mobile && npm run typecheck**AI Service** (services/ai/)npm install- Traceability: `http://localhost:5002`
+
+cd apps/web && npm run typecheck
+
+cd services/auth && pnpm run typecheck- Express.js (JavaScript)
+
+```
+
+- Placeholder for ML/AI featuresnpm run dev- AI: `http://localhost:5001`
+
+### CI Testing Locally
+
+
+
+```bash
+
+# Test mobile CI pipeline#### Infrastructure# Access at http://localhost:3000
+
+./test-mobile-ci.sh
+
+
+
+# Test all health endpoints
+
+./test-health.sh- **Database**: MongoDB 6```#### Start Web Application
+
+
+
+# Test with GitHub Actions locally (requires 'act')- **Cache**: Redis 7
+
+./test-ci-locally.sh
+
+```- **Storage**: MinIO (S3-compatible)
+
+
+
+### Current Test Status- **Container**: Docker + Docker Compose
+
+
+
+- **Mobile App**: 4/6 tests passing (67%)- **Package Managers**: npm 11.6.2 (apps), pnpm 10.x (TS services)**Start Mobile Application:**```bash
+
+  - ✅ Component rendering
+
+  - ✅ Navigation
+
+  - ✅ State management
+
+  - ✅ API mocking---cd apps/web
+
+  - ❌ Secure storage (needs mock)
+
+  - ❌ Network info (needs mock)
+
+
+
+- **Services**: All passing## 🎯 Features & Functionality```bashnpm install
+
+  - ✅ Auth service tests
+
+  - ✅ Traceability tests
+
+  - ✅ User service tests
+
+  - ✅ Operations tests### 🌾 For Farmers (Mobile App)cd apps/mobilenpm run dev
+
+
+
+---
+
+
+
+## 🚀 Deployment#### Farm Managementnpm install```
+
+
+
+### Docker Deployment- ✅ **Multi-farm support**: Manage multiple farms from one account
+
+
+
+```bash- ✅ **GPS coordinates**: Geolocation for each farmnpm start
+
+# Build all services
+
+docker-compose build- ✅ **Plot subdivision**: Divide farms into plots with crops
+
+
+
+# Start in production mode- ✅ **Crop tracking**: Track different crops per plot# Press 'i' for iOS, 'a' for Android, or scan QR codeAccess at: `http://localhost:3000`
+
+docker-compose up -d
+
+- ✅ **Lifecycle stages**: Planning → Planting → Growing → Harvesting → Completed
+
+# View logs
+
+docker-compose logs -f```
+
+
+
+# Scale services#### Activity Logging
+
+docker-compose up -d --scale auth=3
+
+```- ✅ **Daily activities**: Log field work (planting, irrigation, harvest)#### Start Mobile Application
+
+
+
+### Individual Service Deployment- ✅ **Photo documentation**: Capture and upload images
+
+
+
+**Auth Service:**- ✅ **Resource tracking**: Water, fertilizers, pesticides usage### Seeding Data
+
+```bash
+
+cd services/auth- ✅ **Geotags**: GPS coordinates per activity
+
+docker build -t jani-auth .
+
+docker run -p 4000:4000 -e MONGODB_URI=$MONGODB_URI jani-auth- ✅ **Offline support**: Work without internet, sync later```bash
+
+```
+
+
+
+**Web App:**
+
+```bash#### Offline-First Design```bashcd apps/mobile
+
+cd apps/web
+
+npm run build- ✅ **AsyncStorage**: Local data persistence
+
+npm start
+
+# Or deploy to Vercel- ✅ **SQLite**: Structured data storage# Seed demo data (farms, users, orders, etc.)npm install
+
+vercel
+
+```- ✅ **Queue system**: Background sync when online
+
+
+
+**Mobile App:**- ✅ **Conflict resolution**: Smart merge on synccd services/authnpm start
+
+```bash
+
+cd apps/mobile
+
+# iOS
+
+eas build --platform ios### 📦 For Exporters (Web & Mobile)pnpm run seed:demo```
+
+# Android
+
+eas build --platform android
+
+```
+
+#### Order Management
+
+### Environment-Specific Configurations
+
+- ✅ **Create orders**: Link orders to specific farm lots
+
+**Production:**
+
+- Set `NODE_ENV=production`- ✅ **Track shipments**: Status tracking from farm to export# Or via DockerThen:
+
+- Use secure JWT secrets
+
+- Enable HTTPS- ✅ **QR codes**: Generate traceability QR codes
+
+- Configure proper CORS origins
+
+- Set up monitoring (PM2, New Relic)- ✅ **Documentation**: Compliance and certification docsdocker-compose run --rm seed-data- Press `i` for iOS Simulator
+
+
+
+**Staging:**
+
+- Mirror production config
+
+- Use staging databases#### Supply Chain Visibility```- Press `a` for Android Emulator  
+
+- Enable verbose logging
+
+- ✅ **Farm-to-export tracking**: Complete journey visibility
+
+**Development:**
+
+- Use `.env` file- ✅ **Partner network**: Manage partner relationships- Scan QR code with Expo Go app on physical device
+
+- Enable hot reload
+
+- Verbose error messages- ✅ **Analytics dashboard**: Volume, value, performance metrics
+
+
+
+------
+
+
+
+## 🐛 Known Issues### 🔍 For Consumers (Web App)
+
+
+
+### 1. Web Build Failure (Non-Critical)**Mobile Development:**
+
+
+
+**Issue**: Next.js static site generation fails on 404 page  #### Product Traceability
+
+**Error**: React error #31 during pre-rendering  
+
+**Impact**: Cannot create production build  - ✅ **QR code scanning**: Scan product QR codes## 📁 Workspace Structure- Uses React Native 0.81.5 with Expo SDK 54
+
+**Workaround**: Use `npm run dev` for development  
+
+**Status**: Under investigation - Next.js 15 + React 18 compatibility- ✅ **Farm journey**: View complete production history
+
+
+
+### 2. Mobile Test Failures (Minor)- ✅ **Farmer profiles**: Learn about the farmer- React 18.2.0 for compatibility
+
+
+
+**Issue**: 2/6 tests failing  - ✅ **Photo timeline**: See production photos
+
+**Missing**: expo-secure-store and netinfo mocks  
+
+**Impact**: Low - core functionality tested  - ✅ **Treatment details**: Fertilizers, pesticides used```- Offline-first with AsyncStorage
+
+**Status**: Low priority - will add mocks when needed
+
+
+
+---
 
 ### 🛠️ Platform FeaturesJANI/- Comprehensive Jest tests with React Native Testing Library
 
+## 🤝 Contributing
 
+
+
+### Development Standards
 
 #### Authentication & Authorization├── apps/
 
-- ✅ **JWT-based auth**: Secure token authentication
+1. **Code Style**: Follow ESLint rules (auto-fix with `npm run lint:fix`)
 
-- ✅ **Role-based access**: Farmer, Exporter, Admin roles│   ├── mobile/              # React Native + Expo mobile app## 🧪 Testing & Quality
+2. **TypeScript**: Strict mode enabled, no `any` types- ✅ **JWT-based auth**: Secure token authentication
+
+3. **Commits**: Conventional commits (feat:, fix:, docs:, etc.)
+
+4. **Testing**: Write tests for new features- ✅ **Role-based access**: Farmer, Exporter, Admin roles│   ├── mobile/              # React Native + Expo mobile app## 🧪 Testing & Quality
+
+5. **Documentation**: Update READMEs for API changes
 
 - ✅ **Password hashing**: bcrypt/scrypt encryption
 
+### Commit Message Format
+
 - ✅ **Session management**: Redis-backed sessions│   │   ├── src/
 
+```
+
+type(scope): subject
 
 
-#### Media Management│   │   │   ├── components/  # Reusable UI components### Run All Tests
 
-- ✅ **S3-compatible storage**: MinIO for images/files
+body#### Media Management│   │   │   ├── components/  # Reusable UI components### Run All Tests
+
+
+
+footer- ✅ **S3-compatible storage**: MinIO for images/files
+
+```
 
 - ✅ **Signed URLs**: Secure temporary access│   │   │   ├── features/    # Feature modules (auth, farms, etc.)
 
+**Types**: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
+
 - ✅ **Image optimization**: Automatic resizing (planned)
 
-- ✅ **CDN support**: Ready for CloudFront integration│   │   │   ├── lib/         # API clients, utilities```bash
+**Example**:
+
+```- ✅ **CDN support**: Ready for CloudFront integration│   │   │   ├── lib/         # API clients, utilities```bash
+
+feat(mobile): add QR code scanner for product lookup
 
 
 
-#### Data Synchronization│   │   │   ├── navigation/  # React Navigation setup# Full CI pipeline (lint + typecheck + build + test)
+- Implement camera permissions
+
+- Add QR code detection#### Data Synchronization│   │   │   ├── navigation/  # React Navigation setup# Full CI pipeline (lint + typecheck + build + test)
+
+- Navigate to trace screen on scan
 
 - ✅ **Offline queue**: Local queue for offline actions
 
-- ✅ **Background sync**: Automatic sync when online│   │   │   ├── stores/      # Zustand state managementnpm run ci
+Closes #123
 
-- ✅ **Conflict resolution**: Last-write-wins strategy
-
-- ✅ **Sync status**: Real-time sync indicators│   │   │   └── types/       # TypeScript definitions
+```- ✅ **Background sync**: Automatic sync when online│   │   │   ├── stores/      # Zustand state managementnpm run ci
 
 
 
----│   │   ├── package.json# Web CI only
+### Pull Request Process- ✅ **Conflict resolution**: Last-write-wins strategy
 
 
 
-## 📡 API Reference│   │   └── README.mdnpm run ci:web
+1. Fork the repository- ✅ **Sync status**: Real-time sync indicators│   │   │   └── types/       # TypeScript definitions
+
+2. Create a feature branch (`git checkout -b feat/amazing-feature`)
+
+3. Commit changes (`git commit -m 'feat: add amazing feature'`)
+
+4. Push to branch (`git push origin feat/amazing-feature`)
+
+5. Open a Pull Request---│   │   ├── package.json# Web CI only
+
+6. Ensure CI passes
+
+7. Request review from maintainers
 
 
 
-### Auth Service (Port 4000)│   │
+---## 📡 API Reference│   │   └── README.md
 
 
 
-**Base URL**: `http://localhost:4000`│   └── web/                 # Next.js web application# Mobile CI only
+## 📄 License
 
 
 
-#### Authentication Endpoints│       ├── src/npm run ci:mobile
+This project is proprietary software. All rights reserved.### Auth Service (Port 4000)│   │
 
 
 
-```bash│       │   ├── app/         # App router pages```
+© 2025 JANI Platform. Unauthorized copying, distribution, or use is strictly prohibited.
+
+
+
+---**Base URL**: `http://localhost:4000`│   └── web/                 # Next.js web application# Mobile CI only
+
+
+
+## 👥 Team
+
+
+
+For questions or support, contact the development team.#### Authentication Endpoints│       ├── src/
+
+
+
+---
+
+
+
+**Built with ❤️ for sustainable agriculture**```bash│       │   ├── app/         # App router pages```
+
 
 POST   /auth/signup          # Register new user
 
@@ -1054,11 +1637,11 @@ All services expose `/health`:npm run ci                    # Run full CI pipeli
 
 
 
-```bashnpm run ci:web                # Run web CI only│         ┌───────────────┼───────────────┬──────────┐           │
+```bash                # Run web CI only│         ┌───────────────┼───────────────┬──────────┐           │
 
 # Check auth service
 
-curl http://localhost:4000/healthnpm run ci:mobile             # Run mobile CI only│         │               │               │          │           │
+curl http://localhost:4000/health             # Run mobile CI only│         │               │               │          │           │
 
 
 

@@ -1,4 +1,4 @@
-# JANI Web Application# JANI Web# JANI Web Application
+# JANI Web Application# JANI Web Application# JANI Web# JANI Web Application
 
 
 
@@ -6,7 +6,7 @@
 
 
 
-A modern Next.js web application providing marketing pages, admin dashboards, and product traceability for the JANI platform.Next.js 15 application that combines the public marketing site with lightweight dashboard prototypes used to exercise the platform services.## Overview
+The JANI Web Application provides a modern web interface for marketing, admin dashboards, exporter portals, and consumer-facing product traceability features.> **Next.js web platform for marketing, dashboards, and consumer traceability**
 
 
 
@@ -14,547 +14,1104 @@ A modern Next.js web application providing marketing pages, admin dashboards, an
 
 
 
-- **Framework**: Next.js 15.4.7 (App Router)## Feature OverviewThe **JANI Web Application** is a modern Next.js-based web platform that provides marketing presence, dashboard interfaces, and administrative tools for the JANI agricultural traceability ecosystem. Built with Next.js 15, React 19, and Tailwind CSS 4, it offers a fast, responsive, and SEO-optimized experience for farmers, exporters, and consumers.
+- **Framework**: Next.js 15.4.7 (App Router)A modern Next.js web application providing marketing pages, admin dashboards, and product traceability for the JANI platform.Next.js 15 application that combines the public marketing site with lightweight dashboard prototypes used to exercise the platform services.## Overview
 
 - **UI Library**: React 18.2.0
 
-- **Styling**: Tailwind CSS 4- Landing page (`src/app/page.tsx`) showcases the JANI story with animated sections and custom components under `src/components`.
+- **Styling**: Tailwind CSS 4
 
 - **Animations**: Framer Motion + GSAP
 
-- **Language**: TypeScript 5.x- Authentication flow (`/login`) posts to `/api/auth/login`, which forwards credentials to `services/auth` and stores the issued token in an HTTP-only cookie.## Architecture
+- **Language**: TypeScript 5## 📋 Overview
 
 - **Package Manager**: npm
 
-- Middleware (`src/middleware.ts`) protects `/dashboard`, `/admin`, and `/exporter` routes by checking for the `token`/`auth-token` cookie and verifying it with the auth service when possible.
 
-## ✨ Features
 
-- Farmer dashboard (`/dashboard/farms`) calls the user service (`/farms`, `/farms/search`, etc.) from the browser. It currently expects the JWT to be available in `localStorage` (copy the token returned by the auth service if you need to demo the flow).### Technology Stack
+## ✨ Key Features
+
+- **Framework**: Next.js 15.4.7 (App Router)## Feature OverviewThe **JANI Web Application** is a modern Next.js-based web platform that provides marketing presence, dashboard interfaces, and administrative tools for the JANI agricultural traceability ecosystem. Built with Next.js 15, React 19, and Tailwind CSS 4, it offers a fast, responsive, and SEO-optimized experience for farmers, exporters, and consumers.
 
 ### 🌐 Marketing Site
 
-- Landing page with hero section- Exporter and consumer trace views render curated mock data (see `src/app/exporter` and `src/app/trace`) to demonstrate UI states without depending on live services.
+- Landing page with hero section- **UI Library**: React 18.2.0
 
 - Supply chain visualization
 
-- Business value proposition- Admin prototypes (`/admin`) access service health endpoints from server actions (`src/app/admin/actions.ts`), requiring a cookie token. Use the `/api/auth/direct-login` route with the documented admin credentials for quick access.- **Framework**: Next.js 15.4.7 (App Router)
+- Business value propositions- **Styling**: Tailwind CSS 4- Landing page (`src/app/page.tsx`) showcases the JANI story with animated sections and custom components under `src/components`.
 
-- Team section
+- Team showcase
 
-- Interactive animations- **React**: React 19.1.0 with Server Components
+- Interactive animations- **Animations**: Framer Motion + GSAP
 
+- Call-to-action sections
 
+- **Language**: TypeScript 5.x- Authentication flow (`/login`) posts to `/api/auth/login`, which forwards credentials to `services/auth` and stores the issued token in an HTTP-only cookie.## Architecture
 
-### 📊 Admin Dashboard## Technology Stack- **Styling**: Tailwind CSS 4.0 (with PostCSS)
+### 📊 Admin Dashboard
 
-- User management
+- User management (CRUD)- **Package Manager**: npm
 
-- Farm analytics- Next.js 15 (App Router) + React 19- **Animations**: Framer Motion 12.x + GSAP 3.x
+- Farm management
+
+- Exporter management- Middleware (`src/middleware.ts`) protects `/dashboard`, `/admin`, and `/exporter` routes by checking for the `token`/`auth-token` cookie and verifying it with the auth service when possible.
+
+- Traceability monitoring
+
+- Analytics and reports## ✨ Features
+
+- System settings
+
+- Farmer dashboard (`/dashboard/farms`) calls the user service (`/farms`, `/farms/search`, etc.) from the browser. It currently expects the JWT to be available in `localStorage` (copy the token returned by the auth service if you need to demo the flow).### Technology Stack
+
+### 👨‍💼 Exporter Portal
+
+- Lot management### 🌐 Marketing Site
 
 - Order tracking
 
+- Export documentation- Landing page with hero section- Exporter and consumer trace views render curated mock data (see `src/app/exporter` and `src/app/trace`) to demonstrate UI states without depending on live services.
+
+- Performance analytics
+
+- QR code generation- Supply chain visualization
+
+
+
+### 🔍 Consumer Traceability- Business value proposition- Admin prototypes (`/admin`) access service health endpoints from server actions (`src/app/admin/actions.ts`), requiring a cookie token. Use the `/api/auth/direct-login` route with the documented admin credentials for quick access.- **Framework**: Next.js 15.4.7 (App Router)
+
+- QR code scan results
+
+- Product journey visualization- Team section
+
+- Farm information display
+
+- Event timeline- Interactive animations- **React**: React 19.1.0 with Server Components
+
+- Photo galleries
+
+- Sustainability metrics
+
+
+
+### 🎨 UI/UX### 📊 Admin Dashboard## Technology Stack- **Styling**: Tailwind CSS 4.0 (with PostCSS)
+
+- Responsive design (mobile-friendly)
+
+- Dark/light mode support- User management
+
+- Smooth animations
+
+- Neumorphic design elements- Farm analytics- Next.js 15 (App Router) + React 19- **Animations**: Framer Motion 12.x + GSAP 3.x
+
+- Interactive data visualizations
+
+- Order tracking
+
+## 🚀 Quick Start
+
 - Traceability monitoring- Tailwind CSS 4 + custom CSS modules- **Authentication**: Kinde Auth (OAuth 2.0 / OIDC)
+
+### Prerequisites
 
 - Settings management
 
-- Server Actions, Route Handlers, Middleware- **3D Graphics**: Three.js 0.180.0
+- **Node.js** 20.18.3+
 
-### 🔍 Consumer Traceability
+- **npm** 11.6.2+- Server Actions, Route Handlers, Middleware- **3D Graphics**: Three.js 0.180.0
 
-- QR code scanning- TypeScript 5 (strict), ESLint, and Prettier- **API Integration**: Axios + JWT
 
-- Product journey visualization
+
+### Installation### 🔍 Consumer Traceability
+
+
+
+```bash- QR code scanning- TypeScript 5 (strict), ESLint, and Prettier- **API Integration**: Axios + JWT
+
+cd apps/web
+
+npm install- Product journey visualization
+
+```
 
 - Farm information- **Form Validation**: Zod 3.x
 
+### Development
+
 - Photo timeline
 
-- Sustainability metrics## Project Layout- **TypeScript**: TypeScript 5.x (strict mode)
-
-
-
-### 👨‍💼 Exporter Dashboard```
-
-- Lot management
-
-- Order trackingapps/web/### Key Features
-
-- Export documentation
-
-- Analytics├── next.config.ts
-
-
-
-## 🚀 Quick Start├── package.json#### 1. **Marketing Website**
-
-
-
-### Prerequisites├── public/                 # Static marketing assets
-
-
-
-- Node.js 20.18.3+├── src/- **Landing Page**: Hero section with 3D animations
-
-- npm 11.6.2+
-
-│   ├── app/                # App Router routes (landing, login, dashboards, APIs)- **Features Showcase**: Product capabilities and benefits
-
-### Installation
-
-│   ├── components/         # Marketing + dashboard components- **Pricing Plans**: Subscription tiers for farmers and exporters
-
 ```bash
 
-cd apps/web│   ├── libs/               # Shared types- **About Us**: Company information and mission
+# Start development server- Sustainability metrics## Project Layout- **TypeScript**: TypeScript 5.x (strict mode)
 
-npm install
-
-```│   └── utils/              # Helpers reused across routes- **Contact**: Contact form with email integration
+npm run dev
 
 
 
-### Development└── tsconfig.json- **Blog**: Content management for agricultural insights
+# Access at http://localhost:3000
+
+```### 👨‍💼 Exporter Dashboard```
 
 
 
-```bash```- **Testimonials**: Customer success stories
-
-# Start development server
-
-npm run dev- **FAQ**: Common questions and answers
+### Production- Lot management
 
 
 
-# Access at http://localhost:3000## Environment Configuration
+```bash- Order trackingapps/web/### Key Features
 
-```
+# Build for production
 
-Copy `.env.example` to `.env.local` and adjust as needed.#### 2. **Dashboard Application**
-
-### Production Build
+npm run build- Export documentation
 
 
 
-```bash
+# Start production server- Analytics├── next.config.ts
 
-# Build for production| Variable | Purpose | Default |- **Farmer Dashboard**: Farm analytics, activity tracking, yield reports
+npm start
 
-npm run build
 
-| -------- | ------- | ------- |- **Exporter Dashboard**: Traceability verification, batch tracking, compliance
 
-# Start production server
+# Production server runs on port 3000
 
-npm start| `AUTH_SERVICE_URL` | Base URL for the auth microservice used by API routes | `http://localhost:4000` |- **Admin Dashboard**: User management, system analytics, configuration
+```## 🚀 Quick Start├── package.json#### 1. **Marketing Website**
 
-```
 
-| `NEXT_PUBLIC_USER_URL` | Browser-facing base URL for the user service (`/farms` APIs) | `http://localhost:5000` |- **Real-time Updates**: Live data synchronization
-
-**Note**: Build currently has known issues with SSG (static site generation) on 404 pages. Use development mode for active development.
-
-| `JWT_SECRET` | Required by `/api/guest` for issuing demo tokens | _(none)_ |- **Data Visualization**: Charts, graphs, and metrics
 
 ## 📁 Project Structure
 
-| `NEXT_PUBLIC_APP_URL` | Optional public origin (used by some links) | `http://localhost:3000` |- **Report Generation**: PDF export for compliance
 
-```
+
+```### Prerequisites├── public/                 # Static marketing assets
 
 apps/web/
 
 ├── src/
 
-│   ├── app/                    # Next.js App RouterIf you are running everything through Docker Compose, the defaults align with the service hostnames. When accessing services from the host, use `http://localhost:<port>`.#### 3. **Traceability Portal**
+│   ├── app/                    # Next.js App Router
 
-│   │   ├── page.tsx            # Landing page
+│   │   ├── page.tsx            # Landing page- Node.js 20.18.3+├── src/- **Landing Page**: Hero section with 3D animations
 
 │   │   ├── layout.tsx          # Root layout
 
-│   │   ├── globals.css         # Global styles
+│   │   ├── globals.css         # Global styles- npm 11.6.2+
 
-│   │   ├── admin/              # Admin dashboard## Local Development- **QR Code Scanner**: Scan product QR codes for traceability
+│   │   │
 
-│   │   │   ├── page.tsx
+│   │   ├── admin/              # Admin dashboard│   ├── app/                # App Router routes (landing, login, dashboards, APIs)- **Features Showcase**: Product capabilities and benefits
 
-│   │   │   ├── layout.tsx```bash- **Product Journey**: Visual timeline from farm to consumer
+│   │   │   ├── page.tsx        # Dashboard home
 
-│   │   │   ├── users/
+│   │   │   ├── layout.tsx      # Admin layout### Installation
 
-│   │   │   ├── farms/cd apps/web- **Certificate Verification**: Validate organic/quality certifications
+│   │   │   ├── users/          # User management
 
-│   │   │   ├── exporters/
+│   │   │   ├── farms/          # Farm management│   ├── components/         # Marketing + dashboard components- **Pricing Plans**: Subscription tiers for farmers and exporters
 
-│   │   │   ├── analytics/npm install- **Farm Information**: View farm details and practices
+│   │   │   ├── exporters/      # Exporter management
 
-│   │   │   ├── traceability/
+│   │   │   ├── analytics/      # Analytics```bash
 
-│   │   │   └── settings/npm run dev- **Event History**: Complete audit trail of product handling
+│   │   │   ├── traceability/   # Traceability monitoring
 
-│   │   ├── exporter/           # Exporter dashboard
+│   │   │   └── settings/       # System settingscd apps/web│   ├── libs/               # Shared types- **About Us**: Company information and mission
 
-│   │   │   └── lots/```- **Share Traceability**: Social media sharing capabilities
+│   │   │
+
+│   │   ├── exporter/           # Exporter portalnpm install
+
+│   │   │   └── lots/           # Lot management
+
+│   │   │```│   └── utils/              # Helpers reused across routes- **Contact**: Contact form with email integration
 
 │   │   ├── dashboard/          # User dashboard
 
-│   │   │   └── farms/
+│   │   │   └── farms/          # Farm overview
 
-│   │   ├── login/              # Login page
+│   │   │
 
-│   │   └── trace/              # Traceability pagesThe dev server listens on `http://localhost:3000`. Run `docker compose up -d auth user` from the repo root to make the backend APIs available.#### 4. **Exporter Tools**
+│   │   ├── login/              # Login page### Development└── tsconfig.json- **Blog**: Content management for agricultural insights
 
-│   │       └── [id]/
+│   │   └── trace/              # Traceability pages
+
+│   │       └── [id]/           # Dynamic lot tracing
 
 │   │
 
-│   ├── components/             # React components
+│   ├── components/             # React components```bash```- **Testimonials**: Customer success stories
 
-│   │   ├── NavBar.tsx### Available Scripts- **Batch Management**: Create and manage export batches
+│   │   ├── NavBar.tsx
 
-│   │   ├── Footer.tsx
+│   │   ├── Footer.tsx# Start development server
 
-│   │   ├── Button.tsx- `npm run dev` – start Next.js in development mode- **Compliance Tracking**: Monitor regulatory requirements
+│   │   ├── Button.tsx
 
-│   │   ├── HeroSection.tsx
+│   │   ├── HeroSection.tsxnpm run dev- **FAQ**: Common questions and answers
 
-│   │   ├── SupplyChainSection.tsx- `npm run build` – production build- **Documentation**: Generate export documents (phytosanitary, etc.)
+│   │   ├── SupplyChainSection.tsx
 
 │   │   ├── BusinessSection.tsx
 
-│   │   ├── TeamSection.tsx- `npm start` – serve the built app- **Shipment Tracking**: Real-time shipment status
+│   │   ├── TeamSection.tsx
 
-│   │   ├── Chatbot.tsx
+│   │   ├── Chatbot.tsx# Access at http://localhost:3000## Environment Configuration
 
-│   │   └── NeumorphicEffect.tsx- `npm run lint` – ESLint- **Quality Reports**: Aggregate quality data
+│   │   └── NeumorphicEffect.tsx
+
+│   │```
+
+│   ├── utils/                  # Utility functions
+
+│   │   └── ...Copy `.env.example` to `.env.local` and adjust as needed.#### 2. **Dashboard Application**
 
 │   │
 
-│   ├── utils/                  # Utility functions- `npm run typecheck` – TypeScript project references- **Invoice Management**: Financial tracking
+│   └── middleware.ts           # Next.js middleware### Production Build
 
-│   │   └── ...
-
-│   │
-
-│   └── middleware.ts           # Next.js middleware
-
-│## Data Flow Reference## Project Structure
+│
 
 ├── public/
 
-│   ├── images/| Route | Source | Notes |
+│   ├── images/                 # Static images
 
-│   └── videos/
+│   └── videos/                 # Static videos```bash
 
-│| ----- | ------ | ----- |```
+│
 
-├── next.config.ts              # Next.js configuration
+├── next.config.ts              # Next.js configuration# Build for production| Variable | Purpose | Default |- **Farmer Dashboard**: Farm analytics, activity tracking, yield reports
 
-├── tailwind.config.js          # Tailwind configuration| `/api/auth/login` | `AUTH_SERVICE_URL` (`/auth/login`) | Sets `token` cookie on success |apps/web/
+├── tailwind.config.js          # Tailwind configuration
 
-├── tsconfig.json               # TypeScript configuration
+├── tsconfig.json               # TypeScript configurationnpm run build
 
-└── package.json| `/api/auth/verify` | `AUTH_SERVICE_URL` (`/auth/verify`) | Used by middleware for token checks |├── next.config.ts               # Next.js configuration
+└── package.json
+
+```| -------- | ------- | ------- |- **Exporter Dashboard**: Traceability verification, batch tracking, compliance
+
+
+
+## 🎯 Key Pages# Start production server
+
+
+
+### Landing Page (`/`)npm start| `AUTH_SERVICE_URL` | Base URL for the auth microservice used by API routes | `http://localhost:4000` |- **Admin Dashboard**: User management, system analytics, configuration
+
+
+
+Features:```
+
+- Animated hero section
+
+- Supply chain visualization| `NEXT_PUBLIC_USER_URL` | Browser-facing base URL for the user service (`/farms` APIs) | `http://localhost:5000` |- **Real-time Updates**: Live data synchronization
+
+- Business value cards
+
+- Interactive carousel**Note**: Build currently has known issues with SSG (static site generation) on 404 pages. Use development mode for active development.
+
+- Team member showcase
+
+- Newsletter signup| `JWT_SECRET` | Required by `/api/guest` for issuing demo tokens | _(none)_ |- **Data Visualization**: Charts, graphs, and metrics
+
+- Contact form
+
+## 📁 Project Structure
+
+```typescript
+
+import HeroSection from '@/components/HeroSection';| `NEXT_PUBLIC_APP_URL` | Optional public origin (used by some links) | `http://localhost:3000` |- **Report Generation**: PDF export for compliance
+
+import SupplyChainSection from '@/components/SupplyChainSection';
+
+import BusinessSection from '@/components/BusinessSection';```
+
+
+
+export default function Home() {apps/web/
+
+  return (
+
+    <main>├── src/
+
+      <HeroSection />
+
+      <SupplyChainSection />│   ├── app/                    # Next.js App RouterIf you are running everything through Docker Compose, the defaults align with the service hostnames. When accessing services from the host, use `http://localhost:<port>`.#### 3. **Traceability Portal**
+
+      <BusinessSection />
+
+    </main>│   │   ├── page.tsx            # Landing page
+
+  );
+
+}│   │   ├── layout.tsx          # Root layout
 
 ```
 
-| `/dashboard/farms` | `NEXT_PUBLIC_USER_URL` (`/farms`, `/farms/:id`, `/farms/link`) | Requires `Bearer` token in local storage |├── package.json                 # Dependencies
-
-## 🎨 Key Pages
-
-| `/exporter/*` | Local mock data | No service dependency |├── tsconfig.json                # TypeScript config
-
-### Landing Page (`/`)
-
-- Hero section with animations| `/trace/*` | Local mock data | Demonstration of consumer experience |├── tailwind.config.ts           # Tailwind CSS config
-
-- Supply chain visualization
-
-- Business value propositions| `/admin` | Auth + traceability service health endpoints | Requests originate from server actions |├── postcss.config.mjs           # PostCSS config
-
-- Interactive carousel
-
-- Team showcase├── eslint.config.mjs            # ESLint configuration
-
-- Call-to-action sections
-
-## Troubleshooting├── .env.local                   # Environment variables
+│   │   ├── globals.css         # Global styles
 
 ### Admin Dashboard (`/admin`)
 
+│   │   ├── admin/              # Admin dashboard## Local Development- **QR Code Scanner**: Scan product QR codes for traceability
+
+#### Dashboard Home
+
+- Platform statistics│   │   │   ├── page.tsx
+
+- Recent activities
+
+- User growth charts│   │   │   ├── layout.tsx```bash- **Product Journey**: Visual timeline from farm to consumer
+
+- System health
+
+│   │   │   ├── users/
+
+#### Users Management (`/admin/users`)
+
+- List all users│   │   │   ├── farms/cd apps/web- **Certificate Verification**: Validate organic/quality certifications
+
+- Create/edit/delete users
+
+- Role assignment│   │   │   ├── exporters/
+
+- Activity logs
+
+│   │   │   ├── analytics/npm install- **Farm Information**: View farm details and practices
+
+#### Farms Management (`/admin/farms`)
+
+- Farm directory│   │   │   ├── traceability/
+
+- Farm details
+
+- Member management│   │   │   └── settings/npm run dev- **Event History**: Complete audit trail of product handling
+
+- Plot overview
+
+│   │   ├── exporter/           # Exporter dashboard
+
+#### Exporters Management (`/admin/exporters`)
+
+- Exporter profiles│   │   │   └── lots/```- **Share Traceability**: Social media sharing capabilities
+
+- Export history
+
+- Documentation│   │   ├── dashboard/          # User dashboard
+
+- Compliance tracking
+
+│   │   │   └── farms/
+
+#### Traceability (`/admin/traceability`)
+
+- Event monitoring│   │   ├── login/              # Login page
+
+- Lot tracking
+
+- QR code management│   │   └── trace/              # Traceability pagesThe dev server listens on `http://localhost:3000`. Run `docker compose up -d auth user` from the repo root to make the backend APIs available.#### 4. **Exporter Tools**
+
+- Audit trails
+
+│   │       └── [id]/
+
+#### Analytics (`/admin/analytics`)
+
+- Platform metrics│   │
+
+- User engagement
+
+- Farm productivity│   ├── components/             # React components
+
+- Export volumes
+
+│   │   ├── NavBar.tsx### Available Scripts- **Batch Management**: Create and manage export batches
+
+### Exporter Portal (`/exporter`)
+
+│   │   ├── Footer.tsx
+
+#### Lots Management (`/exporter/lots`)
+
+- Create and manage lots│   │   ├── Button.tsx- `npm run dev` – start Next.js in development mode- **Compliance Tracking**: Monitor regulatory requirements
+
+- Track inventory
+
+- Generate QR codes│   │   ├── HeroSection.tsx
+
+- Export documentation
+
+- Shipping management│   │   ├── SupplyChainSection.tsx- `npm run build` – production build- **Documentation**: Generate export documents (phytosanitary, etc.)
+
+
+
+### Product Traceability (`/trace/[id]`)│   │   ├── BusinessSection.tsx
+
+
+
+Consumer-facing page showing:│   │   ├── TeamSection.tsx- `npm start` – serve the built app- **Shipment Tracking**: Real-time shipment status
+
+- Product information
+
+- Farm origin│   │   ├── Chatbot.tsx
+
+- Event timeline
+
+- Photo gallery│   │   └── NeumorphicEffect.tsx- `npm run lint` – ESLint- **Quality Reports**: Aggregate quality data
+
+- Certifications
+
+- Sustainability data│   │
+
+
+
+```typescript│   ├── utils/                  # Utility functions- `npm run typecheck` – TypeScript project references- **Invoice Management**: Financial tracking
+
+// app/trace/[id]/page.tsx
+
+export default async function TracePage({ params }: { params: { id: string } }) {│   │   └── ...
+
+  const events = await getEventsByLot(params.id);
+
+  │   │
+
+  return (
+
+    <div>│   └── middleware.ts           # Next.js middleware
+
+      <ProductHeader lotId={params.id} />
+
+      <EventTimeline events={events} />│## Data Flow Reference## Project Structure
+
+      <PhotoGallery events={events} />
+
+    </div>├── public/
+
+  );
+
+}│   ├── images/| Route | Source | Notes |
+
+```
+
+│   └── videos/
+
+## 🎨 Components
+
+│| ----- | ------ | ----- |```
+
+### Custom Components
+
+├── next.config.ts              # Next.js configuration
+
+#### Button
+
+```tsx├── tailwind.config.js          # Tailwind configuration| `/api/auth/login` | `AUTH_SERVICE_URL` (`/auth/login`) | Sets `token` cookie on success |apps/web/
+
+import Button from '@/components/Button';
+
+├── tsconfig.json               # TypeScript configuration
+
+<Button
+
+  text="Get Started"└── package.json| `/api/auth/verify` | `AUTH_SERVICE_URL` (`/auth/verify`) | Used by middleware for token checks |├── next.config.ts               # Next.js configuration
+
+  border="#8b4513"
+
+  backgroundHover="#8b4513"```
+
+  onClick={() => console.log('Clicked')}
+
+/>| `/dashboard/farms` | `NEXT_PUBLIC_USER_URL` (`/farms`, `/farms/:id`, `/farms/link`) | Requires `Bearer` token in local storage |├── package.json                 # Dependencies
+
+```
+
+## 🎨 Key Pages
+
+#### NeumorphicEffect
+
+```tsx| `/exporter/*` | Local mock data | No service dependency |├── tsconfig.json                # TypeScript config
+
+import NeumorphicEffect from '@/components/NeumorphicEffect';
+
+### Landing Page (`/`)
+
+<NeumorphicEffect pressEffect={true}>
+
+  <div className="p-6">- Hero section with animations| `/trace/*` | Local mock data | Demonstration of consumer experience |├── tailwind.config.ts           # Tailwind CSS config
+
+    <h2>Card Content</h2>
+
+  </div>- Supply chain visualization
+
+</NeumorphicEffect>
+
+```- Business value propositions| `/admin` | Auth + traceability service health endpoints | Requests originate from server actions |├── postcss.config.mjs           # PostCSS config
+
+
+
+#### NavBar- Interactive carousel
+
+```tsx
+
+import NavBar from '@/components/NavBar';- Team showcase├── eslint.config.mjs            # ESLint configuration
+
+
+
+<NavBar />- Call-to-action sections
+
+```
+
+## Troubleshooting├── .env.local                   # Environment variables
+
+## 🎨 Styling
+
+### Admin Dashboard (`/admin`)
+
+### Tailwind CSS
+
 - **Dashboard**: Overview statistics- **Redirected back to `/login`** – confirm a `token` or `auth-token` cookie exists. Use the direct admin login (`POST /api/auth/direct-login`) or the guest login (`GET /api/guest`) while developing.├── public/                      # Static assets
 
-- **Users**: User management
+```tsx
 
-- **Farms**: Farm management- **Farms dashboard shows “Please login first.”** – the page looks for `localStorage.token`. Copy the JWT from the cookie (browser dev tools) into local storage or adapt the login flow to mirror the mobile app storage.│   ├── images/                  # Image assets
+<div className="flex items-center justify-center min-h-screen bg-gray-100">- **Users**: User management
 
-- **Exporters**: Exporter management
+  <h1 className="text-4xl font-bold text-green-600">
+
+    JANI Platform- **Farms**: Farm management- **Farms dashboard shows “Please login first.”** – the page looks for `localStorage.token`. Copy the JWT from the cookie (browser dev tools) into local storage or adapt the login flow to mirror the mobile app storage.│   ├── images/                  # Image assets
+
+  </h1>
+
+</div>- **Exporters**: Exporter management
+
+```
 
 - **Traceability**: Event tracking- **CORS/404 errors when calling services** – verify the services are running and reachable at the configured URLs. In Docker, use service hostnames (e.g., `http://jani-user:5000`).│   │   ├── logo.svg
 
+### Custom Animations
+
 - **Analytics**: Performance metrics
 
-- **Settings**: System configuration- **Type errors during build** – run `npm run lint` and `npm run typecheck` to surface actionable issues.│   │   ├── hero-bg.jpg
+#### Framer Motion
+
+```tsx- **Settings**: System configuration- **Type errors during build** – run `npm run lint` and `npm run typecheck` to surface actionable issues.│   │   ├── hero-bg.jpg
+
+import { motion } from 'framer-motion';
 
 
 
-### Exporter Portal (`/exporter`)│   │   └── ...
+<motion.div
 
-- Lot management│   └── videos/                  # Video assets
+  initial={{ opacity: 0, y: 20 }}### Exporter Portal (`/exporter`)│   │   └── ...
 
-- Export orders│       └── demo.mp4
+  animate={{ opacity: 1, y: 0 }}
 
-- Traceability events├── libs/                        # Shared libraries
+  transition={{ duration: 0.5 }}- Lot management│   └── videos/                  # Video assets
 
-│   └── types.ts                 # Type definitions
+>
 
-### Product Traceability (`/trace/[id]`)└── src/
+  <Content />- Export orders│       └── demo.mp4
+
+</motion.div>
+
+```- Traceability events├── libs/                        # Shared libraries
+
+
+
+#### GSAP│   └── types.ts                 # Type definitions
+
+```tsx
+
+import { useEffect, useRef } from 'react';### Product Traceability (`/trace/[id]`)└── src/
+
+import { gsap } from 'gsap';
 
 - QR code result page    ├── middleware.ts            # Next.js middleware (auth, etc.)
 
-- Product journey    ├── app/                     # App Router pages
+export function AnimatedSection() {
 
-- Farm details    │   ├── layout.tsx           # Root layout
+  const ref = useRef(null);- Product journey    ├── app/                     # App Router pages
 
-- Event timeline    │   ├── page.tsx             # Landing page
+  
 
-    │   ├── globals.css          # Global styles
+  useEffect(() => {- Farm details    │   ├── layout.tsx           # Root layout
 
-## 🎯 Components    │   ├── api/                 # API routes
+    gsap.fromTo(ref.current,
 
-    │   │   ├── auth/
+      { opacity: 0, y: 50 },- Event timeline    │   ├── page.tsx             # Landing page
+
+      { opacity: 1, y: 0, duration: 1 }
+
+    );    │   ├── globals.css          # Global styles
+
+  }, []);
+
+  ## 🎯 Components    │   ├── api/                 # API routes
+
+  return <div ref={ref}>Content</div>;
+
+}    │   │   ├── auth/
+
+```
 
 ### Custom Components    │   │   ├── farms/
 
+## 🔐 Authentication
+
     │   │   └── traceability/
+
+Currently using custom JWT-based authentication:
 
 **Button:**    │   ├── login/               # Login page
 
-```tsx    │   │   └── page.tsx
+```typescript
 
-import Button from '@/components/Button';    │   ├── dashboard/           # Dashboard pages
+// middleware.ts```tsx    │   │   └── page.tsx
 
-    │   │   ├── layout.tsx       # Dashboard layout
+import { NextResponse } from 'next/server';
 
-<Button    │   │   ├── page.tsx         # Dashboard home
+import type { NextRequest } from 'next/server';import Button from '@/components/Button';    │   ├── dashboard/           # Dashboard pages
 
-  text="Get Started"    │   │   ├── farms/
 
-  border="#8b4513"    │   │   ├── analytics/
 
-  backgroundHover="#8b4513"    │   │   └── settings/
+export function middleware(request: NextRequest) {    │   │   ├── layout.tsx       # Dashboard layout
+
+  const token = request.cookies.get('token')?.value;
+
+  <Button    │   │   ├── page.tsx         # Dashboard home
+
+  if (!token && request.nextUrl.pathname.startsWith('/admin')) {
+
+    return NextResponse.redirect(new URL('/login', request.url));  text="Get Started"    │   │   ├── farms/
+
+  }
+
+    border="#8b4513"    │   │   ├── analytics/
+
+  return NextResponse.next();
+
+}  backgroundHover="#8b4513"    │   │   └── settings/
+
+```
 
 />    │   ├── trace/               # Traceability portal
 
+## 📡 API Integration
+
 ```    │   │   ├── [code]/          # Dynamic product page
+
+### Environment Variables
 
     │   │   └── scanner/         # QR scanner page
 
+Create a `.env.local` file:
+
 **NeumorphicEffect:**    │   └── exporter/            # Exporter section
 
-```tsx    │       ├── layout.tsx
+```bash
 
-import NeumorphicEffect from '@/components/NeumorphicEffect';    │       ├── page.tsx
+# API Endpoints```tsx    │       ├── layout.tsx
+
+NEXT_PUBLIC_AUTH_API=http://localhost:4000
+
+NEXT_PUBLIC_TRACEABILITY_API=http://localhost:5002import NeumorphicEffect from '@/components/NeumorphicEffect';    │       ├── page.tsx
+
+NEXT_PUBLIC_OPERATIONS_API=http://localhost:5003
 
     │       ├── batches/
 
-<NeumorphicEffect pressEffect={true}>    │       ├── compliance/
+# Feature Flags
+
+NEXT_PUBLIC_ENABLE_CHAT=true<NeumorphicEffect pressEffect={true}>    │       ├── compliance/
+
+NEXT_PUBLIC_ENABLE_ANALYTICS=true
 
   <h1>Content</h1>    │       └── reports/
 
-</NeumorphicEffect>    ├── components/              # React components
+# Auth
+
+JWT_SECRET=your-secret-key-change-in-production</NeumorphicEffect>    ├── components/              # React components
+
+```
 
 ```    │   ├── layout/              # Layout components
 
+### API Calls
+
     │   │   ├── Header.tsx
 
-**NavBar:**    │   │   ├── Footer.tsx
+```typescript
 
-```tsx    │   │   ├── Sidebar.tsx
+// Example API client**NavBar:**    │   │   ├── Footer.tsx
 
-import NavBar from '@/components/NavBar';    │   │   └── Navigation.tsx
+export async function getFarms() {
 
-    │   ├── ui/                  # UI components
+  const response = await fetch(`${process.env.NEXT_PUBLIC_AUTH_API}/data/farms`, {```tsx    │   │   ├── Sidebar.tsx
 
-<NavBar />    │   │   ├── Button.tsx
+    headers: {
 
-```    │   │   ├── Card.tsx
+      'Authorization': `Bearer ${token}`,import NavBar from '@/components/NavBar';    │   │   └── Navigation.tsx
+
+      'Content-Type': 'application/json'
+
+    }    │   ├── ui/                  # UI components
+
+  });
+
+  <NavBar />    │   │   ├── Button.tsx
+
+  return response.json();
+
+}```    │   │   ├── Card.tsx
+
+```
 
     │   │   ├── Input.tsx
 
+## ⚙️ Configuration
+
 ## 🎨 Styling    │   │   ├── Modal.tsx
+
+### Next.js Config
 
     │   │   └── ...
 
-### Tailwind CSS 4    │   ├── dashboard/           # Dashboard components
+```typescript
+
+// next.config.ts### Tailwind CSS 4    │   ├── dashboard/           # Dashboard components
+
+import { NextConfig } from "next";
 
     │   │   ├── StatsCard.tsx
 
-```tsx    │   │   ├── Chart.tsx
+const nextConfig: NextConfig = {
 
-<div className="flex items-center justify-center min-h-screen bg-gray-100">    │   │   ├── FarmTable.tsx
+  reactStrictMode: true,```tsx    │   │   ├── Chart.tsx
 
-  <h1 className="text-4xl font-bold text-green-600">JANI</h1>    │   │   └── ...
+  experimental: {
 
-</div>    │   ├── marketing/           # Marketing components
+    optimizePackageImports: ['lucide-react', 'framer-motion'],<div className="flex items-center justify-center min-h-screen bg-gray-100">    │   │   ├── FarmTable.tsx
 
-```    │   │   ├── Hero.tsx
+  },
 
-    │   │   ├── Features.tsx
+  images: {  <h1 className="text-4xl font-bold text-green-600">JANI</h1>    │   │   └── ...
 
-### Custom Animations    │   │   ├── Pricing.tsx
+    remotePatterns: [
 
-    │   │   └── Testimonials.tsx
+      {</div>    │   ├── marketing/           # Marketing components
+
+        protocol: 'https',
+
+        hostname: 's3.example.com',```    │   │   ├── Hero.tsx
+
+      },
+
+    ],    │   │   ├── Features.tsx
+
+  },
+
+};### Custom Animations    │   │   ├── Pricing.tsx
+
+
+
+export default nextConfig;    │   │   └── Testimonials.tsx
+
+```
 
 ```tsx    │   └── trace/               # Traceability components
 
+### Tailwind Config
+
 import { motion } from 'framer-motion';    │       ├── ProductTimeline.tsx
 
-    │       ├── QRScanner.tsx
+```javascript
 
-<motion.div    │       └── CertificateBadge.tsx
+// tailwind.config.js    │       ├── QRScanner.tsx
 
-  initial={{ opacity: 0, y: 20 }}    └── utils/                   # Utility functions
+module.exports = {
 
-  animate={{ opacity: 1, y: 0 }}        ├── api.ts               # API client
+  content: [<motion.div    │       └── CertificateBadge.tsx
 
-  transition={{ duration: 0.5 }}        ├── auth.ts              # Auth helpers
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
 
->        ├── formatting.ts        # Data formatting
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',  initial={{ opacity: 0, y: 20 }}    └── utils/                   # Utility functions
 
-  Content        └── validation.ts        # Zod schemas
+  ],
 
-</motion.div>```
+  theme: {  animate={{ opacity: 1, y: 0 }}        ├── api.ts               # API client
 
-```
+    extend: {
 
-## Installation & Setup
+      colors: {  transition={{ duration: 0.5 }}        ├── auth.ts              # Auth helpers
 
-## 🔐 Authentication
+        'jani-green': '#4ade80',
 
-### Prerequisites
+        'jani-brown': '#8b4513',>        ├── formatting.ts        # Data formatting
 
-Currently using custom JWT-based authentication. Future integration with Auth Service planned.
+      },
+
+    },  Content        └── validation.ts        # Zod schemas
+
+  },
+
+  plugins: [],</motion.div>```
+
+};
+
+``````
+
+
+
+## 🧪 Testing## Installation & Setup
+
+
+
+```bash## 🔐 Authentication
+
+# Lint
+
+npm run lint### Prerequisites
+
+
+
+# Type checkCurrently using custom JWT-based authentication. Future integration with Auth Service planned.
+
+npm run typecheck
 
 - Node.js 20.x or higher
 
-## 🧪 Testing- npm or pnpm package manager
+# Both
+
+npm run lint && npm run typecheck## 🧪 Testing- npm or pnpm package manager
+
+```
 
 - Git
-
-```bash
-
-# Lint### Install Dependencies
-
-npm run lint
-
-```bash
-
-# Type checkcd apps/web
-
-npm run typechecknpm install
-
-```
-
-# Full CI (lint + typecheck + build)
-
-npm run build### Environment Configuration
-
-```
-
-Create `.env.local` file in `apps/web/`:
 
 ### Current Status
 
 ```bash
 
-- ✅ Lint: Passing (0 errors)# Kinde Auth Configuration
+- ✅ **Lint**: 0 errors
 
-- ✅ TypeCheck: Passing (0 errors)KINDE_CLIENT_ID=your-client-id
+- ✅ **TypeCheck**: 0 errors# Lint### Install Dependencies
+
+- ❌ **Build**: Known SSG issue on 404 page
+
+npm run lint
+
+## 🐛 Known Issues
+
+```bash
+
+### Build Failure (React Error #31)
+
+# Type checkcd apps/web
+
+**Issue**: Static site generation fails on 404 page  
+
+**Error**: `Error: Element type is invalid: expected a string`  npm run typechecknpm install
+
+**Impact**: Cannot create production build with `next build`  
+
+**Workaround**: Use `npm run dev` for development  ```
+
+**Status**: Under investigation - likely Next.js 15 + React 18 compatibility
+
+# Full CI (lint + typecheck + build)
+
+**Temporary Solution:**
+
+- Development server works perfectlynpm run build### Environment Configuration
+
+- Use `npm run dev` for local development
+
+- Production deployment uses dev mode or custom server```
+
+
+
+## 🚀 DeploymentCreate `.env.local` file in `apps/web/`:
+
+
+
+### Vercel (Recommended)### Current Status
+
+
+
+```bash```bash
+
+# Install Vercel CLI
+
+npm i -g vercel- ✅ Lint: Passing (0 errors)# Kinde Auth Configuration
+
+
+
+# Deploy- ✅ TypeCheck: Passing (0 errors)KINDE_CLIENT_ID=your-client-id
+
+vercel
 
 - ❌ Build: Known SSG issue on 404 pageKINDE_CLIENT_SECRET=your-client-secret
 
-KINDE_ISSUER_URL=https://your-domain.kinde.com
+# Production deployment
+
+vercel --prodKINDE_ISSUER_URL=https://your-domain.kinde.com
+
+```
 
 ## ⚙️ ConfigurationKINDE_SITE_URL=http://localhost:3000
 
+### Docker
+
 KINDE_POST_LOGOUT_REDIRECT_URL=http://localhost:3000
 
-### Next.js ConfigKINDE_POST_LOGIN_REDIRECT_URL=http://localhost:3000/dashboard
+```bash
+
+# Build### Next.js ConfigKINDE_POST_LOGIN_REDIRECT_URL=http://localhost:3000/dashboard
+
+docker build -t jani-web .
 
 
 
-```typescript# API Configuration
+# Run
+
+docker run -p 3000:3000 jani-web```typescript# API Configuration
+
+```
 
 // next.config.tsNEXT_PUBLIC_API_URL=http://localhost:4000
 
+### Manual Deployment
+
 import { NextConfig } from "next";NEXT_PUBLIC_AUTH_SERVICE_URL=http://localhost:4000
 
-NEXT_PUBLIC_USER_SERVICE_URL=http://localhost:5000
+```bash
+
+# Build (if build issue is resolved)NEXT_PUBLIC_USER_SERVICE_URL=http://localhost:5000
+
+npm run build
 
 const nextConfig: NextConfig = {NEXT_PUBLIC_TRACEABILITY_SERVICE_URL=http://localhost:3004
 
-  reactStrictMode: true,
+# Start production server
+
+npm start  reactStrictMode: true,
+
+```
 
   experimental: {# Feature Flags
 
+## 📦 Dependencies
+
     optimizePackageImports: ['lucide-react', 'framer-motion'],NEXT_PUBLIC_ENABLE_3D_GRAPHICS=true
 
-  },NEXT_PUBLIC_ENABLE_ANALYTICS=true
+### Core
 
-};NEXT_PUBLIC_ENABLE_BLOG=false
+- `next`: 15.4.7  },NEXT_PUBLIC_ENABLE_ANALYTICS=true
+
+- `react`: 18.2.0
+
+- `react-dom`: 18.2.0};NEXT_PUBLIC_ENABLE_BLOG=false
+
+- `typescript`: 5.x
 
 
 
-export default nextConfig;# External Services
+### UI/UX
 
-```NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your-maps-key
+- `tailwindcss`: 4.xexport default nextConfig;# External Services
+
+- `framer-motion`: ^12.23.21
+
+- `gsap`: ^3.13.0```NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your-maps-key
+
+- `lucide-react`: ^0.540.0 (icons)
 
 NEXT_PUBLIC_ANALYTICS_ID=your-analytics-id
 
-### Environment Variables```
+### Authentication
+
+- `jose`: ^6.1.0 (JWT)### Environment Variables```
+
+- `jwt-decode`: ^4.0.0
 
 
 
-```bash### Running the Application
+### Utilities
 
-# API Endpoints
+- `zod`: ^3.25.76 (validation)```bash### Running the Application
 
-NEXT_PUBLIC_AUTH_API=http://localhost:4000#### Development Mode
 
-NEXT_PUBLIC_TRACEABILITY_API=http://localhost:5002
 
-```bash
+## 📖 Scripts# API Endpoints
 
-# Feature Flagsnpm run dev
 
-NEXT_PUBLIC_ENABLE_CHAT=true```
 
-```
+```bashNEXT_PUBLIC_AUTH_API=http://localhost:4000#### Development Mode
 
-Application available at `http://localhost:3000`
+npm run dev          # Development server (port 3000)
 
-## 🚀 Deployment
+npm run build        # Production build (currently has issues)NEXT_PUBLIC_TRACEABILITY_API=http://localhost:5002
+
+npm start            # Start production server
+
+npm run lint         # Lint code```bash
+
+npm run typecheck    # Type checking
+
+```# Feature Flagsnpm run dev
+
+
+
+## 🎯 RoadmapNEXT_PUBLIC_ENABLE_CHAT=true```
+
+
+
+### Short Term```
+
+- [ ] Fix build SSG issue
+
+- [ ] Add error boundariesApplication available at `http://localhost:3000`
+
+- [ ] Implement custom 404/500 pages
+
+- [ ] Add unit tests## 🚀 Deployment
+
+- [ ] Improve accessibility
 
 #### Production Build
 
-### Vercel (Recommended)
+### Long Term
 
-```bash
+- [ ] Integrate with Auth Service### Vercel (Recommended)
 
-```bash# Build application
+- [ ] Real-time notifications
 
-# Install Vercel CLInpm run build
+- [ ] Advanced analytics dashboard```bash
 
-npm i -g vercel
+- [ ] Mobile app deep linking
 
-# Start production server
+- [ ] Multi-language support```bash# Build application
 
-# Deploynpm start
 
-vercel```
 
-```
+## 🤝 Contributing# Install Vercel CLInpm run build
+
+
+
+1. Follow Next.js 15 best practicesnpm i -g vercel
+
+2. Use TypeScript strict mode
+
+3. Follow Tailwind CSS conventions# Start production server
+
+4. Test on multiple browsers
+
+5. Ensure responsive design# Deploynpm start
+
+
+
+---vercel```
+
+
+
+**Built with Next.js, React, and Tailwind CSS**```
+
 
 #### Linting
 
