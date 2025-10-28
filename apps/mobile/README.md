@@ -1,570 +1,1137 @@
-# JANI Mobile# JANI Mobile App
+# JANI Mobile App# JANI Mobile# JANI Mobile App
 
 
 
-Expo + React Native companion app for the JANI traceability platform. The client focuses on field and logistics workflows, surfaces live supply chain signals, and remains usable when connectivity drops.## Overview
+> **Farmer-focused mobile application for field data capture and farm management**
 
 
 
-## Core CapabilitiesThe **JANI Mobile App** is a comprehensive React Native application built with Expo, designed for farmers and agricultural workers to track farm activities, manage traceability events, and access real-time agricultural intelligence. The app features offline-first architecture, comprehensive farm management, and seamless synchronization with the JANI platform backend.
+A React Native mobile application built with Expo that enables farmers to manage their farms, track activities, and synchronize data offline-first with the JANI platform.Expo + React Native companion app for the JANI traceability platform. The client focuses on field and logistics workflows, surfaces live supply chain signals, and remains usable when connectivity drops.## Overview
 
-- Role-aware navigation driven by Zustand (`src/stores/authStore.ts`) and a shared tab map (`src/navigation/config/simplifiedNavigation.ts`).
 
-- Auth flows (signup, login, profile updates) call `services/auth` via `src/features/auth/api/authApi.ts` and persist sessions with AsyncStorage + SecureStore.## Architecture
+
+## 📋 Overview
+
+
+
+- **Framework**: React Native 0.81.5## Core CapabilitiesThe **JANI Mobile App** is a comprehensive React Native application built with Expo, designed for farmers and agricultural workers to track farm activities, manage traceability events, and access real-time agricultural intelligence. The app features offline-first architecture, comprehensive farm management, and seamless synchronization with the JANI platform backend.
+
+- **Platform**: Expo SDK 54.0.17
+
+- **Language**: TypeScript 5.9 (strict mode)- Role-aware navigation driven by Zustand (`src/stores/authStore.ts`) and a shared tab map (`src/navigation/config/simplifiedNavigation.ts`).
+
+- **State Management**: Zustand + React Query v5
+
+- **Storage**: AsyncStorage + expo-sqlite- Auth flows (signup, login, profile updates) call `services/auth` via `src/features/auth/api/authApi.ts` and persist sessions with AsyncStorage + SecureStore.## Architecture
+
+- **Package Manager**: npm
 
 - Farms, orders, partners, and traceability views use React Query with axios clients in `src/lib/api/*` to reach the user, traceability, and operations services.
 
+## ✨ Features
+
 - Offline touches: persisted React Query cache (`src/lib/offline/persistence.ts`), local capture drafts (`src/features/capture`), and retry handlers for 401 responses.### Technology Stack
 
-- Feature modules live under `src/features/*`; shared primitives live in `src/components`, `src/navigation`, `src/providers`, and `src/theme`.
+### 🌾 Farm Management
 
-- **Framework**: React Native 0.81.5 with Expo SDK 54.0.17
+- View all farms linked to user account- Feature modules live under `src/features/*`; shared primitives live in `src/components`, `src/navigation`, `src/providers`, and `src/theme`.
+
+- See farm details (location, area, plots)
+
+- Browse plots with crop information- **Framework**: React Native 0.81.5 with Expo SDK 54.0.17
+
+- Track plot lifecycle stages
 
 ## Project Layout- **Language**: TypeScript 5.x (strict mode)
 
-```- **Navigation**: React Navigation 7.x (Stack + Bottom Tabs)
+### 📝 Activity Tracking
 
-apps/mobile/- **State Management**: Zustand 5.x + React Query (TanStack Query 5.x)
+- Log daily field activities```- **Navigation**: React Navigation 7.x (Stack + Bottom Tabs)
+
+- Capture photos with geotags
+
+- Track resource usage (water, fertilizers, pesticides)apps/mobile/- **State Management**: Zustand 5.x + React Query (TanStack Query 5.x)
+
+- Offline activity creation
 
 ├── App.tsx                # Provider + navigation bootstrap- **Offline Storage**: Expo SQLite + AsyncStorage
 
-├── app.config.js          # Expo config + env passthrough- **Backend Integration**: Axios with React Query hooks
+### 🔄 Offline-First Architecture
 
-├── src/- **UI Components**: Custom components + Expo built-ins
+- Full offline data capture├── app.config.js          # Expo config + env passthrough- **Backend Integration**: Axios with React Query hooks
+
+- Background synchronization
+
+- Automatic conflict resolution├── src/- **UI Components**: Custom components + Expo built-ins
+
+- Queue-based sync system
 
 │   ├── config/            # ENV helpers, constants- **Forms**: React Hook Form with Zod validation
 
-│   ├── features/          # Business flows (auth, farms, orders, capture, ...)- **Camera**: Expo Camera + Image Picker
+### 📦 Order Management
 
-│   ├── lib/               # API clients, offline helpers, analytics stubs- **Location**: Expo Location with background tracking
+- View export orders│   ├── features/          # Business flows (auth, farms, orders, capture, ...)- **Camera**: Expo Camera + Image Picker
+
+- Link orders to farm lots
+
+- Track order status│   ├── lib/               # API clients, offline helpers, analytics stubs- **Location**: Expo Location with background tracking
+
+- QR code generation
 
 │   ├── navigation/        # Stack + tab navigators- **QR Codes**: Expo Barcode Scanner + react-native-qrcode-svg
 
-│   ├── providers/         # React context providers (query, capture, theme)
+### 👥 Partner Network
 
-│   ├── stores/            # Zustand slices### Key Features
+- View partner list│   ├── providers/         # React context providers (query, capture, theme)
 
-│   ├── theme/             # Design tokens + ThemeProvider
+- See partner details
 
-│   └── utils/             # Logging, formatting, test helpers#### 1. **Offline-First Architecture**
+- Track partner relationships│   ├── stores/            # Zustand slices### Key Features
 
-└── tests (Jest)           # Configured via `jest.config.js`
 
-```- **Local Database**: SQLite for structured data storage
+
+## 🚀 Quick Start│   ├── theme/             # Design tokens + ThemeProvider
+
+
+
+### Prerequisites│   └── utils/             # Logging, formatting, test helpers#### 1. **Offline-First Architecture**
+
+
+
+- Node.js 20.18.3+└── tests (Jest)           # Configured via `jest.config.js`
+
+- npm 11.6.2+
+
+- iOS Simulator (macOS) or Android Emulator```- **Local Database**: SQLite for structured data storage
+
+- Expo Go app (for physical device testing)
 
 - **Async Storage**: Key-value store for settings and cache
 
+### Installation
+
 ## Environment Variables- **Background Sync**: Automatic synchronization when online
 
-The Expo config reads `apps/mobile/.env` (see `app.config.js`) and falls back to sensible defaults. Adjust the values to match your running services.- **Conflict Resolution**: Smart merge strategies for data conflicts
+```bash
 
-- **Queue Management**: Pending operations queue with retry logic
+cd apps/mobileThe Expo config reads `apps/mobile/.env` (see `app.config.js`) and falls back to sensible defaults. Adjust the values to match your running services.- **Conflict Resolution**: Smart merge strategies for data conflicts
 
-| Name | Purpose | Default |
+npm install
 
-| ---- | ------- | ------- |#### 2. **Farm Management**
+```- **Queue Management**: Pending operations queue with retry logic
 
-| `API_BASE_URL` | Base URL for user/data APIs (`/farms`, `/data/orders`, ...) | `http://localhost:5000` |
 
-| `AUTH_BASE_URL` | Auth service (`/auth/login`, `/auth/signup`) | `http://localhost:4000` |- **Farm Registration**: Create and manage multiple farms
 
-| `TRACEABILITY_BASE_URL` | Traceability service public API | `http://localhost:5002` |- **Plot Management**: Subdivide farms into plots with GPS coordinates
+### Environment Setup| Name | Purpose | Default |
 
-| `OPERATIONS_BASE_URL` | Operations service API | `http://localhost:4003` |- **Crop Tracking**: Monitor crop lifecycle from planting to harvest
 
-- **Farm States**: Track 5-stage farming lifecycle:
 
-Android emulators automatically swap `localhost` for `10.0.2.2` (`src/config/env.ts`). For physical devices set the LAN IP or tunnel URL.  - Planning
+The app uses environment variables from the root `.env` file:| ---- | ------- | ------- |#### 2. **Farm Management**
 
-  - Planting
 
-## Running Locally  - Growing
 
-1. Install once: `cd apps/mobile && npm install` (Expo SDK 54).  - Harvesting
+```bash| `API_BASE_URL` | Base URL for user/data APIs (`/farms`, `/data/orders`, ...) | `http://localhost:5000` |
 
-2. Start the dependent services (`docker compose up -d auth user traceability operations`).  - Completed
+# Auth Service URL
 
-3. Launch Metro: `npm start`.
+AUTH_SERVICE_URL=http://localhost:4000| `AUTH_BASE_URL` | Auth service (`/auth/login`, `/auth/signup`) | `http://localhost:4000` |- **Farm Registration**: Create and manage multiple farms
 
-4. Open a client:#### 3. **Traceability System**
 
-   - press `a` (Android emulator)
 
-   - press `w` (web preview)- **Event Capture**: Record 26+ types of farm activities
+# For physical device testing, use your machine's IP| `TRACEABILITY_BASE_URL` | Traceability service public API | `http://localhost:5002` |- **Plot Management**: Subdivide farms into plots with GPS coordinates
 
-   - scan the QR code with Expo Go (device must share the LAN)- **Photo Documentation**: Attach multiple photos to events
+# AUTH_SERVICE_URL=http://192.168.1.100:4000
 
-- **GPS Tagging**: Automatic location capture for events
+```| `OPERATIONS_BASE_URL` | Operations service API | `http://localhost:4003` |- **Crop Tracking**: Monitor crop lifecycle from planting to harvest
 
-Inside Docker or remote sessions set `EXPO_DEVTOOLS_LISTEN_ADDRESS=0.0.0.0` and `REACT_NATIVE_PACKAGER_HOSTNAME=<host-ip>` as needed (see root `.env`).- **Timestamp Recording**: Accurate event timestamping
 
-- **QR Code Generation**: Generate traceability QR codes
 
-## Key Flows & APIs- **Event Chain**: View complete history for products
+### Development- **Farm States**: Track 5-stage farming lifecycle:
 
-- **Authentication** – `src/features/auth/screens/*` call `loginRequest` / `signupRequest`, hydrate the auth store, set axios headers, and persist the session.
 
-- **Home** – `HomeScreen` surfaces highlighted suppliers by mapping farm metadata from the user service (`GET /farms`).#### 4. **Smart Features**
 
-- **Farms** – Stack navigator under `src/navigation/farms` drives list, detail editing, and membership flows against `/farms`, `/farms/:id`, `/farms/link`, etc.
+```bashAndroid emulators automatically swap `localhost` for `10.0.2.2` (`src/config/env.ts`). For physical devices set the LAN IP or tunnel URL.  - Planning
 
-- **Orders** – `src/features/orders` renders the shipment board backed by `/data/orders` (demo endpoint in the user service) with filtering and animated metrics.- **AI Recommendations**: Crop suggestions based on conditions (planned)
+# Start Expo development server
 
-- **Capture** – `src/features/capture` lets teams log traceability events, attach demo media, and queue them for sync once online.- **Weather Integration**: Real-time weather data and forecasts
+npm start  - Planting
 
-- **Admin** – Additional tabs unlock for role `admin`, surfacing analytics and management prototypes backed by local or demo data.- **Pest Alerts**: Early warning system for pest outbreaks
 
-- **Quality Assessment**: Automated produce grading (planned)
 
-## Testing & Quality- **Yield Predictions**: ML-based harvest predictions
+# Or start specific platform## Running Locally  - Growing
 
-- Type-check: `npm run typecheck`
+npm run ios        # iOS Simulator
 
-- Lint: `npm run lint`#### 5. **User Experience**
+npm run android    # Android Emulator1. Install once: `cd apps/mobile && npm install` (Expo SDK 54).  - Harvesting
+
+npm run web        # Web browser
+
+```2. Start the dependent services (`docker compose up -d auth user traceability operations`).  - Completed
+
+
+
+### Running on Device3. Launch Metro: `npm start`.
+
+
+
+1. Install Expo Go app on your phone4. Open a client:#### 3. **Traceability System**
+
+2. Start development server: `npm start`
+
+3. Scan QR code with:   - press `a` (Android emulator)
+
+   - iOS: Camera app
+
+   - Android: Expo Go app   - press `w` (web preview)- **Event Capture**: Record 26+ types of farm activities
+
+
+
+## 📱 App Structure   - scan the QR code with Expo Go (device must share the LAN)- **Photo Documentation**: Attach multiple photos to events
+
+
+
+### Navigation Structure- **GPS Tagging**: Automatic location capture for events
+
+
+
+```Inside Docker or remote sessions set `EXPO_DEVTOOLS_LISTEN_ADDRESS=0.0.0.0` and `REACT_NATIVE_PACKAGER_HOSTNAME=<host-ip>` as needed (see root `.env`).- **Timestamp Recording**: Accurate event timestamping
+
+App
+
+├── Auth Stack (Not Logged In)- **QR Code Generation**: Generate traceability QR codes
+
+│   ├── Login Screen
+
+│   └── Signup Screen## Key Flows & APIs- **Event Chain**: View complete history for products
+
+│
+
+└── Main Stack (Logged In)- **Authentication** – `src/features/auth/screens/*` call `loginRequest` / `signupRequest`, hydrate the auth store, set axios headers, and persist the session.
+
+    ├── Home Tab
+
+    │   ├── Dashboard- **Home** – `HomeScreen` surfaces highlighted suppliers by mapping farm metadata from the user service (`GET /farms`).#### 4. **Smart Features**
+
+    │   └── Farm List
+
+    │- **Farms** – Stack navigator under `src/navigation/farms` drives list, detail editing, and membership flows against `/farms`, `/farms/:id`, `/farms/link`, etc.
+
+    ├── Farms Tab
+
+    │   ├── Farm List- **Orders** – `src/features/orders` renders the shipment board backed by `/data/orders` (demo endpoint in the user service) with filtering and animated metrics.- **AI Recommendations**: Crop suggestions based on conditions (planned)
+
+    │   ├── Farm Details
+
+    │   └── Plot Details- **Capture** – `src/features/capture` lets teams log traceability events, attach demo media, and queue them for sync once online.- **Weather Integration**: Real-time weather data and forecasts
+
+    │
+
+    ├── Activities Tab- **Admin** – Additional tabs unlock for role `admin`, surfacing analytics and management prototypes backed by local or demo data.- **Pest Alerts**: Early warning system for pest outbreaks
+
+    │   ├── Activity List
+
+    │   └── Create Activity- **Quality Assessment**: Automated produce grading (planned)
+
+    │
+
+    ├── Orders Tab## Testing & Quality- **Yield Predictions**: ML-based harvest predictions
+
+    │   └── Order List
+
+    │- Type-check: `npm run typecheck`
+
+    └── Profile Tab
+
+        └── User Profile- Lint: `npm run lint`#### 5. **User Experience**
+
+```
 
 - Tests (Jest + Testing Library): `npm test`
 
+### Key Features by Screen
+
 - Formatter: `npm run format`- **Intuitive Navigation**: Bottom tab + stack navigation
 
-- All checks: `npm run check`- **Modern UI**: Card-based layouts with animations
+#### 🏠 Dashboard
 
-- **Haptic Feedback**: Tactile responses for interactions
+- Summary statistics- All checks: `npm run check`- **Modern UI**: Card-based layouts with animations
+
+- Recent activities
+
+- Quick actions- **Haptic Feedback**: Tactile responses for interactions
+
+- Sync status indicator
 
 ## Troubleshooting- **Loading States**: Skeleton screens and loading indicators
 
-- **401 loop or empty screens** – Confirm the services are reachable and the base URLs resolve. A 401 triggers `setUnauthorizedHandler`, clearing the session so you must log in again.- **Error Handling**: User-friendly error messages
+#### 🌾 Farm List
 
-- **Android cannot hit the API** – Verify the resolved host (Metro logs it on boot). Override via `.env` if it is not `10.0.2.2` or the LAN IP.- **Dark Mode**: Full dark mode support (planned)
+- All farms for user- **401 loop or empty screens** – Confirm the services are reachable and the base URLs resolve. A 401 triggers `setUnauthorizedHandler`, clearing the session so you must log in again.- **Error Handling**: User-friendly error messages
+
+- Farm cards with key info
+
+- Pull-to-refresh- **Android cannot hit the API** – Verify the resolved host (Metro logs it on boot). Override via `.env` if it is not `10.0.2.2` or the LAN IP.- **Dark Mode**: Full dark mode support (planned)
+
+- Search and filter
 
 - **Stale query data** – React Query persists for 12 hours. Log out via the profile screen or clear app storage to refresh.
 
-## Project Structure
+#### 📍 Farm Details
 
-```
-apps/mobile/
+- Farm information## Project Structure
+
+- GPS location map
+
+- Plot list```
+
+- Activity historyapps/mobile/
+
 ├── App.tsx                      # Root component
-├── index.ts                     # Entry point
-├── app.config.js                # Expo configuration
-├── package.json                 # Dependencies
-├── tsconfig.json                # TypeScript config
-├── jest.config.js               # Test configuration
-├── babel.config.js              # Babel configuration
-├── assets/                      # Static assets
-│   ├── icon.png                 # App icon
-│   ├── splash-icon.png          # Splash screen
-│   └── adaptive-icon.png        # Android adaptive icon
-└── src/
-    ├── components/              # Reusable UI components
-    │   ├── ui/                  # Base UI components
-    │   │   ├── Button.tsx
-    │   │   ├── Card.tsx
-    │   │   ├── Input.tsx
-    │   │   └── ...
-    │   ├── layout/              # Layout components
-    │   │   ├── Screen.tsx
-    │   │   ├── Container.tsx
-    │   │   └── ...
-    │   └── farm/                # Farm-specific components
-    │       ├── FarmCard.tsx
-    │       ├── PlotCard.tsx
-    │       └── FarmStateTracker.tsx
-    ├── features/                # Feature modules
-    │   ├── auth/                # Authentication
-    │   │   ├── screens/
-    │   │   ├── hooks/
-    │   │   └── api/
-    │   ├── farms/               # Farm management
-    │   │   ├── screens/
-    │   │   │   ├── FarmStatesScreen.tsx
-    │   │   │   ├── FarmStateDetailScreen.tsx
-    │   │   │   ├── FarmListScreen.tsx
-    │   │   │   └── FarmDetailScreen.tsx
-    │   │   ├── hooks/
-    │   │   │   ├── useFarms.ts
-    │   │   │   └── usePlots.ts
-    │   │   └── api/
-    │   ├── traceability/        # Traceability events
-    │   │   ├── screens/
-    │   │   ├── hooks/
-    │   │   └── api/
-    │   ├── capture/             # Photo/video capture
-    │   ├── activity/            # Activity tracking
-    │   ├── dashboard/           # Analytics dashboard
-    │   ├── profile/             # User profile
-    │   └── settings/            # App settings
-    ├── navigation/              # Navigation configuration
-    │   ├── RootNavigator.tsx    # Root navigator
-    │   ├── AuthNavigator.tsx    # Auth flow
-    │   ├── MainNavigator.tsx    # Main app flow
-    │   └── types.ts             # Navigation types
-    ├── providers/               # Context providers
-    │   ├── AppProviders.tsx     # Combined providers
-    │   ├── QueryProvider.tsx    # React Query
-    │   └── ThemeProvider.tsx    # Theme context
-    ├── stores/                  # Zustand stores
-    │   ├── authStore.ts         # Authentication state
-    │   ├── syncStore.ts         # Sync status
-    │   └── settingsStore.ts     # App settings
-    ├── lib/                     # External integrations
-    │   ├── api/                 # API client
-    │   │   ├── client.ts        # Axios instance
-    │   │   ├── auth.ts          # Auth endpoints
-    │   │   ├── farms.ts         # Farm endpoints
-    │   │   └── traceability.ts  # Traceability endpoints
-    │   └── db/                  # Local database
-    │       ├── database.ts      # SQLite setup
-    │       ├── migrations.ts    # DB migrations
-    │       └── queries.ts       # Common queries
-    ├── hooks/                   # Custom hooks
-    │   ├── useAuth.ts           # Authentication
-    │   ├── useSync.ts           # Synchronization
-    │   ├── useFarmState.ts      # Farm state logic
-    │   └── useLocation.ts       # GPS location
-    ├── utils/                   # Utility functions
-    │   ├── validation.ts        # Zod schemas
-    │   ├── formatting.ts        # Data formatting
-    │   ├── haptics.ts           # Haptic feedback
-    │   └── storage.ts           # Async storage
-    ├── theme/                   # Theme configuration
-    │   ├── ThemeProvider.tsx    # Theme context
-    │   ├── colors.ts            # Color palette
-    │   ├── spacing.ts           # Spacing system
-    │   └── typography.ts        # Font styles
-    ├── constants/               # App constants
-    │   ├── farmStates.ts        # Farm state definitions
-    │   ├── traceabilityEvents.ts # Event types
-    │   └── config.ts            # App configuration
-    └── __mocks__/               # Test mocks
-        ├── expo-camera.ts
-        ├── expo-location.ts
-        └── ...
-```
 
-## Installation & Setup
+#### 🌱 Plot Details├── index.ts                     # Entry point
+
+- Crop information├── app.config.js                # Expo configuration
+
+- Lifecycle stage├── package.json                 # Dependencies
+
+- Area and yield tracking├── tsconfig.json                # TypeScript config
+
+- Associated activities├── jest.config.js               # Test configuration
+
+├── babel.config.js              # Babel configuration
+
+#### ✅ Activity List├── assets/                      # Static assets
+
+- All logged activities│   ├── icon.png                 # App icon
+
+- Filter by type/date│   ├── splash-icon.png          # Splash screen
+
+- Photos and metadata│   └── adaptive-icon.png        # Android adaptive icon
+
+- Sync status└── src/
+
+    ├── components/              # Reusable UI components
+
+#### ➕ Create Activity    │   ├── ui/                  # Base UI components
+
+- Activity type selection    │   │   ├── Button.tsx
+
+- Date/time picker    │   │   ├── Card.tsx
+
+- Photo capture    │   │   ├── Input.tsx
+
+- GPS tagging    │   │   └── ...
+
+- Offline queue    │   ├── layout/              # Layout components
+
+    │   │   ├── Screen.tsx
+
+## 🗂️ Folder Structure    │   │   ├── Container.tsx
+
+    │   │   └── ...
+
+```    │   └── farm/                # Farm-specific components
+
+apps/mobile/    │       ├── FarmCard.tsx
+
+├── src/    │       ├── PlotCard.tsx
+
+│   ├── components/          # Reusable UI components    │       └── FarmStateTracker.tsx
+
+│   │   ├── Button.tsx    ├── features/                # Feature modules
+
+│   │   ├── Card.tsx    │   ├── auth/                # Authentication
+
+│   │   ├── Input.tsx    │   │   ├── screens/
+
+│   │   └── ...    │   │   ├── hooks/
+
+│   │    │   │   └── api/
+
+│   ├── features/            # Feature modules    │   ├── farms/               # Farm management
+
+│   │   ├── auth/    │   │   ├── screens/
+
+│   │   │   ├── screens/    │   │   │   ├── FarmStatesScreen.tsx
+
+│   │   │   ├── components/    │   │   │   ├── FarmStateDetailScreen.tsx
+
+│   │   │   └── hooks/    │   │   │   ├── FarmListScreen.tsx
+
+│   │   ├── farms/    │   │   │   └── FarmDetailScreen.tsx
+
+│   │   ├── activities/    │   │   ├── hooks/
+
+│   │   ├── orders/    │   │   │   ├── useFarms.ts
+
+│   │   └── profile/    │   │   │   └── usePlots.ts
+
+│   │    │   │   └── api/
+
+│   ├── lib/                 # Libraries and utilities    │   ├── traceability/        # Traceability events
+
+│   │   ├── api/             # API clients    │   │   ├── screens/
+
+│   │   │   ├── authClient.ts    │   │   ├── hooks/
+
+│   │   │   ├── client.ts    │   │   └── api/
+
+│   │   │   ├── farms.ts    │   ├── capture/             # Photo/video capture
+
+│   │   │   ├── orders.ts    │   ├── activity/            # Activity tracking
+
+│   │   │   ├── users.ts    │   ├── dashboard/           # Analytics dashboard
+
+│   │   │   └── events.ts    │   ├── profile/             # User profile
+
+│   │   └── utils/           # Helper functions    │   └── settings/            # App settings
+
+│   │    ├── navigation/              # Navigation configuration
+
+│   ├── navigation/          # React Navigation setup    │   ├── RootNavigator.tsx    # Root navigator
+
+│   │   ├── AppNavigator.tsx    │   ├── AuthNavigator.tsx    # Auth flow
+
+│   │   ├── AuthStack.tsx    │   ├── MainNavigator.tsx    # Main app flow
+
+│   │   └── MainStack.tsx    │   └── types.ts             # Navigation types
+
+│   │    ├── providers/               # Context providers
+
+│   ├── providers/           # Context providers    │   ├── AppProviders.tsx     # Combined providers
+
+│   │   └── AuthProvider.tsx    │   ├── QueryProvider.tsx    # React Query
+
+│   │    │   └── ThemeProvider.tsx    # Theme context
+
+│   ├── stores/              # Zustand stores    ├── stores/                  # Zustand stores
+
+│   │   ├── authStore.ts    │   ├── authStore.ts         # Authentication state
+
+│   │   ├── farmStore.ts    │   ├── syncStore.ts         # Sync status
+
+│   │   └── syncStore.ts    │   └── settingsStore.ts     # App settings
+
+│   │    ├── lib/                     # External integrations
+
+│   ├── storage/             # AsyncStorage utilities    │   ├── api/                 # API client
+
+│   │   └── index.ts    │   │   ├── client.ts        # Axios instance
+
+│   │    │   │   ├── auth.ts          # Auth endpoints
+
+│   ├── theme/               # Design system    │   │   ├── farms.ts         # Farm endpoints
+
+│   │   ├── colors.ts    │   │   └── traceability.ts  # Traceability endpoints
+
+│   │   ├── spacing.ts    │   └── db/                  # Local database
+
+│   │   └── typography.ts    │       ├── database.ts      # SQLite setup
+
+│   │    │       ├── migrations.ts    # DB migrations
+
+│   ├── types/               # TypeScript types    │       └── queries.ts       # Common queries
+
+│   │   ├── api.ts    ├── hooks/                   # Custom hooks
+
+│   │   ├── models.ts    │   ├── useAuth.ts           # Authentication
+
+│   │   └── navigation.ts    │   ├── useSync.ts           # Synchronization
+
+│   │    │   ├── useFarmState.ts      # Farm state logic
+
+│   └── __tests__/           # Test files    │   └── useLocation.ts       # GPS location
+
+│       └── ...    ├── utils/                   # Utility functions
+
+│    │   ├── validation.ts        # Zod schemas
+
+├── assets/                  # Images, fonts, etc.    │   ├── formatting.ts        # Data formatting
+
+├── App.tsx                  # Root component    │   ├── haptics.ts           # Haptic feedback
+
+├── index.ts                 # Entry point    │   └── storage.ts           # Async storage
+
+├── app.json                 # Expo configuration    ├── theme/                   # Theme configuration
+
+├── package.json    │   ├── ThemeProvider.tsx    # Theme context
+
+└── tsconfig.json    │   ├── colors.ts            # Color palette
+
+```    │   ├── spacing.ts           # Spacing system
+
+    │   └── typography.ts        # Font styles
+
+## 🔌 API Integration    ├── constants/               # App constants
+
+    │   ├── farmStates.ts        # Farm state definitions
+
+### Auth Client    │   ├── traceabilityEvents.ts # Event types
+
+    │   └── config.ts            # App configuration
+
+```typescript    └── __mocks__/               # Test mocks
+
+import { authClient } from '@/lib/api/authClient';        ├── expo-camera.ts
+
+        ├── expo-location.ts
+
+// Login        └── ...
+
+const { token, user } = await authClient.login({```
+
+  email: 'farmer@example.com',
+
+  password: 'SecurePass123!'## Installation & Setup
+
+});
 
 ### Prerequisites
 
-- Node.js 20.x or higher
-- npm or pnpm package manager
+// Get current user
+
+const user = await authClient.me();- Node.js 20.x or higher
+
+```- npm or pnpm package manager
+
 - Expo CLI
-- iOS Simulator (macOS) or Android Emulator
+
+### Farms API- iOS Simulator (macOS) or Android Emulator
+
 - Physical device for testing (recommended)
 
-### Install Dependencies
+```typescript
 
-```bash
-cd apps/mobile
+import { getFarms, getFarm } from '@/lib/api/farms';### Install Dependencies
+
+
+
+// Get all farms```bash
+
+const farms = await getFarms();cd apps/mobile
+
 npm install
-```
 
-### Environment Configuration
+// Get specific farm```
 
-Create `.env` file in `apps/mobile/`:
+const farm = await getFarm('farm_123');
 
-```bash
-# API Configuration
+```### Environment Configuration
+
+
+
+### Orders APICreate `.env` file in `apps/mobile/`:
+
+
+
+```typescript```bash
+
+import { getOrders } from '@/lib/api/orders';# API Configuration
+
 API_URL=http://localhost:4000
-AUTH_SERVICE_URL=http://localhost:4000
-USER_SERVICE_URL=http://localhost:5000
-TRACEABILITY_SERVICE_URL=http://localhost:3004
+
+// Get all ordersAUTH_SERVICE_URL=http://localhost:4000
+
+const orders = await getOrders();USER_SERVICE_URL=http://localhost:5000
+
+```TRACEABILITY_SERVICE_URL=http://localhost:3004
+
 OPERATIONS_BASE_URL=http://localhost:4003
 
-# Feature Flags
-ENABLE_OFFLINE_MODE=true
-ENABLE_BACKGROUND_SYNC=true
-ENABLE_LOCATION_TRACKING=true
-ENABLE_AI_FEATURES=false
+### Traceability Events
 
-# Debug
+# Feature Flags
+
+```typescriptENABLE_OFFLINE_MODE=true
+
+import { traceabilityClient } from '@/lib/api/traceabilityClient';ENABLE_BACKGROUND_SYNC=true
+
+ENABLE_LOCATION_TRACKING=true
+
+// Get events for a lotENABLE_AI_FEATURES=false
+
+const events = await traceabilityClient.getEventsForLot('lot_456');
+
+```# Debug
+
 DEBUG_MODE=false
-LOG_LEVEL=info
+
+## 💾 State ManagementLOG_LEVEL=info
+
 ```
+
+### Zustand Stores
 
 ### Running the App
 
-#### Development Mode
+**Auth Store:**
+
+```typescript#### Development Mode
+
+import { useAuthStore } from '@/stores/authStore';
 
 ```bash
-# Start Expo dev server
-npm start
 
-# Run on iOS simulator
-npm run ios
+const { user, token, login, logout } = useAuthStore();# Start Expo dev server
+
+```npm start
+
+
+
+**Farm Store:**# Run on iOS simulator
+
+```typescriptnpm run ios
+
+import { useFarmStore } from '@/stores/farmStore';
 
 # Run on Android emulator
-npm run android
+
+const { farms, currentFarm, setCurrentFarm } = useFarmStore();npm run android
+
+```
 
 # Run in web browser
-npm run web
+
+### React Querynpm run web
+
 ```
 
-#### Production Build
+```typescript
+
+import { useQuery } from '@tanstack/react-query';#### Production Build
+
+import { getFarms } from '@/lib/api/farms';
 
 ```bash
-# iOS
-eas build --platform ios --profile production
 
-# Android
-eas build --platform android --profile production
+const { data, isLoading, error } = useQuery({# iOS
 
-# Both platforms
+  queryKey: ['farms'],eas build --platform ios --profile production
+
+  queryFn: getFarms
+
+});# Android
+
+```eas build --platform android --profile production
+
+
+
+## 🔄 Offline Synchronization# Both platforms
+
 eas build --platform all --profile production
-```
 
-## Core Features Deep Dive
+### How It Works```
 
-### 1. Authentication System
 
-**Login Flow:**
-```typescript
+
+1. **Offline Actions**: User creates activities offline## Core Features Deep Dive
+
+2. **Local Queue**: Actions stored in AsyncStorage
+
+3. **Background Sync**: When online, queue is processed### 1. Authentication System
+
+4. **Server Push**: Events sent to `/sync/push`
+
+5. **Conflict Resolution**: Server handles conflicts**Login Flow:**
+
+6. **Local Update**: UI updated with server response```typescript
+
 // Login with email/password
-const { mutate: login } = useLogin();
 
-login({
-  email: 'farmer@example.com',
+### Sync Statusconst { mutate: login } = useLogin();
+
+
+
+```typescriptlogin({
+
+import { useSyncStore } from '@/stores/syncStore';  email: 'farmer@example.com',
+
   password: 'SecurePass123!'
-}, {
-  onSuccess: (data) => {
+
+const { isSyncing, lastSyncTime, syncQueue } = useSyncStore();}, {
+
+```  onSuccess: (data) => {
+
     // Save token and user data
-    authStore.setAuth(data.token, data.user);
+
+## 🧪 Testing    authStore.setAuth(data.token, data.user);
+
     // Navigate to main app
-    navigation.navigate('Main');
+
+### Run Tests    navigation.navigate('Main');
+
   }
-});
-```
+
+```bash});
+
+# Run all tests```
+
+npm test
 
 **Token Management:**
-- Automatic token refresh
-- Secure token storage (Expo SecureStore)
+
+# Run tests in watch mode- Automatic token refresh
+
+npm run test:watch- Secure token storage (Expo SecureStore)
+
 - Token expiration handling
-- Automatic logout on invalid token
 
-### 2. Farm State Management
+# Run tests with coverage- Automatic logout on invalid token
 
-The app tracks farms through 5 distinct lifecycle stages:
+npm test -- --coverage
 
-#### Planning Stage
-- Plot registration
-- Land preparation
-- Soil testing
-- Resource planning
-- Budget preparation
+```### 2. Farm State Management
 
-#### Planting Stage
-- Seed selection
-- Planting date recording
-- Initial watering
+
+
+### Test StructureThe app tracks farms through 5 distinct lifecycle stages:
+
+
+
+```#### Planning Stage
+
+src/__tests__/- Plot registration
+
+├── components/- Land preparation
+
+│   └── Button.test.tsx- Soil testing
+
+├── features/- Resource planning
+
+│   └── auth/- Budget preparation
+
+│       └── Login.test.tsx
+
+└── lib/#### Planting Stage
+
+    └── api/- Seed selection
+
+        └── authClient.test.ts- Planting date recording
+
+```- Initial watering
+
 - GPS coordinate capture
-- Photo documentation
 
-#### Growing Stage
-- Irrigation tracking
-- Fertilizer application
-- Pest monitoring
+### Current Test Status- Photo documentation
+
+
+
+- **Total Tests**: 6#### Growing Stage
+
+- **Passing**: 4 (67%)- Irrigation tracking
+
+- **Failing**: 2- Fertilizer application
+
+- **Coverage**: ~60%- Pest monitoring
+
 - Weed control
-- Growth progress photos
 
-#### Harvesting Stage
+**Known Issues:**- Growth progress photos
+
+- expo-secure-store mock needed
+
+- @react-native-community/netinfo mock needed#### Harvesting Stage
+
 - Harvest start date
-- Collection tracking
+
+## 🎨 UI Components- Collection tracking
+
 - Quantity recording
-- Quality assessment
+
+### Design System- Quality assessment
+
 - Post-harvest handling
 
-#### Completed Stage
-- Final yield calculation
+```typescript
+
+// Colors#### Completed Stage
+
+import { colors } from '@/theme/colors';- Final yield calculation
+
 - Quality grading
-- Packaging
-- Distribution
+
+// Spacing- Packaging
+
+import { spacing } from '@/theme/spacing';- Distribution
+
 - Season summary
 
-**Implementation:**
-```typescript
-// Get current farm state
-const { state, progress, nextAction } = useFarmState(farmId);
+// Typography
 
-// Update farm state
-const { mutate: updateState } = useUpdateFarmState();
-updateState({
+import { typography } from '@/theme/typography';**Implementation:**
+
+``````typescript
+
+// Get current farm state
+
+### Common Componentsconst { state, progress, nextAction } = useFarmState(farmId);
+
+
+
+```typescript// Update farm state
+
+// Buttonconst { mutate: updateState } = useUpdateFarmState();
+
+import { Button } from '@/components/Button';updateState({
+
   farmId,
-  newState: 'growing',
-  metadata: {
-    transitionDate: new Date(),
-    reason: 'Seeds germinated successfully'
-  }
-});
+
+<Button  newState: 'growing',
+
+  title="Submit"  metadata: {
+
+  onPress={handleSubmit}    transitionDate: new Date(),
+
+  variant="primary"    reason: 'Seeds germinated successfully'
+
+  loading={isLoading}  }
+
+/>});
+
 ```
 
-### 3. Traceability Event System
+// Input
 
-**Supported Event Types:**
-- Plot registration
-- Land preparation
-- Soil testing
-- Seed planting
-- Transplanting
+import { Input } from '@/components/Input';### 3. Traceability Event System
+
+
+
+<Input**Supported Event Types:**
+
+  label="Email"- Plot registration
+
+  value={email}- Land preparation
+
+  onChangeText={setEmail}- Soil testing
+
+  keyboardType="email-address"- Seed planting
+
+/>- Transplanting
+
 - Irrigation
-- Fertilizer application
-- Pesticide application
-- Pruning
-- Weeding
-- Harvest start/collection/end
-- Sorting & grading
-- Washing
-- Packaging
-- Storage
-- Transfer to exporter
-- Quality inspection
-- Cold storage
-- Shipment dispatch
-- Delivery confirmation
-- Residue testing
-- Certification audit
 
-**Creating Events:**
-```typescript
-const { mutate: createEvent } = useCreateTraceabilityEvent();
+// Card- Fertilizer application
+
+import { Card } from '@/components/Card';- Pesticide application
+
+- Pruning
+
+<Card- Weeding
+
+  title="Farm Name"- Harvest start/collection/end
+
+  subtitle="Location"- Sorting & grading
+
+  onPress={handlePress}- Washing
+
+/>- Packaging
+
+```- Storage
+
+- Transfer to exporter
+
+## 📦 Dependencies- Quality inspection
+
+- Cold storage
+
+### Core- Shipment dispatch
+
+- `react-native`: 0.81.5- Delivery confirmation
+
+- `expo`: ~54.0.17- Residue testing
+
+- `typescript`: ~5.9.2- Certification audit
+
+
+
+### Navigation**Creating Events:**
+
+- `@react-navigation/native`: ^7.1.18```typescript
+
+- `@react-navigation/native-stack`: ^7.3.27const { mutate: createEvent } = useCreateTraceabilityEvent();
+
+- `@react-navigation/bottom-tabs`: ^7.4.8
 
 createEvent({
-  type: 'seed_planting',
-  occurredAt: new Date(),
-  plotId: 'plot-123',
+
+### State Management  type: 'seed_planting',
+
+- `zustand`: ^5.0.8  occurredAt: new Date(),
+
+- `@tanstack/react-query`: ^5.90.2  plotId: 'plot-123',
+
   farmId: 'farm-456',
-  metadata: {
-    cropType: 'tomato',
-    variety: 'Roma VF',
+
+### Storage  metadata: {
+
+- `@react-native-async-storage/async-storage`: 2.2.0    cropType: 'tomato',
+
+- `expo-sqlite`: ~16.0.8    variety: 'Roma VF',
+
     quantity: 5000,
-    quantityUnit: 'seeds'
-  },
-  location: currentLocation,
-  photos: selectedPhotos
+
+### Utilities    quantityUnit: 'seeds'
+
+- `axios`: ^1.12.2  },
+
+- `zod`: ^3.25.76  location: currentLocation,
+
+- `nanoid`: ^5.1.6  photos: selectedPhotos
+
 });
-```
 
-### 4. Offline Synchronization
+### Expo Modules```
 
-**Sync Strategy:**
+- `expo-camera`: ~17.0.8
+
+- `expo-location`: ~19.0.7### 4. Offline Synchronization
+
+- `expo-image-picker`: ~17.0.8
+
+- `expo-barcode-scanner`: ~14.0.1**Sync Strategy:**
+
 ```typescript
-// Background sync configuration
+
+## 🔧 Configuration// Background sync configuration
+
 TaskManager.defineTask('background-sync', async () => {
-  const syncStore = useSyncStore.getState();
-  
-  if (!syncStore.isSyncing && syncStore.hasPendingChanges) {
-    await syncStore.syncAll();
-  }
-  
-  return BackgroundFetch.BackgroundFetchResult.NewData;
-});
 
-// Register background sync
-await BackgroundFetch.registerTaskAsync('background-sync', {
-  minimumInterval: 15 * 60, // 15 minutes
-  stopOnTerminate: false,
-  startOnBoot: true
-});
+### app.config.js  const syncStore = useSyncStore.getState();
+
+  
+
+```javascript  if (!syncStore.isSyncing && syncStore.hasPendingChanges) {
+
+export default {    await syncStore.syncAll();
+
+  expo: {  }
+
+    name: "JANI",  
+
+    slug: "jani",  return BackgroundFetch.BackgroundFetchResult.NewData;
+
+    version: "1.0.0",});
+
+    orientation: "portrait",
+
+    platforms: ["ios", "android"],// Register background sync
+
+    ios: {await BackgroundFetch.registerTaskAsync('background-sync', {
+
+      bundleIdentifier: "com.jani.app",  minimumInterval: 15 * 60, // 15 minutes
+
+      supportsTablet: true  stopOnTerminate: false,
+
+    },  startOnBoot: true
+
+    android: {});
+
+      package: "com.jani.app",```
+
+      adaptiveIcon: {
+
+        backgroundColor: "#ffffff"**Conflict Resolution:**
+
+      }- Server wins for data conflicts
+
+    }- Client timestamp priority for same-user edits
+
+  }- Manual resolution for critical conflicts
+
+};- Automatic merge for non-conflicting changes
+
 ```
-
-**Conflict Resolution:**
-- Server wins for data conflicts
-- Client timestamp priority for same-user edits
-- Manual resolution for critical conflicts
-- Automatic merge for non-conflicting changes
 
 ### 5. Photo & Video Capture
 
+### TypeScript Configuration
+
 **Camera Integration:**
-```typescript
-const { capturePhoto } = useCamera();
 
-// Capture photo with metadata
-const photo = await capturePhoto({
-  quality: 0.8,
-  base64: false,
-  exif: true
-});
+```json```typescript
 
-// Attach to event
-addPhotoToEvent(eventId, photo.uri);
-```
+{const { capturePhoto } = useCamera();
 
-**Image Optimization:**
+  "extends": "expo/tsconfig.base",
+
+  "compilerOptions": {// Capture photo with metadata
+
+    "strict": true,const photo = await capturePhoto({
+
+    "skipLibCheck": true,  quality: 0.8,
+
+    "jsx": "react-native",  base64: false,
+
+    "paths": {  exif: true
+
+      "@/*": ["./src/*"]});
+
+    }
+
+  }// Attach to event
+
+}addPhotoToEvent(eventId, photo.uri);
+
+``````
+
+
+
+## 🐛 Troubleshooting**Image Optimization:**
+
 - Automatic compression
-- EXIF data preservation
+
+### Metro Bundler Issues- EXIF data preservation
+
 - Thumbnail generation
-- Batch upload support
 
-### 6. GPS Location Tracking
+```bash- Batch upload support
 
-**Location Features:**
-```typescript
-const { location, startTracking, stopTracking } = useLocation();
+# Clear cache
 
-// Start foreground tracking
+npm start -- --clear### 6. GPS Location Tracking
+
+
+
+# Or**Location Features:**
+
+expo start -c```typescript
+
+```const { location, startTracking, stopTracking } = useLocation();
+
+
+
+### iOS Build Issues// Start foreground tracking
+
 await startTracking({
-  accuracy: Location.Accuracy.High,
-  timeInterval: 5000,
-  distanceInterval: 10
-});
 
-// Get current location
+```bash  accuracy: Location.Accuracy.High,
+
+# Clear pods  timeInterval: 5000,
+
+cd ios && pod install --repo-update  distanceInterval: 10
+
+```});
+
+
+
+### Android Build Issues// Get current location
+
 const currentLocation = await Location.getCurrentPositionAsync({
-  accuracy: Location.Accuracy.Highest
-});
+
+```bash  accuracy: Location.Accuracy.Highest
+
+# Clean gradle});
+
+cd android && ./gradlew clean```
+
 ```
 
 **Background Location:**
-- Task-based location updates
+
+### API Connection Issues- Task-based location updates
+
 - Geofencing support
-- Battery-optimized tracking
-- Location history
 
-## UI Components
+1. Check Auth Service is running: `curl http://localhost:4000/health`- Battery-optimized tracking
 
-### Base Components
+2. For physical devices, use machine IP instead of localhost- Location history
 
-**Button Component:**
-```typescript
-<Button
-  variant="primary"      // primary, secondary, outline, ghost
-  size="medium"          // small, medium, large
-  loading={isLoading}
-  disabled={!isValid}
-  onPress={handleSubmit}
-  leftIcon={<Icon name="save" />}
->
+3. Check CORS settings in Auth Service
+
+4. Verify network is same for device and server## UI Components
+
+
+
+## 📚 Scripts### Base Components
+
+
+
+```bash**Button Component:**
+
+npm start              # Start Expo```typescript
+
+npm run ios            # iOS Simulator<Button
+
+npm run android        # Android Emulator  variant="primary"      // primary, secondary, outline, ghost
+
+npm run web            # Web browser  size="medium"          // small, medium, large
+
+npm test               # Run tests  loading={isLoading}
+
+npm run lint           # Lint code  disabled={!isValid}
+
+npm run typecheck      # TypeScript check  onPress={handleSubmit}
+
+npm run check          # Lint + TypeCheck + Test  leftIcon={<Icon name="save" />}
+
+```>
+
   Save Farm
-</Button>
+
+## 🚀 Building for Production</Button>
+
 ```
+
+### iOS
 
 **Card Component:**
-```typescript
-<Card
-  variant="elevated"     // flat, elevated, outlined
-  padding="medium"       // none, small, medium, large
-  onPress={handlePress}
->
-  <Card.Header>
-    <Card.Title>Farm Title</Card.Title>
-    <Card.Subtitle>Location</Card.Subtitle>
-  </Card.Header>
-  <Card.Content>
-    {/* Content */}
-  </Card.Content>
-  <Card.Actions>
-    <Button>View</Button>
-  </Card.Actions>
-</Card>
-```
 
-**Input Component:**
+```bash```typescript
+
+# Install EAS CLI<Card
+
+npm install -g eas-cli  variant="elevated"     // flat, elevated, outlined
+
+  padding="medium"       // none, small, medium, large
+
+# Configure  onPress={handlePress}
+
+eas build:configure>
+
+  <Card.Header>
+
+# Build for iOS    <Card.Title>Farm Title</Card.Title>
+
+eas build --platform ios    <Card.Subtitle>Location</Card.Subtitle>
+
+```  </Card.Header>
+
+  <Card.Content>
+
+### Android    {/* Content */}
+
+  </Card.Content>
+
+```bash  <Card.Actions>
+
+# Build for Android    <Button>View</Button>
+
+eas build --platform android  </Card.Actions>
+
+</Card>
+
+# Or build APK locally```
+
+expo build:android
+
+```**Input Component:**
+
 ```typescript
-<Input
+
+## 📄 License<Input
+
   label="Farm Name"
-  placeholder="Enter farm name"
+
+This project is proprietary software. All rights reserved.  placeholder="Enter farm name"
+
   value={farmName}
-  onChangeText={setFarmName}
+
+---  onChangeText={setFarmName}
+
   error={errors.farmName}
-  leftIcon={<Icon name="farm" />}
+
+**Built with React Native, Expo, and TypeScript**  leftIcon={<Icon name="farm" />}
+
   rightIcon={<Icon name="clear" onPress={clear} />}
   autoCapitalize="words"
   returnKeyType="next"
