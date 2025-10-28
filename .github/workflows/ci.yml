@@ -88,7 +88,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.local/share/pnpm/store
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('services/auth/pnpm-lock.yaml') }}
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('services/**/pnpm-lock.yaml') }}
           restore-keys: ${{ runner.os }}-pnpm-
 
       - name: Install auth dependencies
@@ -109,13 +109,21 @@ jobs:
 
       - name: Install traceability dependencies
         working-directory: services/traceability
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Validate traceability service syntax
         run: node --check services/traceability/src/index.js
 
+      - name: Install AI dependencies
+        working-directory: services/ai
+        run: pnpm install --frozen-lockfile
+
       - name: Validate AI service syntax
         run: node --check services/ai/server.js
+
+      - name: Install User dependencies
+        working-directory: services/user
+        run: npm install --legacy-peer-deps --engine-strict=false
 
       - name: Validate User service syntax
         run: node --check services/user/server.js
