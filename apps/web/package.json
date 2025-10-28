@@ -10,7 +10,6 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@kinde-oss/kinde-auth-nextjs": "^2.9.2",
     "@lucide/lab": "^0.1.2",
     "@types/jsonwebtoken": "^9.0.10",
     "express": "^5.1.0",
@@ -22,8 +21,8 @@
     "lucide-react": "^0.540.0",
     "motion": "^12.23.12",
     "next": "15.4.7",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "three": "^0.180.0",
     "zod": "^3.25.76"
   },
@@ -32,11 +31,15 @@
     "@tailwindcss/postcss": "^4",
     "@types/express": "^5.0.3",
     "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
     "eslint": "^8.57.0",
     "eslint-config-next": "15.4.7",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "overrides": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }

@@ -51,7 +51,7 @@ export default function NeumorphicEffect({
         animate="show"
         exit="hidden"
       >
-        {children}
+        <>{children}</>
       </motion.div>
     </motion.div>
   );

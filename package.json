@@ -23,9 +23,6 @@
     "@typescript-eslint/parser": "^8.46.2",
     "eslint": "^8.57.1"
   },
-  "overrides": {
-    "@types/react": "~18.2.0"
-  },
   "dependencies": {
     "@babel/runtime": "^7.28.4"
   }
