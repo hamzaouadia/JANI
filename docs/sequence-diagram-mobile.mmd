@@ -1,0 +1,87 @@
+%% Mobile-only sequence diagram
+sequenceDiagram
+  autonumber
+  participant UI as Mobile UI (Screens)
+  participant Nav as Navigation (RootNavigator)
+  participant Store as Stores (authStore, settingsStore)
+  participant Hook as Hook / Action / React Query
+  participant Api as API helpers (farms, partners, events)
+  participant Client as Axios clients (authClient, operationsClient)
+  participant TokenStore as TokenStore (SecureStore / AsyncStorage)
+  participant OfflineQueue as Offline REST Queue
+  participant Sync as SyncBootstrap / RestQueueProcessor
+  participant MediaFS as Media (expo-file-system)
+  participant LocalDB as Local SQLite / Cache
+  participant Network as Network (HTTP)
+
+  %% App start and hydration
+  UI->>Nav: App mounts
+  Nav->>Store: hydrate authStore and settingsStore
+  Store-->>Nav: hydrated (user present?)
+  alt user present
+    Nav->>UI: navigate to AppTabs
+  else no user
+    Nav->>UI: navigate to Auth
+  end
+
+  %% User logs in
+  UI->>Hook: submit login form
+  Hook->>Api: auth.signIn()
+  Api->>Client: POST /auth/login
+  Client->>TokenStore: read token (optional)
+  Client->>Network: send credentials
+  Network->>Client: response { accessToken, user }
+  Client->>Hook: return payload
+  Hook->>Store: set user, persist token via TokenStore
+  Hook->>Nav: resetRoot to AppTabs
+
+  %% Fetch farms (list)
+  UI->>Hook: mount FarmsScreen -> call getFarms()
+  Hook->>Api: farms.getFarms()
+  Api->>Client: operationsClient.get('/farms')
+  Client->>Network: HTTP GET /farms
+  alt offline
+    Network->>OfflineQueue: enqueue GET request or return cached LocalDB data
+    OfflineQueue-->>Hook: provide cached result
+  else online
+    Network->>Client: response { data: [...] }
+    Client->>Hook: return farms
+    Hook->>LocalDB: cache farms locally
+    Hook->>UI: render farms
+  end
+
+  %% Capture event with photo (traceability)
+  UI->>Hook: user captures photo and fills form
+  Hook->>MediaFS: save photo locally
+  Hook->>Api: events.create({ meta, photoPath })
+  Api->>Client: traceabilityClient.post('/events', meta)
+  Client->>TokenStore: (optional) read token
+  Client->>Network: attempt POST
+  alt offline
+    Network->>OfflineQueue: enqueue event + link to local photo path
+    OfflineQueue-->>UI: show queued state
+  else online
+    Network->>Client: service returns ok (maybe pre-signed URL workflow)
+    Client->>Hook: return success
+    Hook->>UI: show success
+  end
+
+  %% Background sync processes queued items
+  Sync->>OfflineQueue: pull queued items
+  Sync->>MediaFS: for queued items with local photos, upload to storage and get URL
+  Sync->>Network: replay queued HTTP requests with uploaded media URLs
+  alt success
+    Sync->>OfflineQueue: remove processed item
+    Sync->>LocalDB: update cached state
+    Sync->>Hook: invalidate queries so UI refreshes
+  else 401
+    Sync->>Store: call unauthorized handler -> clear token and reset Nav
+  else other error
+    Sync->>OfflineQueue: keep item to retry later
+  end
+
+  %% Token expiry and 401 flow
+  Client->>Network: receives 401
+  Client->>Store: call unauthorizedHandler (if set)
+  Store->>TokenStore: deleteAuthToken()
+  Store-->>Nav: resetRoot('Auth')
