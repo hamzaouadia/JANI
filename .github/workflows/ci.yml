@@ -1,7 +1,6 @@
 name: Quality Gate
 
 on:
-  workflow_dispatch:
   push:
     branches: [main]
   pull_request:
@@ -11,31 +10,31 @@ env:
   NODE_VERSION: '20.19'
 
 jobs:
-  # web:
-  #   name: Web - Lint & Build
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v4
+  web:
+    name: Web - Lint & Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-  #     - name: Setup Node.js
-  #       uses: actions/setup-node@v4
-  #       with:
-  #         node-version: ${{ env.NODE_VERSION }}
-  #         cache: npm
-  #         cache-dependency-path: package-lock.json
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: package-lock.json
 
-  #     - name: Install dependencies
-  #       run: npm install --workspace apps/web
+      - name: Install dependencies
+        run: npm install --workspace apps/web
 
-  #     - name: Lint
-  #       run: npm run lint --workspace apps/web
+      - name: Lint
+        run: npm run lint --workspace apps/web
 
-  #     - name: Type check
-  #       run: npm run typecheck --workspace apps/web
+      - name: Type check
+        run: npm run typecheck --workspace apps/web
 
-  #     - name: Build
-  #       run: npm run build --workspace apps/web
+      - name: Build
+        run: npm run build --workspace apps/web
 
   mobile:
     name: Mobile - Lint & Types
