@@ -1,0 +1,150 @@
+%% Full Mobile App: end-to-end flows
+%% Covers: Auth (login/signup/me), Farms, Partners, Orders, Traceability Events, Media Upload, Offline Queue, Background Sync
+sequenceDiagram
+  autonumber
+  participant UI as Mobile UI (Screens / Components)
+  participant Nav as Navigation (RootNavigator)
+  participant Hook as Hook / Action / React Query
+  participant Store as Stores (authStore, settingsStore)
+  participant AuthClient as authClient
+  participant OpsClient as operationsClient
+  participant TraceClient as traceabilityClient
+  participant TokenStore as TokenStore (SecureStore / AsyncStorage)
+  participant OfflineQueue as Offline REST Queue
+  participant Sync as SyncBootstrap / RestQueueProcessor
+  participant Background as Background Tasks (Task Manager)
+  participant MediaFS as Media (expo-file-system / S3 pre-signed)
+  participant Network as Network (HTTP)
+  participant AuthService as Auth Service (/auth, /data, /media)
+  participant OpsService as Operations Service (/farms, /orders)
+  participant TraceService as Traceability Service (/events)
+  participant DB as Database (MongoDB / Mongoose)
+  participant ResponseHandlers as App response handlers (unauthorizedHandler)
+
+  %% ---------------------- AUTH: signup/login/me ----------------------
+  UI->>Hook: User submits signup/login form
+  Hook->>AuthClient: POST /auth/signup or POST /auth/login
+  AuthClient->>TokenStore: (interceptor) getAuthToken()  
+  AuthClient->>Network: send credentials
+  Network->>AuthService: receive /auth request
+  AuthService->>DB: create/find user, bcrypt, jwt
+  DB-->>AuthService: user record
+  AuthService-->>Network: return { accessToken, user }
+  Network-->>AuthClient: axios receives response
+  AuthClient-->>Hook: return payload
+  Hook->>Store: set user and setAuthToken(accessToken)
+  Store-->>TokenStore: persist token (SecureStore / AsyncStorage)
+  Hook-->>Nav: reset root (Auth → App) if login succeeded
+
+  %% ---------------------- FETCH: farms (operations service) ----------------------
+  UI->>Hook: screen mounts → call getFarms()
+  Hook->>OpsClient: GET /farms (operationsClient)
+  OpsClient->>Network: send GET /farms
+  alt Offline
+    Network->>OfflineQueue: enqueue GET /farms (if implemented)
+    OfflineQueue-->>Hook: queued / cached result
+  else Online
+    Network->>OpsService: /farms
+    OpsService->>DB: query farms collection (Mongoose)
+    DB-->>OpsService: farms list
+    OpsService-->>Network: HTTP 200 { data: [...] }
+    Network-->>OpsClient: axios receives response
+    OpsClient-->>Hook: return farms
+    Hook-->>UI: render farms (React Query caches)
+  end
+
+  %% ---------------------- FETCH: single farm ----------------------
+  UI->>Hook: call getFarmById(farmId)
+  Hook->>OpsClient: GET /farms/:id
+  OpsClient->>Network: send GET
+  Network->>OpsService: Ops router → Ops controller → DB query by id
+  DB-->>OpsService: farm document
+  OpsService-->>Network: response
+  Network-->>OpsClient: axios receives response
+  OpsClient-->>Hook: return farm
+  Hook-->>UI: show farm details (includes plots, sensors)
+
+  %% ---------------------- FETCH: partners/exporters (auth service data route) ----------------------
+  UI->>Hook: call getPartners()
+  Hook->>AuthClient: GET /data/partners
+  AuthClient->>TokenStore: interceptor read token
+  alt token present
+    TokenStore-->>AuthClient: return token
+    AuthClient->>AuthClient: set Authorization: Bearer <token>
+  end
+  AuthClient->>Network: HTTP GET /data/partners
+  Network->>AuthService: /data router → partners handler → DB
+  DB-->>AuthService: partners list
+  AuthService-->>Network: return { partners: [...] }
+  Network-->>AuthClient: axios receives response
+  AuthClient->>ResponseHandlers: check 401 → call unauthorizedHandler if needed
+  AuthClient-->>Hook: return partners
+  Hook-->>UI: render list (exporters, buyers, logistics)
+
+  %% ---------------------- ORDERS: list + create ----------------------
+  UI->>Hook: call getOrders()
+  Hook->>OpsClient: GET /orders
+  OpsClient->>Network: send GET
+  Network->>OpsService: /orders → DB → return orders
+  Network-->>OpsClient: axios receives orders
+  Hook-->>UI: show orders
+
+  UI->>Hook: create order → call createOrder(payload)
+  Hook->>OpsClient: POST /orders
+  OpsClient->>TokenStore: (may) read token if required
+  OpsClient->>Network: POST /orders
+  alt Offline
+    Network->>OfflineQueue: enqueue POST /orders (persist body + metadata)
+    OfflineQueue-->>Hook: return queued status
+  else Online
+  Network->>OpsService: receive POST → OpsController → DB create → return order
+    Network-->>OpsClient: axios receives response
+    OpsClient-->>Hook: return created order
+    Hook->>UI: add order to UI and cache
+  end
+
+  %% ---------------------- TRACEABILITY: capture event & upload ----------------------
+  UI->>Hook: user captures an event (photo, form)
+  Hook->>MediaFS: store file locally (expo-file-system)
+  Hook->>TraceClient: POST /events with event metadata
+  TraceClient->>TokenStore: (interceptor: optional) read token
+  TraceClient->>Network: POST /events (payload may include signed S3 URL flow)
+  alt Offline
+    Network->>OfflineQueue: enqueue event + attach local file path
+    OfflineQueue-->>Background: SyncBootstrap will pick it up and upload file then send event
+  else Online
+    Network->>TraceService: Trace controller receives event
+    alt event includes media upload via pre-signed URL
+  TraceService->>MediaFS: (or S3) accept upload via pre-signed URL → store object
+    end
+    TraceService->>DB: persist event
+    DB-->>TraceService: return success
+    TraceService-->>Network: HTTP 200
+    Network-->>TraceClient: axios receives response
+    TraceClient-->>Hook: return event success
+    Hook-->>UI: show success & invalidate queries
+  end
+
+  %% ---------------------- BACKGROUND SYNC & QUEUE PROCESSING ----------------------
+  Note over OfflineQueue,Sync: OfflineQueue stores failed requests (POST/PUT/DELETE) with metadata
+  Background->>Sync: periodic / connectivity-based trigger
+  Sync->>OfflineQueue: pull queued items
+  Sync->>Network: for each queued item, send request
+  alt response 200
+    Network->>Sync: success
+    Sync->>OfflineQueue: remove item
+    Sync->>Hook: invalidate queries via QueryClient (refresh farms/orders/etc.)
+  else response 401
+    Network->>Sync: 401
+  Sync->>ResponseHandlers: call unauthorizedHandler → clear token and reset nav
+    Sync->>OfflineQueue: stop processing or mark failed
+  else other error
+  Sync->>OfflineQueue: keep item (will retry later)
+  end
+
+  %% ---------------------- COMMON: unauthorized handler ----------------------
+  ResponseHandlers->>Store: clear user & auth token
+  Store->>TokenStore: deleteAuthToken()
+  Store-->>Nav: resetRoot('Auth')
+
+  Note over UI,DB: React Query caches server data and is invalidated after background sync
