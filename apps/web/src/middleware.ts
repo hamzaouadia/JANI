@@ -8,6 +8,16 @@ export async function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
+  // Skip Next internal and error pages (avoid interfering with prerendering/build)
+  if (
+    pathname.startsWith('/_next') ||
+    pathname.startsWith('/_error') ||
+    pathname === '/500' ||
+    pathname === '/404'
+  ) {
+    return NextResponse.next();
+  }
+
   const token = req.cookies.get("token")?.value || req.cookies.get("auth-token")?.value;
   
   if (!token) {

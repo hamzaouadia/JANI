@@ -89,11 +89,11 @@ export default function SettingsPage() {
     }
   };
 
-  const updateSettings = <Section extends keyof SettingsData, Field extends keyof SettingsData[Section]>(
+  function updateSettings<Section extends keyof SettingsData, Field extends keyof SettingsData[Section]>(
     section: Section,
     field: Field,
     value: SettingsData[Section][Field]
-  ) => {
+  ) {
     setSettings(prev => {
       if (!prev) {
         return prev;
@@ -106,7 +106,7 @@ export default function SettingsPage() {
         }
       };
     });
-  };
+  }
 
   const tabs = [
     { id: 'general', label: 'General', icon: Settings },
