@@ -8,6 +8,8 @@
     "services/*"
   ],
   "scripts": {
+    "docs:diagram": "npx -y @mermaid-js/mermaid-cli -i docs/sequence-diagram.mmd -o docs/sequence-diagram.svg",
+    "docs:diagram:png": "npx -y @mermaid-js/mermaid-cli -i docs/sequence-diagram.mmd -o docs/sequence-diagram.png",
     "lint:web": "npm run lint --workspace apps/web",
     "typecheck:web": "npm run typecheck --workspace apps/web",
     "build:web": "npm run build --workspace apps/web",

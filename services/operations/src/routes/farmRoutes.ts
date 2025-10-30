@@ -1,6 +1,6 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import { z } from 'zod';
-import type { Types } from 'mongoose';
+import mongoose, { type Types } from 'mongoose';
 import { Field } from '../models/Field';
 import { Farm } from '../models/Farm';
 import { isUserRole, USER_ROLES } from '../constants/userRoles';
@@ -184,7 +184,12 @@ const buildFarmDto = (
 
 router.get('/', async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { status, ownerRole, ownerIdentifier, linked } = req.query;
+  const { status, ownerRole, ownerIdentifier, linked } = req.query;
+    // Normalize country query param: support string or array (defensive)
+  const countryRaw = (req.query as any).country;
+  const country = Array.isArray(countryRaw) ? countryRaw[0] : countryRaw;
+  // Debug: log raw country param type and value to diagnose unexpected parsing
+  console.log('countryRaw type:', typeof countryRaw, 'countryRaw:', countryRaw);
     const filter: Record<string, unknown> = {};
 
     if (typeof status === 'string') {
@@ -197,6 +202,14 @@ router.get('/', async (req: Request, res: Response, next: NextFunction) => {
 
     if (typeof ownerIdentifier === 'string' && ownerIdentifier.trim().length > 0) {
       filter.ownerIdentifier = ownerIdentifier.trim();
+    }
+
+    // Country filter: match against the locationDescription text (case-insensitive).
+    if (typeof country === 'string' && country.trim().length > 0 && country.trim().toLowerCase() !== 'all') {
+      const safe = escapeRegex(country.trim());
+      filter.locationDescription = { $regex: new RegExp(safe, 'i') };
+  // Use console.log so it appears in container logs
+  console.log(`Applying country filter for: ${country}`);
     }
 
     if (typeof linked === 'string') {
@@ -226,6 +239,59 @@ router.get('/', async (req: Request, res: Response, next: NextFunction) => {
       const relatedFields = fieldsByFarm.get(normalized._id.toString()) ?? [];
       return buildFarmDto(normalized, relatedFields);
     });
+    // Optionally include owner (farmer) profile information from the auth
+    // service. When `includeOwner=true` is provided as a query param, the
+    // operations service will attempt to read the corresponding users from
+    // the auth database and attach a lightweight owner object to each farm
+    // in the response.
+    if (req.query.includeOwner === 'true') {
+      try {
+        const AUTH_MONGO_URI = process.env.AUTH_MONGO_URI ?? 'mongodb://mongo:27017/jani-ai-auth';
+
+        // Use a dedicated mongoose instance for the auth DB to avoid mixing
+        // models and connections with the operations DB.
+        const authMongoose = new mongoose.Mongoose();
+        const authConn = await authMongoose.connect(AUTH_MONGO_URI);
+
+        const userSchema = new mongoose.Schema({
+          email: { type: String, required: true },
+          role: { type: String, required: true },
+          identifier: { type: String, required: true },
+          profile: { type: Map, of: String, default: {} }
+        }, { collection: 'users', timestamps: true });
+
+        const AuthUser = authConn.model('User', userSchema);
+
+        // Collect unique owner identifiers from farms
+        const ownerIds = Array.from(new Set(payload.map((p) => p.ownerIdentifier).filter(Boolean)));
+        const authUsers = await AuthUser.find({ identifier: { $in: ownerIds } }).lean();
+        const usersByIdentifier = new Map<string, any>();
+        for (const u of authUsers) {
+          usersByIdentifier.set(String(u.identifier), u);
+        }
+
+        const enriched = payload.map((p) => ({
+          ...p,
+          owner: usersByIdentifier.get(p.ownerIdentifier) ? {
+            email: usersByIdentifier.get(p.ownerIdentifier).email,
+            identifier: usersByIdentifier.get(p.ownerIdentifier).identifier,
+            role: usersByIdentifier.get(p.ownerIdentifier).role,
+            profile: Object.fromEntries(usersByIdentifier.get(p.ownerIdentifier).profile ?? [])
+          } : null
+        }));
+
+        // Disconnect the auth connection (we created a temporary connection)
+        await authConn.disconnect();
+
+        return res.json({ data: enriched });
+      } catch (err) {
+        // Don't fail the whole request if auth lookup fails — return farms
+        // without owner info and log the error.
+        console.error('Failed to load owner info from auth DB', err);
+        return res.json({ data: payload });
+      }
+    }
+
     res.json({ data: payload });
   } catch (error) {
     next(error);

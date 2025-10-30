@@ -41,9 +41,9 @@ const mapFarmToSupplier = (farm: Farm): Supplier => {
   };
 };
 
-export const getFeaturedSuppliers = async (): Promise<Supplier[]> => {
+export const getFeaturedSuppliers = async (country?: string): Promise<Supplier[]> => {
   try {
-    const farms = await getFarms();
+    const farms = await getFarms(country ? { country } : undefined);
 
     const suppliers = farms
       .filter((farm) => farm.linked)

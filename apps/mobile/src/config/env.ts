@@ -33,5 +33,8 @@ export const ENV = {
   API_BASE_URL: resolveUrl(apiBaseRaw, 'API_BASE_URL', 'http://localhost:5000'),
   AUTH_BASE_URL: resolveUrl(authBaseRaw, 'AUTH_BASE_URL', 'http://localhost:4000'),
   TRACEABILITY_BASE_URL: resolveUrl(traceabilityBaseRaw, 'TRACEABILITY_BASE_URL', 'http://localhost:4002'),
-  OPERATIONS_BASE_URL: resolveUrl(operationsBaseRaw, 'OPERATIONS_BASE_URL', 'http://localhost:4003')
+  // Operations service exposes routes under the /api prefix (eg. /api/farms).
+  // Default to include the /api prefix so client calls like '/farms' become
+  // 'http://localhost:4003/api/farms' against the operations service.
+  OPERATIONS_BASE_URL: resolveUrl(operationsBaseRaw, 'OPERATIONS_BASE_URL', 'http://localhost:4003/api')
 };

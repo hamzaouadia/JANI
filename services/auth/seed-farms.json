@@ -1,352 +1,52 @@
 [
-  {
-    "ownerRole": "farm",
-    "ownerIdentifier": "REG-98241",
-    "name": "Domaine Atlas Vert",
-    "primaryCrop": "Olives",
-    "locationDescription": "Meknès-Tafilalet, Région de Meknès",
-    "linked": true,
-    "lastSync": "2025-10-23T10:30:00Z",
-    "nextActions": ["Récolte des olives", "Contrôle qualité huile"],
-    "credentials": {
-      "registrationId": "REG-98241",
-      "pin": "1234"
-    }
-  },
-    {
-    "ownerRole": "farm",
-    "ownerIdentifier": "REG-98241",
-    "name": "Ferme Saada Agrumes",
-    "primaryCrop": "Agrumes (Oranges)",
-    "locationDescription": "Souss-Massa, Région d'Agadir",
-    "linked": true,
-    "lastSync": "2025-10-22T15:45:00Z",
-    "nextActions": ["Irrigation goutte-à-goutte", "Traitement bio"],
-    "credentials": {
-      "registrationId": "REG-98241-02",
-      "pin": "5678"
-    }
-  },
-  {
-    "ownerRole": "farm",
-    "ownerIdentifier": "REG-98241",
-    "name": "Coopérative Rif Vert",
-    "primaryCrop": "Cannabis Thérapeutique",
-    "locationDescription": "Tanger-Tétouan-Al Hoceïma, Chefchaouen",
-    "linked": false,
-    "lastSync": null,
-    "nextActions": ["Finaliser l'enregistrement", "Formation technique"],
-    "credentials": {
-      "registrationId": "REG-98241-03",
-      "pin": "9012"
-    }
-  },
-  {
-    "ownerRole": "farm",
-    "ownerIdentifier": "REG-45123",
-    "name": "Domaine Tomate Souss",
-    "primaryCrop": "Tomates sous serre",
-    "locationDescription": "Souss-Massa, Taroudant",
-    "linked": true,
-    "lastSync": "2025-10-23T08:00:00Z",
-    "nextActions": ["Maintenance irrigation", "Analyse du sol"],
-    "credentials": {
-      "registrationId": "REG-45123",
-      "pin": "3456"
-    }
-  },
-  {
-    "ownerRole": "farm",
-    "ownerIdentifier": "REG-78945",
-    "name": "Exploitation Datte Drâa",
-    "primaryCrop": "Dattes Medjool",
-    "locationDescription": "Drâa-Tafilalet, Vallée du Drâa",
-    "linked": true,
-    "lastSync": "2025-10-23T12:00:00Z",
-    "nextActions": ["Récolte dattes", "Conditionnement export"],
-    "credentials": {
-      "registrationId": "REG-78945",
-      "pin": "7890"
-    }
-  },
-  {
-    "ownerRole": "farm",
-    "ownerIdentifier": "REG-33567",
-    "name": "Coopérative Argan Essaouira",
-    "primaryCrop": "Argan",
-    "locationDescription": "Marrakech-Safi, Essaouira",
-    "linked": true,
-    "lastSync": "2025-10-22T18:30:00Z",
-    "nextActions": ["Pressage huile", "Certification bio"],
-    "credentials": {
-      "registrationId": "REG-33567",
-      "pin": "2345"
-    }
-  },
-  {
-    "ownerRole": "farm",
-    "ownerIdentifier": "REG-12890",
-    "name": "Maraîchage Bio Benslimane",
-    "primaryCrop": "Légumes biologiques",
-    "locationDescription": "Casablanca-Settat, Benslimane",
-    "linked": false,
-    "lastSync": null,
-    "nextActions": ["Vérification registre", "Session formation"],
-    "credentials": {
-      "registrationId": "REG-12890",
-      "pin": "6789"
-    }
-  },
-  {
-    "ownerRole": "farm",
-    "ownerIdentifier": "REG-56234",
-    "name": "Vignoble Atlas Wines",
-    "primaryCrop": "Raisins (Vin)",
-    "locationDescription": "Meknès-Tafilalet, Meknès",
-    "linked": true,
-    "lastSync": "2025-10-23T09:15:00Z",
-    "nextActions": ["Taille vignes", "Traitement soufre"],
-    "credentials": {
-      "registrationId": "REG-56234",
-      "pin": "4567"
-    }
-  },
-  {
-    "ownerRole": "farm",
-    "ownerIdentifier": "REG-67890",
-    "name": "Ferme Avocats Gharb",
-    "primaryCrop": "Avocats Hass",
-    "locationDescription": "Rabat-Salé-Kénitra, Gharb",
-    "linked": true,
-    "lastSync": "2025-10-23T11:20:00Z",
-    "nextActions": ["Pollinisation", "Fertilisation"],
-    "credentials": {
-      "registrationId": "REG-67890",
-      "pin": "8901"
-    }
-  },
-  {
-    "ownerRole": "farm",
-    "ownerIdentifier": "REG-23456",
-    "name": "Safran Taliouine Bio",
-    "primaryCrop": "Safran",
-    "locationDescription": "Souss-Massa, Taliouine",
-    "linked": true,
-    "lastSync": "2025-10-23T07:45:00Z",
-    "nextActions": ["Plantation bulbes", "Préparation récolte"],
-    "credentials": {
-      "registrationId": "REG-23456",
-      "pin": "2468"
-    }
-  },
-  {
-    "ownerRole": "farm",
-    "ownerIdentifier": "REG-89012",
-    "name": "Roses Kelâa M'Gouna",
-    "primaryCrop": "Roses à parfum",
-    "locationDescription": "Drâa-Tafilalet, Kelâa M'Gouna",
-    "linked": true,
-    "lastSync": "2025-10-22T16:30:00Z",
-    "nextActions": ["Récolte roses", "Distillation eau de rose"],
-    "credentials": {
-      "registrationId": "REG-89012",
-      "pin": "3579"
-    }
-  },
-  {
-    "ownerRole": "farm",
-    "ownerIdentifier": "REG-34567",
-    "name": "Fraises Moulay Bousselham",
-    "primaryCrop": "Fraises",
-    "locationDescription": "Rabat-Salé-Kénitra, Moulay Bousselham",
-    "linked": true,
-    "lastSync": "2025-10-23T13:10:00Z",
-    "nextActions": ["Cueillette quotidienne", "Emballage export"],
-    "credentials": {
-      "registrationId": "REG-34567",
-      "pin": "4680"
-    }
-  },
-  {
-    "ownerRole": "farm",
-    "ownerIdentifier": "REG-45678",
-    "name": "Amandes Tafraoute",
-    "primaryCrop": "Amandes",
-    "locationDescription": "Souss-Massa, Tafraoute",
-    "linked": true,
-    "lastSync": "2025-10-23T14:25:00Z",
-    "nextActions": ["Traitement arbres", "Désherbage"],
-    "credentials": {
-      "registrationId": "REG-45678",
-      "pin": "5791"
-    }
-  },
-  {
-    "ownerRole": "farm",
-    "ownerIdentifier": "REG-78945",
-    "name": "Palmeraie Tafilalet Bio",
-    "primaryCrop": "Dattes Medjool",
-    "locationDescription": "Drâa-Tafilalet, Errachidia",
-    "linked": true,
-    "lastSync": "2025-10-23T09:15:00Z",
-    "nextActions": ["Pollinisation", "Protection des régimes"],
-    "credentials": {
-      "registrationId": "REG-78945",
-      "pin": "7890"
-    }
-  },
-  {
-    "ownerRole": "farm",
-    "ownerIdentifier": "REG-33567",
-    "name": "Domaine Viticole Meknès",
-    "primaryCrop": "Raisins de Table",
-    "locationDescription": "Meknès-Tafilalet, Meknès",
-    "linked": true,
-    "lastSync": "2025-10-22T18:30:00Z",
-    "nextActions": ["Taille de la vigne", "Traitement phytosanitaire"],
-    "credentials": {
-      "registrationId": "REG-33567",
-      "pin": "2345"
-    }
-  },
-  {
-    "ownerRole": "farm",
-    "ownerIdentifier": "REG-12890",
-    "name": "Ferme Maraîchère Ourika",
-    "primaryCrop": "Légumes Variés",
-    "locationDescription": "Marrakech-Safi, Vallée de l'Ourika",
-    "linked": false,
-    "lastSync": null,
-    "nextActions": ["Finaliser certification bio", "Installation serre"],
-    "credentials": {
-      "registrationId": "REG-12890",
-      "pin": "6789"
-    }
-  },
-  {
-    "ownerRole": "farm",
-    "ownerIdentifier": "REG-56234",
-    "name": "Plantation Fraisiers Larache",
-    "primaryCrop": "Fraises",
-    "locationDescription": "Tanger-Tétouan-Al Hoceïma, Larache",
-    "linked": true,
-    "lastSync": "2025-10-23T07:00:00Z",
-    "nextActions": ["Récolte quotidienne", "Emballage export"],
-    "credentials": {
-      "registrationId": "REG-56234",
-      "pin": "4567"
-    }
-  },
-  {
-    "ownerRole": "farm",
-    "ownerIdentifier": "REG-11223",
-    "name": "Coopérative Safran Taliouine",
-    "primaryCrop": "Safran",
-    "locationDescription": "Souss-Massa, Taliouine",
-    "linked": true,
-    "lastSync": "2025-10-23T11:00:00Z",
-    "nextActions": ["Préparation du sol", "Plantation des bulbes"],
-    "credentials": {
-      "registrationId": "REG-11223",
-      "pin": "8901"
-    }
-  },
-  {
-    "ownerRole": "farm",
-    "ownerIdentifier": "REG-44556",
-    "name": "Exploitation Avocatiers Gharb",
-    "primaryCrop": "Avocats Hass",
-    "locationDescription": "Gharb-Chrarda-Béni Hssen, Sidi Slimane",
-    "linked": true,
-    "lastSync": "2025-10-23T13:30:00Z",
-    "nextActions": ["Irrigation", "Surveillance des parasites"],
-    "credentials": {
-      "registrationId": "REG-44556",
-      "pin": "5432"
-    }
-  },
-  {
-    "ownerRole": "farm",
-    "ownerIdentifier": "REG-77889",
-    "name": "Ferme Laitière Atlas",
-    "primaryCrop": "Production Laitière",
-    "locationDescription": "Fès-Meknès, Ifrane",
-    "linked": true,
-    "lastSync": "2025-10-23T06:00:00Z",
-    "nextActions": ["Contrôle sanitaire", "Livraison coopérative"],
-    "credentials": {
-      "registrationId": "REG-77889",
-      "pin": "9876"
-    }
-  },
-  {
-    "ownerRole": "farm",
-    "ownerIdentifier": "REG-22334",
-    "name": "Roseraie du Dadès",
-    "primaryCrop": "Roses à Parfum",
-    "locationDescription": "Drâa-Tafilalet, Vallée du Dadès",
-    "linked": true,
-    "lastSync": "2025-10-22T16:00:00Z",
-    "nextActions": ["Récolte matinale", "Distillation"],
-    "credentials": {
-      "registrationId": "REG-22334",
-      "pin": "3210"
-    }
-  },
-  {
-    "ownerRole": "farm",
-    "ownerIdentifier": "REG-55667",
-    "name": "Domaine Céréalier Chaouia",
-    "primaryCrop": "Blé Dur",
-    "locationDescription": "Casablanca-Settat, Chaouia",
-    "linked": true,
-    "lastSync": "2025-10-23T10:00:00Z",
-    "nextActions": ["Semis d'automne", "Fertilisation"],
-    "credentials": {
-      "registrationId": "REG-55667",
-      "pin": "6543"
-    }
-  },
-  {
-    "ownerRole": "farm",
-    "ownerIdentifier": "REG-88990",
-    "name": "Amandiers du Souss",
-    "primaryCrop": "Amandes",
-    "locationDescription": "Souss-Massa, Taroudant",
-    "linked": true,
-    "lastSync": "2025-10-23T14:00:00Z",
-    "nextActions": ["Taille d'hiver", "Fertilisation"],
-    "credentials": {
-      "registrationId": "REG-88990",
-      "pin": "7654"
-    }
-  },
-  {
-    "ownerRole": "farm",
-    "ownerIdentifier": "REG-99001",
-    "name": "Clémentiniers Berkane",
-    "primaryCrop": "Clémentines",
-    "locationDescription": "Oriental, Berkane",
-    "linked": true,
-    "lastSync": "2025-10-23T15:00:00Z",
-    "nextActions": ["Récolte export", "Tri et calibrage"],
-    "credentials": {
-      "registrationId": "REG-99001",
-      "pin": "8765"
-    }
-  },
-  {
-    "ownerRole": "farm",
-    "ownerIdentifier": "REG-10111",
-    "name": "Figueraie Taounate",
-    "primaryCrop": "Figues Sèches",
-    "locationDescription": "Fès-Meknès, Taounate",
-    "linked": false,
-    "lastSync": null,
-    "nextActions": ["Enregistrement ONSSA", "Formation qualité"],
-    "credentials": {
-      "registrationId": "REG-10111",
-      "pin": "9870"
-    }
-  }
+  {"ownerRole":"farm","ownerIdentifier":"REG-10001","name":"Domaine Atlas Vert","primaryCrop":"Olives","locationDescription":"Meknès-Tafilalet, Région de Meknès","linked":true,"lastSync":"2025-10-23T10:30:00Z","nextActions":["Récolte des olives","Contrôle qualité huile"],"credentials":{"registrationId":"REG-10001","pin":"1001"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10002","name":"Ferme Saada Agrumes","primaryCrop":"Agrumes (Oranges)","locationDescription":"Souss-Massa, Région d'Agadir","linked":true,"lastSync":"2025-10-22T15:45:00Z","nextActions":["Irrigation goutte-à-goutte","Traitement bio"],"credentials":{"registrationId":"REG-10002","pin":"1002"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10003","name":"Coopérative Rif Vert","primaryCrop":"Herbes aromatiques","locationDescription":"Tanger-Tétouan-Al Hoceïma, Chefchaouen","linked":false,"lastSync":null,"nextActions":["Finaliser l'enregistrement","Formation technique"],"credentials":{"registrationId":"REG-10003","pin":"1003"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10004","name":"Domaine Tomate Souss","primaryCrop":"Tomates sous serre","locationDescription":"Souss-Massa, Taroudant","linked":true,"lastSync":"2025-10-23T08:00:00Z","nextActions":["Maintenance irrigation","Analyse du sol"],"credentials":{"registrationId":"REG-10004","pin":"1004"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10005","name":"Exploitation Datte Drâa","primaryCrop":"Dattes Medjool","locationDescription":"Drâa-Tafilalet, Vallée du Drâa","linked":true,"lastSync":"2025-10-23T12:00:00Z","nextActions":["Récolte dattes","Conditionnement export"],"credentials":{"registrationId":"REG-10005","pin":"1005"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10006","name":"Coopérative Argan Essaouira","primaryCrop":"Argan","locationDescription":"Marrakech-Safi, Essaouira","linked":true,"lastSync":"2025-10-22T18:30:00Z","nextActions":["Pressage huile","Certification bio"],"credentials":{"registrationId":"REG-10006","pin":"1006"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10007","name":"Maraîchage Bio Benslimane","primaryCrop":"Légumes biologiques","locationDescription":"Casablanca-Settat, Benslimane","linked":false,"lastSync":null,"nextActions":["Vérification registre","Session formation"],"credentials":{"registrationId":"REG-10007","pin":"1007"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10008","name":"Vignoble Atlas Wines","primaryCrop":"Raisins (Vin)","locationDescription":"Meknès-Tafilalet, Meknès","linked":true,"lastSync":"2025-10-23T09:15:00Z","nextActions":["Taille vignes","Traitement soufre"],"credentials":{"registrationId":"REG-10008","pin":"1008"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10009","name":"Ferme Avocats Gharb","primaryCrop":"Avocats Hass","locationDescription":"Rabat-Salé-Kénitra, Gharb","linked":true,"lastSync":"2025-10-23T11:20:00Z","nextActions":["Pollinisation","Fertilisation"],"credentials":{"registrationId":"REG-10009","pin":"1009"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10010","name":"Safran Taliouine Bio","primaryCrop":"Safran","locationDescription":"Souss-Massa, Taliouine","linked":true,"lastSync":"2025-10-23T07:45:00Z","nextActions":["Plantation bulbes","Préparation récolte"],"credentials":{"registrationId":"REG-10010","pin":"1010"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10011","name":"Roses Kelâa M'Gouna","primaryCrop":"Roses à parfum","locationDescription":"Drâa-Tafilalet, Kelâa M'Gouna","linked":true,"lastSync":"2025-10-22T16:30:00Z","nextActions":["Récolte roses","Distillation eau de rose"],"credentials":{"registrationId":"REG-10011","pin":"1011"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10012","name":"Fraises Moulay Bousselham","primaryCrop":"Fraises","locationDescription":"Rabat-Salé-Kénitra, Moulay Bousselham","linked":true,"lastSync":"2025-10-23T13:10:00Z","nextActions":["Cueillette quotidienne","Emballage export"],"credentials":{"registrationId":"REG-10012","pin":"1012"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10013","name":"Amandes Tafraoute","primaryCrop":"Amandes","locationDescription":"Souss-Massa, Tafraoute","linked":true,"lastSync":"2025-10-23T14:25:00Z","nextActions":["Traitement arbres","Désherbage"],"credentials":{"registrationId":"REG-10013","pin":"1013"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10014","name":"Palmeraie Tafilalet Bio","primaryCrop":"Dattes Medjool","locationDescription":"Drâa-Tafilalet, Errachidia","linked":true,"lastSync":"2025-10-23T09:15:00Z","nextActions":["Pollinisation","Protection des régimes"],"credentials":{"registrationId":"REG-10014","pin":"1014"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10015","name":"Domaine Viticole Meknès","primaryCrop":"Raisins de Table","locationDescription":"Meknès-Tafilalet, Meknès","linked":true,"lastSync":"2025-10-22T18:30:00Z","nextActions":["Taille de la vigne","Traitement phytosanitaire"],"credentials":{"registrationId":"REG-10015","pin":"1015"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10016","name":"Ferme Maraîchère Ourika","primaryCrop":"Légumes Variés","locationDescription":"Marrakech-Safi, Vallée de l'Ourika","linked":false,"lastSync":null,"nextActions":["Finaliser certification bio","Installation serre"],"credentials":{"registrationId":"REG-10016","pin":"1016"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10017","name":"Plantation Fraisiers Larache","primaryCrop":"Fraises","locationDescription":"Tanger-Tétouan-Al Hoceïma, Larache","linked":true,"lastSync":"2025-10-23T07:00:00Z","nextActions":["Récolte quotidienne","Emballage export"],"credentials":{"registrationId":"REG-10017","pin":"1017"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10018","name":"Coopérative Safran Taliouine","primaryCrop":"Safran","locationDescription":"Souss-Massa, Taliouine","linked":true,"lastSync":"2025-10-23T11:00:00Z","nextActions":["Préparation du sol","Plantation des bulbes"],"credentials":{"registrationId":"REG-10018","pin":"1018"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10019","name":"Exploitation Avocatiers Gharb","primaryCrop":"Avocats Hass","locationDescription":"Gharb-Chrarda-Béni Hssen, Sidi Slimane","linked":true,"lastSync":"2025-10-23T13:30:00Z","nextActions":["Irrigation","Surveillance des parasites"],"credentials":{"registrationId":"REG-10019","pin":"1019"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10020","name":"Ferme Laitière Atlas","primaryCrop":"Production Laitière","locationDescription":"Fès-Meknès, Ifrane","linked":true,"lastSync":"2025-10-23T06:00:00Z","nextActions":["Contrôle sanitaire","Livraison coopérative"],"credentials":{"registrationId":"REG-10020","pin":"1020"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10021","name":"Roseraie du Dadès","primaryCrop":"Roses à Parfum","locationDescription":"Drâa-Tafilalet, Vallée du Dadès","linked":true,"lastSync":"2025-10-22T16:00:00Z","nextActions":["Récolte matinale","Distillation"],"credentials":{"registrationId":"REG-10021","pin":"1021"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10022","name":"Domaine Céréalier Chaouia","primaryCrop":"Blé Dur","locationDescription":"Casablanca-Settat, Chaouia","linked":true,"lastSync":"2025-10-23T10:00:00Z","nextActions":["Semis d'automne","Fertilisation"],"credentials":{"registrationId":"REG-10022","pin":"1022"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10023","name":"Amandiers du Souss","primaryCrop":"Amandes","locationDescription":"Souss-Massa, Taroudant","linked":true,"lastSync":"2025-10-23T14:00:00Z","nextActions":["Taille d'hiver","Fertilisation"],"credentials":{"registrationId":"REG-10023","pin":"1023"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10024","name":"Clémentiniers Berkane","primaryCrop":"Clémentines","locationDescription":"Oriental, Berkane","linked":true,"lastSync":"2025-10-23T15:00:00Z","nextActions":["Récolte export","Tri et calibrage"],"credentials":{"registrationId":"REG-10024","pin":"1024"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10025","name":"Figueraie Taounate","primaryCrop":"Figues Sèches","locationDescription":"Fès-Meknès, Taounate","linked":false,"lastSync":null,"nextActions":["Enregistrement ONSSA","Formation qualité"],"credentials":{"registrationId":"REG-10025","pin":"1025"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10026","name":"Oléiculteur Chefchaouen","primaryCrop":"Olives","locationDescription":"Tanger-Tétouan-Al Hoceïma, Chefchaouen","linked":true,"lastSync":"2025-10-23T09:00:00Z","nextActions":["Pressage huile","Contrôle qualité"],"credentials":{"registrationId":"REG-10026","pin":"1026"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10027","name":"Plantation Oliviers Larache","primaryCrop":"Olives","locationDescription":"Tanger-Tétouan-Al Hoceïma, Larache","linked":true,"lastSync":"2025-10-23T09:30:00Z","nextActions":["Récolte mécanique","Nettoyage"],"credentials":{"registrationId":"REG-10027","pin":"1027"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10028","name":"Domaine Citrus Agadir","primaryCrop":"Agrumes","locationDescription":"Souss-Massa, Région d'Agadir","linked":true,"lastSync":"2025-10-22T12:00:00Z","nextActions":["Tri export","Conditionnement"],"credentials":{"registrationId":"REG-10028","pin":"1028"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10029","name":"Coopérative Bio Taroudant","primaryCrop":"Amandes","locationDescription":"Souss-Massa, Taroudant","linked":true,"lastSync":"2025-10-23T08:45:00Z","nextActions":["Récolte","Séchage"],"credentials":{"registrationId":"REG-10029","pin":"1029"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10030","name":"Ferme Bergers Ifrane","primaryCrop":"Fromage de chèvre","locationDescription":"Fès-Meknès, Ifrane","linked":false,"lastSync":null,"nextActions":["Contrôle sanitaire","Emballage"],"credentials":{"registrationId":"REG-10030","pin":"1030"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10031","name":"Vallée du Dadès Oliviers","primaryCrop":"Olives","locationDescription":"Drâa-Tafilalet, Vallée du Dadès","linked":true,"lastSync":"2025-10-23T10:10:00Z","nextActions":["Irrigation","Taille"],"credentials":{"registrationId":"REG-10031","pin":"1031"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10032","name":"Taliouine Safran Coop","primaryCrop":"Safran","locationDescription":"Souss-Massa, Taliouine","linked":true,"lastSync":"2025-10-23T07:20:00Z","nextActions":["Récolte bulbes","Séparation fils"],"credentials":{"registrationId":"REG-10032","pin":"1032"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10033","name":"Palmeraie Errachidia","primaryCrop":"Dattes","locationDescription":"Drâa-Tafilalet, Errachidia","linked":true,"lastSync":"2025-10-23T11:50:00Z","nextActions":["Conditionnement","Export"],"credentials":{"registrationId":"REG-10033","pin":"1033"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10034","name":"Coopérative Kelâa M'Gouna","primaryCrop":"Roses","locationDescription":"Drâa-Tafilalet, Kelâa M'Gouna","linked":true,"lastSync":"2025-10-22T17:10:00Z","nextActions":["Distillation","Conditionnement"],"credentials":{"registrationId":"REG-10034","pin":"1034"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10035","name":"Moulay Bousselham Berries","primaryCrop":"Fruits rouges","locationDescription":"Rabat-Salé-Kénitra, Moulay Bousselham","linked":true,"lastSync":"2025-10-23T13:00:00Z","nextActions":["Récolte","Emballage"],"credentials":{"registrationId":"REG-10035","pin":"1035"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10036","name":"Essaouira Arganiers","primaryCrop":"Argan","locationDescription":"Marrakech-Safi, Essaouira","linked":true,"lastSync":"2025-10-22T18:00:00Z","nextActions":["Pressage","Certification"],"credentials":{"registrationId":"REG-10036","pin":"1036"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10037","name":"Gharb Avocado Farm","primaryCrop":"Avocats","locationDescription":"Rabat-Salé-Kénitra, Gharb","linked":true,"lastSync":"2025-10-23T11:00:00Z","nextActions":["Pollinisation","Harvest prep"],"credentials":{"registrationId":"REG-10037","pin":"1037"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10038","name":"Larache Berry Gardens","primaryCrop":"Fraises","locationDescription":"Tanger-Tétouan-Al Hoceïma, Larache","linked":true,"lastSync":"2025-10-23T07:40:00Z","nextActions":["Daily pick","Quality check"],"credentials":{"registrationId":"REG-10038","pin":"1038"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10039","name":"Berkane Citrus Estate","primaryCrop":"Citrus","locationDescription":"Oriental, Berkane","linked":true,"lastSync":"2025-10-23T15:20:00Z","nextActions":["Export packing","Sorting"],"credentials":{"registrationId":"REG-10039","pin":"1039"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10040","name":"Taroudant Almonds","primaryCrop":"Amandes","locationDescription":"Souss-Massa, Taroudant","linked":true,"lastSync":"2025-10-23T14:10:00Z","nextActions":["Pruning","Harvest"],"credentials":{"registrationId":"REG-10040","pin":"1040"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10041","name":"Ifrane Dairy Cooperative","primaryCrop":"Dairy","locationDescription":"Fès-Meknès, Ifrane","linked":true,"lastSync":"2025-10-23T06:30:00Z","nextActions":["Milk testing","Delivery"],"credentials":{"registrationId":"REG-10041","pin":"1041"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10042","name":"Chefchaouen Herbs","primaryCrop":"Herbes aromatiques","locationDescription":"Tanger-Tétouan-Al Hoceïma, Chefchaouen","linked":true,"lastSync":"2025-10-23T09:10:00Z","nextActions":["Drying","Packaging"],"credentials":{"registrationId":"REG-10042","pin":"1042"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10043","name":"Gharb Greenhouses","primaryCrop":"Tomatoes","locationDescription":"Rabat-Salé-Kénitra, Gharb","linked":true,"lastSync":"2025-10-23T08:20:00Z","nextActions":["Irrigation","Pest control"],"credentials":{"registrationId":"REG-10043","pin":"1043"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10044","name":"Vallée de l'Ourika Farm","primaryCrop":"Vegetables","locationDescription":"Marrakech-Safi, Vallée de l'Ourika","linked":false,"lastSync":null,"nextActions":["Greenhouse setup","Training"],"credentials":{"registrationId":"REG-10044","pin":"1044"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10045","name":"Taroudant Organic Co","primaryCrop":"Cereals","locationDescription":"Souss-Massa, Taroudant","linked":true,"lastSync":"2025-10-23T10:50:00Z","nextActions":["Soil test","Seeding"],"credentials":{"registrationId":"REG-10045","pin":"1045"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10046","name":"Rabat Citrus Yard","primaryCrop":"Citrus","locationDescription":"Rabat-Salé-Kénitra, Rabat","linked":true,"lastSync":"2025-10-23T12:40:00Z","nextActions":["Packaging","Quality control"],"credentials":{"registrationId":"REG-10046","pin":"1046"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10047","name":"Sidi Slimane Avocados","primaryCrop":"Avocados","locationDescription":"Rabat-Salé-Kénitra, Sidi Slimane","linked":true,"lastSync":"2025-10-23T09:55:00Z","nextActions":["Harvest prep","Transport"],"credentials":{"registrationId":"REG-10047","pin":"1047"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10048","name":"Vallée du Dadès Orchards","primaryCrop":"Fruit Trees","locationDescription":"Drâa-Tafilalet, Vallée du Dadès","linked":true,"lastSync":"2025-10-23T11:05:00Z","nextActions":["Irrigation","Pruning"],"credentials":{"registrationId":"REG-10048","pin":"1048"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10049","name":"Essaouira Coastal Farms","primaryCrop":"Argan","locationDescription":"Marrakech-Safi, Essaouira","linked":true,"lastSync":"2025-10-22T17:50:00Z","nextActions":["Pressing","Export documentation"],"credentials":{"registrationId":"REG-10049","pin":"1049"}},
+  {"ownerRole":"farm","ownerIdentifier":"REG-10050","name":"Kelâa M'Gouna Rose Coop","primaryCrop":"Roses","locationDescription":"Drâa-Tafilalet, Kelâa M'Gouna","linked":true,"lastSync":"2025-10-22T16:45:00Z","nextActions":["Distillation","Packing"],"credentials":{"registrationId":"REG-10050","pin":"1050"}}
 ]

@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { FlatList, RefreshControl, StyleSheet, Text, View, Dimensions } from 'react-native';
+import { FlatList, RefreshControl, StyleSheet, Text, View, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { Button } from '@/components/ui/Button';
@@ -11,6 +11,8 @@ import { useAppTheme } from '@/theme/ThemeProvider';
 
 import { SupplierCard } from '../components/SupplierCard';
 import { useFeaturedSuppliers } from '../hooks/useFeaturedSuppliers';
+import { useQueryClient } from '@tanstack/react-query';
+import { queryKeys } from '@/constants/queryKeys';
 
 const { height } = Dimensions.get('window');
 
@@ -59,22 +61,44 @@ const HeroSection = () => {
 
 export const HomeScreen = () => {
   const theme = useAppTheme();
-  const { data, isLoading, refetch, isRefetching } = useFeaturedSuppliers();
   const [query, setQuery] = useState('');
+  const [selectedCountry, setSelectedCountry] = useState('All');
 
+  // Fetch the full supplier set to derive available countries (cached)
+  const allSuppliersQuery = useFeaturedSuppliers();
+  // Fetch suppliers for the selected country (server-side filtered)
+  const { data, isLoading, refetch, isRefetching } = useFeaturedSuppliers(
+    selectedCountry === 'All' ? undefined : selectedCountry
+  );
+
+  // server returns country-filtered results; apply only search on them
+
+  // derive list of countries from the full supplier set
+  const queryClient = useQueryClient();
+
+  const countries = useMemo(() => {
+    const arr = Array.from(new Set((allSuppliersQuery.data ?? []).map((s) => s.country || 'Unknown'))).sort();
+    return ['All', ...arr];
+  }, [allSuppliersQuery.data]);
+
+  // server returns country-filtered results; apply only search on them
   const filtered = useMemo(() => {
-    const suppliers = data ?? [];
+    // If the server-side filter isn't applied (dev images), enforce client-side
+    // filtering here so the UI respects the selected country immediately.
+    const suppliers = (data ?? []).filter((s) =>
+      selectedCountry === 'All' ? true : (s.country ?? '').toLowerCase() === selectedCountry.toLowerCase()
+    );
     if (!query.trim()) return suppliers;
     const q = query.toLowerCase();
     return suppliers.filter(
       (s) => s.name.toLowerCase().includes(q) || s.category.toLowerCase().includes(q) || s.country.toLowerCase().includes(q)
     );
-  }, [data, query]);
+  }, [data, query, selectedCountry]);
 
   return (
     <Screen>
       <FlatList
-        data={filtered}
+  data={filtered}
         keyExtractor={(item) => item.id}
         style={styles.list}
         showsVerticalScrollIndicator={false}
@@ -92,6 +116,42 @@ export const HomeScreen = () => {
                 Curated for artisanal food producers working with JANI.
               </Text>
               <SearchBar placeholder="Search by name, category, or country" onChangeText={setQuery} />
+              <View style={styles.countryTabsContainer}>
+                <ScrollView
+                  horizontal
+                  showsHorizontalScrollIndicator={false}
+                  contentContainerStyle={styles.countryTabsScroll}
+                >
+                  {countries.map((c) => {
+                    const isActive = selectedCountry === c;
+                    return (
+                      <TouchableOpacity
+                        key={c}
+                        onPress={() => {
+                          setSelectedCountry(c);
+                          // Invalidate the specific country query so it refetches immediately
+                          // Invalidate the per-country featured suppliers key so the query refetches.
+                          queryClient.invalidateQueries({ queryKey: [queryKeys.home.featuredSuppliers, c ?? 'All'] as any });
+                        }}
+                        style={[
+                          styles.countryTab,
+                          // use theme-aware inline colors for good contrast
+                          { backgroundColor: isActive ? theme.colors.background : theme.colors.primary, borderColor: isActive ? theme.colors.border : 'transparent' }
+                        ]}
+                        accessibilityRole="button"
+                        accessibilityState={{ selected: isActive }}
+                      >
+                        <Text style={[
+                          styles.countryTabText,
+                          { color: isActive ? '#10B981' : '#FFFFFF', fontWeight: isActive ? '700' : '600' }
+                        ]}>
+                          {c}
+                        </Text>
+                      </TouchableOpacity>
+                    );
+                  })}
+                </ScrollView>
+              </View>
               <View style={styles.headerRow}>
                 <Text style={[theme.typography.caption, { color: theme.colors.textMuted }]}>
                   {filtered.length} result{filtered.length === 1 ? '' : 's'}
@@ -207,5 +267,57 @@ const styles = StyleSheet.create({
   },
   loaderContainer: {
     paddingVertical: 16
+  }
+  ,
+  countryRow: {
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
+    paddingVertical: 8,
+    paddingHorizontal: 8,
+    gap: 8
+  },
+  countryChipWrapper: {
+    marginRight: 8
+  },
+  countryChip: {
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderRadius: 16,
+    backgroundColor: 'transparent'
+  },
+  countryChipActive: {
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderRadius: 16,
+    backgroundColor: '#E6F2FF'
+  }
+  ,
+  countryTabsContainer: {
+    paddingVertical: 8
+  },
+  countryTabsScroll: {
+    paddingHorizontal: 8,
+    alignItems: 'center'
+  },
+  countryTab: {
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    borderRadius: 20,
+    marginRight: 8,
+    backgroundColor: 'transparent',
+    borderWidth: 1,
+    borderColor: 'transparent'
+  },
+  countryTabActive: {
+    backgroundColor: '#EFF6FF',
+    borderColor: '#BEE3F8'
+  },
+  countryTabText: {
+    fontSize: 14,
+    color: '#333'
+  },
+  countryTabTextActive: {
+    color: '#0369A1',
+    fontWeight: '600'
   }
 });

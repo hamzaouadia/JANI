@@ -47,8 +47,13 @@ type FarmsResponse = {
   data: Farm[];
 };
 
-export const getFarms = async (): Promise<Farm[]> => {
-  const response = await operationsClient.get<FarmsResponse>('/farms');
+export const getFarms = async (opts?: { country?: string }): Promise<Farm[]> => {
+  const params: Record<string, string> = {};
+  if (opts?.country && opts.country.trim().length > 0 && opts.country !== 'All') {
+    params.country = opts.country;
+  }
+
+  const response = await operationsClient.get<FarmsResponse>('/farms', { params });
   return response.data?.data ?? [];
 };
 

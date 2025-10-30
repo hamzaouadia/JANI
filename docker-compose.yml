@@ -236,6 +236,10 @@ services:
       # Backend service URLs
       AUTH_SERVICE_URL: http://auth:${AUTH_PORT}
       TRACEABILITY_SERVICE_URL: http://traceability:${TRACEABILITY_PORT}
+      # Ensure the mobile container uses the operations service API prefix
+      # so client code that calls '/farms' will target '/api/farms' on the
+      # operations service inside the compose network.
+      OPERATIONS_BASE_URL: http://operations:${OPERATIONS_PORT:-4003}/api
     volumes:
       - ./apps/mobile:/app
       - /app/node_modules
