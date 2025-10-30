@@ -1,21 +1,82 @@
 import axios from 'axios';
 import { ENV } from '@/config/env';
+import { enqueueRest } from '@/lib/offline/restQueue';
+import { getAuthToken } from '@/storage/tokenStorage';
+import { logger } from '@/utils/logger';
+
+// Compute a runtime-friendly baseURL for traceability service. When running in
+// a browser (Expo web / Next), Docker service hostnames like `traceability`
+// are not resolvable — prefer localhost:4002 for web runtimes so requests reach
+// the host-mapped traceability port. For native/device and container runtimes,
+// use the ENV value which may point at internal compose hostnames.
+const computeTraceabilityBase = (): string => {
+  const raw = ENV.TRACEABILITY_BASE_URL;
+
+  if (typeof window !== 'undefined') {
+    try {
+      const url = new URL(raw);
+      url.hostname = 'localhost';
+      if (!url.port) url.port = '4002';
+      return url.toString().replace(/\/$/, '');
+    } catch {
+      return 'http://localhost:4002';
+    }
+  }
+
+  return raw.replace(/\/$/, '');
+};
 
 const traceabilityClient = axios.create({
-  baseURL: ENV.TRACEABILITY_BASE_URL,
+  baseURL: computeTraceabilityBase(),
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-// Add auth token interceptor
-traceabilityClient.interceptors.request.use((config) => {
-  // TODO: Add auth token from storage
-  // const token = await getAuthToken();
-  // if (token) config.headers.Authorization = `Bearer ${token}`;
+// Attach auth token if available (per-request)
+traceabilityClient.interceptors.request.use(async (config) => {
+  try {
+    const token = await getAuthToken();
+    if (token) {
+      config.headers = config.headers ?? {};
+      // @ts-ignore - axios header typing can be loose here
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+  } catch (err) {
+    // don't block requests if token read fails
+    logger.warn('Failed to read auth token for traceabilityClient', err);
+  }
+
   return config;
 });
+
+// On network failures for mutating requests, enqueue them for background processing
+traceabilityClient.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    try {
+      logger.error('Traceability API request failed', error);
+
+      const config = (error as { config?: any }).config;
+      const method: string | undefined = config?.method?.toUpperCase?.();
+
+      if (!config || !method) return Promise.reject(error);
+
+      const mutating = method === 'POST' || method === 'PUT' || method === 'PATCH' || method === 'DELETE';
+
+      const hasResponse = (error as { response?: unknown })?.response;
+      if (!hasResponse && mutating) {
+        await enqueueRest({ method: method as any, url: config.url, body: config.data, headers: config.headers });
+        return Promise.resolve({ data: { queued: true }, status: 202, statusText: 'Accepted' });
+      }
+    } catch (e) {
+      logger.error('Failed to enqueue traceability request', e);
+    }
+
+    return Promise.reject(error);
+  }
+);
 
 export interface TraceabilityEvent {
   id?: string;
