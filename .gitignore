@@ -27,3 +27,11 @@ redisdata/
 # Editor
 .vscode
 .idea
+
+# Temporary: ignore test files and test folders while we iterate
+# NOTE: remove these entries when ready to commit tests
+**/__tests__/
+**/__mocks__/
+**/tests/
+**/*.test.*
+**/*.spec.*

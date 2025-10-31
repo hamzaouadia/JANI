@@ -40,3 +40,11 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# Temporary: ignore test files and test folders in mobile package
+# NOTE: remove these entries when ready to commit tests
+**/__tests__/
+**/__mocks__/
+**/tests/
+**/*.test.*
+**/*.spec.*
