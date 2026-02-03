@@ -22,6 +22,8 @@ install: ## Install all dependencies
 dev: ## Run all services in development mode (locally, not Docker)
 	@echo "${GREEN}🚀 Starting development environment...${RESET}"
 	@echo "${YELLOW}Starting MongoDB in Docker...${RESET}"
+	# Ensure .env contains necessary defaults (script handles missing/empty values)
+	@sh scripts/ensure-env.sh
 	@docker compose up -d mongo redis
 	@echo "${YELLOW}Waiting for services to be ready...${RESET}"
 	@sleep 5
